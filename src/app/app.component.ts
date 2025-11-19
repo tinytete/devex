@@ -5,25 +5,25 @@ import { Service } from './app.service';
 
 @Component({
   selector: 'demo-app',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  templateUrl: 'app.component.html',
+  styleUrl: 'app.component.scss',
   providers: [Service],
 })
 export class AppComponent {
   title = 'topchartsfund';
 
   topChartData: any[] = [];
-  chartData: any;
+  chartData: any[] = [];
 
-  collapsed = false;
+  // collapsed = false;
 
-  customizeLabel(e:any) {
+  public customizeLabel = (e:any)=> {
     return {text: e.data.Company};
   }
 
-  customizeSeries(e:any) {
-    return null;
-  }
+  // customizeSeries(e:any) {
+  //   return null;
+  // }
 
   constructor(service: Service) {
     this.topChartData = service.getTopChartsData();

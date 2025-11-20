@@ -15,7 +15,7 @@ export class Service {
         FundName: 'SCBBANKINGE',
         Company: 'SCBAM',  
         Ranking: 92, 
-        Return1Y: '11.35',
+        Return1Y: 11.35,
         Category: 'Equity Large Cap',
       },
       { 
@@ -23,7 +23,7 @@ export class Service {
         FundName: 'SCBBANKING',
         Company: 'SCBAM', 
         Ranking: 91,  
-        Return1Y: '10.58', 
+        Return1Y: 10.58, 
         Category: 'Equity Large Cap', 
       },
       { 
@@ -31,7 +31,7 @@ export class Service {
         FundName: 'K-BANKING', 
         Company: 'KAsset',  
         Ranking: 91,  
-        Return1Y: '10.17', 
+        Return1Y: 10.17, 
         Category: 'Equity Large Cap',  
       },
       { 
@@ -39,7 +39,7 @@ export class Service {
         FundName: 'TISCOHD-A', 
         Company: 'TISCOAM',
         Ranking: 75,  
-        Return1Y: '5.46',
+        Return1Y: 5.46,
         Category: 'Equity General',
       },
       { 
@@ -47,7 +47,7 @@ export class Service {
         FundName: 'SCBBANKINGA', 
         Company: 'SCBAM',
         Ranking: 63,  
-        Return1Y: '10.62', 
+        Return1Y: 10.62, 
         Category: 'Equity Large Cap',  
       },
       { 
@@ -55,7 +55,7 @@ export class Service {
         FundName: 'SCBBANKINGP', 
         Company: 'SCBAM',
         Ranking: 41,  
-        Return1Y: '6.97', 
+        Return1Y: 6.97, 
         Category: 'Equity Large Cap', 
       },
       { 
@@ -63,7 +63,7 @@ export class Service {
         FundName: 'K-ICT',
         Company: 'KAsset', 
         Ranking: 30,  
-        Return1Y: '11.06',
+        Return1Y: 11.06,
         Category: 'Equity General',
       },
       { 
@@ -71,7 +71,7 @@ export class Service {
         FundName: 'KT-CLMVT-A', 
         Company: 'KTAM', 
         Ranking: 6,  
-        Return1Y: '8.57', 
+        Return1Y: 8.57, 
         Category: 'ASEAN Equity',  
       },
       { 
@@ -79,7 +79,7 @@ export class Service {
         FundName: 'KT-CLMVT-D',
         Company: 'KTAM',  
         Ranking: 6, 
-        Return1Y: '7.21', 
+        Return1Y: 7.21, 
         Category: 'ASEAN Equity', 
       },
       { 
@@ -87,7 +87,7 @@ export class Service {
         FundName: 'ES-FINANCETH',
         Company: 'EASTSPRING', 
         Ranking: 1,  
-        Return1Y: '4.99', 
+        Return1Y: 4.99, 
         Category: 'Equity General', 
       }
     ];

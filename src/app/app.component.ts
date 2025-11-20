@@ -11,23 +11,5 @@ import { Service } from './app.service';
 })
 export class AppComponent {
   title = 'topchartsfund';
-  shouldBeDisabled: boolean = true;
-
-  topChartData: any[] = [];
-  chartData: any[] = [];
-
-  // collapsed = false;
-
-  public customizeLabel = (e:any)=> {
-    return e.value;
-  }
-
-  // customizeSeries(e:any) {
-  //   return null;
-  // }
-
-  constructor(service: Service) {
-    this.topChartData = service.getTopChartsData();
-    this.chartData = this.topChartData;
-  }
+  
 }

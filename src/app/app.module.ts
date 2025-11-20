@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 // นำเข้า AppRoutingModule ถ้ามี (จากโค้ดที่คุณให้มามี AppRoutingModule)
@@ -17,7 +17,6 @@ import { DetailfundComponent } from './detailfund/detailfund.component';
     AppComponent,
     TopchartfundComponent,
     DetailfundComponent,
-  
   ],
   imports: [
     BrowserModule, 
@@ -28,6 +27,9 @@ import { DetailfundComponent } from './detailfund/detailfund.component';
     DxChartModule,
   ],
   providers: [], // ประกาศ Service ถ้าต้องการให้ใช้ได้ทั้งแอปฯ (แต่คุณประกาศใน Component แล้ว)
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
   bootstrap: [AppComponent] // บอก Angular ว่าให้เริ่มต้นที่ Component นี้
 })
 export class AppModule { }

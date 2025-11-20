@@ -55,8 +55,9 @@
         [rowAlternationEnabled]="true"
         [showBorders]="true"
         [width]="'100%'"
+        (onRowClick)="onRowClick($event)"
         > 
-      <dxi-column dataField="Id" caption="อันดับ" alignment="left"></dxi-column> 
+      <dxi-column dataField="Id" caption="อันดับ" alignment="center"></dxi-column> 
       <dxi-column dataField="FundName" caption="กองทุน" alignment="left"></dxi-column>
       <dxi-column dataField="Company" caption="บลจ." alignment="left"></dxi-column>
       <dxi-column dataField="Ranking" caption="จำนวนสัปดาห์ที่ติดอันดับ" alignment="left"></dxi-column>

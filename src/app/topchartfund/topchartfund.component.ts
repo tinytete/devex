@@ -1,7 +1,8 @@
-import { Component, enableProdMode } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataSource } from 'devextreme-angular/common/data';
 import { DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
 import { Service } from '../app.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'top-chart-fund',
@@ -27,9 +28,16 @@ export class TopchartfundComponent {
     };
   }
 
-  constructor(service: Service) {
+  constructor(service: Service,private router: Router) {
     this.topChartData = service.getTopChartsData();
     this.topChartData.sort((a,b)=>b.Ranking-a.Ranking);
     this.chartData = this.topChartData;
+  }
+
+  onRowClick(e:any) {
+    if(e.data && e.data.Id){
+      const fundId = e.data.Id;
+      this.router.navigate(['/detaol', fundId]);
+    }
   }
 }

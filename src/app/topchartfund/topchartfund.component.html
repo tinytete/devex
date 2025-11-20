@@ -1,5 +1,33 @@
-<div id="top-chart">
-    <h2>📊 ผลการดำเนินงานกองทุน 10 อันดับแรก (ROI)</h2>
+<header class="top-header">
+    <div class="header-left">
+        <span>Top Charts</span>
+    </div>
+    <div class="header-right">
+        <span>กองทุนรวม</span>
+        </div>
+</header>
+
+<div class="content-container">
+
+    <div class="filter-area">
+        <div class="filter-left">
+            <div class="top-charts-branding">
+                <span class="chart-icon">📊</span>
+                <span class="chart-text">Top Charts</span>
+            </div>
+
+        <div class="filter-right">
+            <label for="search-fund">ค้นหาชื่อกองทุน:</label>
+            <dx-text-box
+                id="search-fund"
+                placeholder="ค้นหากองทุน..."
+                mode="search">
+            </dx-text-box>
+        </div>
+    </div>
+    
+    <div class="chart-grid-area">
+        <h2>📊 ผลการดำเนินงานกองทุน 10 อันดับแรก (ROI)</h2>
     <dx-chart
         id="chart"
         title="10 อันดับกองทุนรวมที่ติด Top Returns มากที่สุด"

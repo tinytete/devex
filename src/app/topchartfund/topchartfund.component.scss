@@ -1,0 +1,52 @@
+/* src/app/topchartfund/topchartfund.component.scss */
+
+// 1. จัดรูปแบบ Header ด้านบน (แถบสีม่วง/ชมพู)
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #8C52FF; /* สีม่วงตามภาพ */
+    color: white;
+    font-weight: 600;
+}
+
+// 2. จัดรูปแบบพื้นที่ค้นหาและ Dropdown
+.content-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.filter-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.filter-left, .filter-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.top-charts-branding {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #4B0082;
+}
+
+.chart-icon {
+    font-size: 1.5em;
+    margin-right: 5px;
+}
+
+// จัดรูปแบบช่องค้นหา DevExtreme ให้เหมาะสม
+#search-fund {
+    width: 250px;
+}

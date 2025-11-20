@@ -8,11 +8,15 @@ import { AppComponent } from './app.component'; // นำเข้า Component
 import { DxBulletModule, DxTemplateModule } from 'devextreme-angular'; 
 import { DxDataGridModule } from 'devextreme-angular/ui/data-grid';
 import { DxChartModule } from 'devextreme-angular';
+import { TopchartfundComponent } from './topchartfund/topchartfund.component';
+import { DetailfundComponent } from './detailfund/detailfund.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    TopchartfundComponent,
+    DetailfundComponent,
   
   ],
   imports: [

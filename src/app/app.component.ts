@@ -11,6 +11,7 @@ import { Service } from './app.service';
 })
 export class AppComponent {
   title = 'topchartsfund';
+  shouldBeDisabled: boolean = true;
 
   topChartData: any[] = [];
   chartData: any[] = [];
@@ -18,7 +19,7 @@ export class AppComponent {
   // collapsed = false;
 
   public customizeLabel = (e:any)=> {
-    return {text: e.data.Company};
+    return e.value;
   }
 
   // customizeSeries(e:any) {

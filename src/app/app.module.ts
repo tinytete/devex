@@ -8,10 +8,12 @@ import { AppComponent } from './app.component'; // นำเข้า Component
 import { DxBulletModule, DxTemplateModule } from 'devextreme-angular'; 
 import { DxDataGridModule } from 'devextreme-angular/ui/data-grid';
 import { DxChartModule } from 'devextreme-angular';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent // ประกาศ Component ที่จะใช้งานใน Module นี้
+    AppComponent,
+    HomeComponent // ประกาศ Component ที่จะใช้งานใน Module นี้
   ],
   imports: [
     BrowserModule, 

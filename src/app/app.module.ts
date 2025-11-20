@@ -11,6 +11,8 @@ import { DxChartModule } from 'devextreme-angular';
 import { TopchartfundComponent } from './topchartfund/topchartfund.component';
 import { DetailfundComponent } from './detailfund/detailfund.component';
 import { DxTextBoxModule } from 'devextreme-angular';
+import { SellFundComponent } from './sell-fund/sell-fund.component';
+import { BuyFundComponent } from './buy-fund/buy-fund.component';
 
 
 @NgModule({
@@ -18,6 +20,8 @@ import { DxTextBoxModule } from 'devextreme-angular';
     AppComponent,
     TopchartfundComponent,
     DetailfundComponent,
+    SellFundComponent,
+    BuyFundComponent,
   ],
   imports: [
     BrowserModule, 

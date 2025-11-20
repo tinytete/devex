@@ -1,0 +1,47 @@
+<div class="buy-sell-container">
+    <h2>🔻 หน้าขาย: {{ fundData?.FundName }} (ID: {{ fundId }})</h2>
+
+    <div class="portfolio-info">
+        <p>หน่วยลงทุนที่ถือครอง: <strong>{{ 1500 | number:'1.4-4' }} หน่วย</strong></p>
+        <p>มูลค่าปัจจุบัน: <strong>{{ 1500 * fundData.NAV | number }} บาท</strong></p>
+    </div>
+
+    <div class="sell-form dx-fieldset">
+        
+        <div class="agreement-section">
+            <dx-check-box text="ขายหน่วยลงทุนทั้งหมด" [(value)]="sellAllUnits" (onValueChanged)="updateSellAmount()"></dx-check-box>
+        </div>
+        
+        <div class="dx-field">
+            <div class="dx-field-label">หน่วยที่ต้องการขาย:</div>
+            <div class="dx-field-value">
+                <dx-number-box [(value)]="sellAmount" [disabled]="sellAllUnits" format="#,##0.0000"></dx-number-box>
+            </div>
+        </div>
+        
+        <div class="dx-field">
+            <div class="dx-field-label">ค่าธรรมเนียมขาย (2%):</div>
+            <div class="dx-field-value">
+                {{ calculateFee(sellAmount * fundData.NAV, 0.02) | number:'1.2-2' }} บาท
+            </div>
+        </div>
+        
+        <div class="dx-field">
+            <div class="dx-field-label">วันที่ยอมรับคำสั่ง:</div>
+            <div class="dx-field-value">
+                <dx-date-box [value]="today" [min]="today" displayFormat="dd/MM/yyyy"></dx-date-box>
+            </div>
+        </div>
+        
+        <dx-button 
+            text="ตรวจสอบคำสั่ง"
+            type="danger"
+            [disabled]="sellAmount <= 0"
+            (onClick)="confirmSell()">
+        </dx-button>
+
+        <div *ngIf="sellSuccess" class="success-message">
+            ✅ ขายเสร็จเรียบร้อย! คำสั่งขายอยู่ระหว่างดำเนินการ
+        </div>
+    </div>
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Service } from '../app.service';
 
 @Component({
@@ -14,7 +14,8 @@ export class DetailfundComponent implements OnInit {
   performanceData: any[] = [];
 
   constructor(private route: ActivatedRoute,
-    private service: Service
+    private service: Service,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -30,6 +31,20 @@ export class DetailfundComponent implements OnInit {
         }
       }
     });
+  }
+
+  navigateToBuy() {
+    if (this.fundId) {
+      // นำทางไปที่ /buy/ID
+      this.router.navigate(['/buy', this.fundId]);
+    }
+  }
+
+  navigateToSell() {
+    if (this.fundId) {
+      // นำทางไปที่ /sell/ID
+      this.router.navigate(['/sell', this.fundId]);
+    }
   }
 
   loadMockData(id: number) {

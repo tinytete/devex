@@ -13,10 +13,14 @@ export class Service {
       { 
         Id: 1, 
         FundName: 'SCBBANKINGE',
+        NAV: 14.7927,
         Company: 'SCBAM',  
         Ranking: 92, 
         Return1Y: 11.35,
         Category: 'Equity Large Cap',
+        AUM: '15,713,053',
+        RegisterDate: '28 มิ.ย.2554',
+        RiskLevel: '7',
       },
       { 
         Id: 2, 

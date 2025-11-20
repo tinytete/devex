@@ -1,28 +1,45 @@
+<div class="content-container">
+
+    <br class="filter-area">
+        <div class="filter-left">
+            <div class="top-charts-branding">
+                <span class="chart-icon">📊</span>
+                <span class="chart-text">Top Charts</span>
+            </div>
+
+        <div class="filter-right">
+            <label for="search-fund">ค้นหาชื่อกองทุน:</label>
+            <dx-text-box
+                id="search-fund"
+                placeholder="ค้นหากองทุน..."
+                mode="search">
+            </dx-text-box>
+        </div>
+    </div>
+<br>
 <div *ngIf="fundData; else noData" class="fund-detail-container">
     
     <header class="detail-header">
-        <h1>{{ fundData.FundName }}</h1>
-        <div class="nav-bar">
-            <div class="nav-info">
+        <h1>{{ fundData.FundName }} <div class="nav-info">
                 <span class="nav-value">{{ fundData.NAV | number:'1.4-4' }}</span>
                 <span class="nav-change">▲ {{ fundData.Change | number:'1.4-4' }}</span>
-            </div>
-            <button>⭐ ติดตาม</button>
-            <button>⭐ ซื้อ</button>
-            <button>⭐ ขาย</button>
-        </div>
+            </div></h1>
+
     </header>
 
     <div class="main-content-area">
         <div class="key-metrics-box" >
             <h3>ข้อมูลสำคัญ</h3>
             <p><strong>ประเภทกองทุน:</strong> {{ fundData.Category }}</p>
-            <p><strong>มูลค่าสินทรัพย์ (AUM):</strong> {{ fundData.AUM | number }} ล้านบาท</p>
-            <p><strong>วันที่จดทะเบียน:</strong> {{ fundData.RegisterDate | date:'dd/MM/yyyy' }}</p>
-            <p><strong>อันดับ Top Chart:</strong> {{ fundData.TopChartRank }}</p>
+            <p><strong>มูลค่าสินทรัพย์สุธิ:</strong> {{ fundData.AUM }}</p>
+            <p><strong>วันที่จดทะเบียน:</strong> {{ fundData.RegisterDate }}</p>
             <p><strong>ความเสี่ยง:</strong> {{ fundData.RiskLevel }}</p>
         </div>
-
+        <div class="nav-bar">
+            <button>⭐ ติดตาม</button>
+            <button>⭐ ซื้อ</button>
+            <button>⭐ ขาย</button>
+        </div>
         <div class="chart-area">
             <h2>กราฟราคา NAV</h2>
             <div class="nav-chart-controls">

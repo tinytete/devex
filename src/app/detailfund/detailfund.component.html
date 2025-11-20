@@ -1,1 +1,56 @@
-<p>detailfund works!</p>
+<div *ngIf="fundData; else noData" class="fund-detail-container">
+    
+    <header class="detail-header">
+        <h1>{{ fundData.FundName }}</h1>
+        <div class="nav-bar">
+            <div class="nav-info">
+                <span class="nav-value">{{ fundData.NAV | number:'1.4-4' }}</span>
+                <span class="nav-change">▲ {{ fundData.Change | number:'1.4-4' }}</span>
+            </div>
+            <button>⭐ ติดตาม</button>
+            <button>⭐ ซื้อ</button>
+            <button>⭐ ขาย</button>
+        </div>
+    </header>
+
+    <div class="main-content-area">
+        <div class="key-metrics-box" >
+            <h3>ข้อมูลสำคัญ</h3>
+            <p><strong>ประเภทกองทุน:</strong> {{ fundData.Category }}</p>
+            <p><strong>มูลค่าสินทรัพย์ (AUM):</strong> {{ fundData.AUM | number }} ล้านบาท</p>
+            <p><strong>วันที่จดทะเบียน:</strong> {{ fundData.RegisterDate | date:'dd/MM/yyyy' }}</p>
+            <p><strong>อันดับ Top Chart:</strong> {{ fundData.TopChartRank }}</p>
+            <p><strong>ความเสี่ยง:</strong> {{ fundData.RiskLevel }}</p>
+        </div>
+
+        <div class="chart-area">
+            <h2>กราฟราคา NAV</h2>
+            <div class="nav-chart-controls">
+                </div>
+            
+            <dx-chart id="nav-chart" [dataSource]="navHistoryData">
+                <dxi-series argumentField="Date" valueField="NAV" type="line" color="#00AEEF"></dxi-series>
+                <dxo-argument-axis argumentType="datetime"></dxo-argument-axis>
+                <dxo-legend [visible]="false"></dxo-legend>
+                <dxo-tooltip [enabled]="true"></dxo-tooltip>
+            </dx-chart>
+        </div>
+    </div>
+
+    <div class="performance-table">
+        <h2>ผลตอบแทนย้อนหลัง</h2>
+        <dx-data-grid [dataSource]="performanceData" [showBorders]="true">
+            <dxi-column dataField="Period" caption="ช่วงเวลา"></dxi-column>
+            <dxi-column dataField="FundReturn" caption="ผลตอบแทนกองทุน"></dxi-column>
+            <dxi-column dataField="BenchmarkReturn" caption="ผลตอบแทนดัชนี"></dxi-column>
+            </dx-data-grid>
+    </div>
+
+    <br>
+    <a routerLink="/">🔙 กลับหน้าแรก</a>
+</div>
+
+<ng-template #noData>
+  <p>ไม่พบข้อมูลกองทุน (ID: {{ fundId }})</p>
+  <a routerLink="/">กลับหน้าแรก</a>
+</ng-template>

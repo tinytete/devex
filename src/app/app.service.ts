@@ -92,4 +92,10 @@ export class Service {
       }
     ];
   }
+
+getFundById(id: number) {
+    const allFunds = this.getTopChartsData();
+    // ค้นหา Object ใน Array ที่มี Id ตรงกัน
+    return allFunds.find(fund => fund.Id === id);
+  }
 }

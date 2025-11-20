@@ -10,6 +10,7 @@ import { DxDataGridModule } from 'devextreme-angular/ui/data-grid';
 import { DxChartModule } from 'devextreme-angular';
 import { TopchartfundComponent } from './topchartfund/topchartfund.component';
 import { DetailfundComponent } from './detailfund/detailfund.component';
+import { TopchartSearchComponent } from './topchart-search/topchart-search.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { DetailfundComponent } from './detailfund/detailfund.component';
     AppComponent,
     TopchartfundComponent,
     DetailfundComponent,
+    TopchartSearchComponent,
   ],
   imports: [
     BrowserModule, 

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { DataSource } from 'devextreme-angular/common/data';
 import { DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
 import { Service } from '../app.service';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'top-chart-fund',
@@ -37,7 +37,14 @@ export class TopchartfundComponent {
   onRowClick(e:any) {
     if(e.data && e.data.Id){
       const fundId = e.data.Id;
-      this.router.navigate(['/detaol', fundId]);
+      this.router.navigate(['/detail', fundId]);
+    }
+  }
+
+  onPointClick(e:any) {
+    const pointData = e.target.data;
+    if(pointData && pointData.Id) {
+      this.router.navigate(['/detail',pointData.Id]);
     }
   }
 }

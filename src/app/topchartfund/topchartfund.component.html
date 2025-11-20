@@ -7,22 +7,22 @@
 
         <dxo-common-series-settings type="bar" argumentField="FundName">
             <dxo-label [visible]="true" [customizeText]="customizeSeriesLabel">
-                <dxo-font color="red" [size]="10"></dxo-font>
+                <dxo-font color="purple" [size]="10"></dxo-font>
             </dxo-label>
         </dxo-common-series-settings>
 
         <dxi-series 
             name="จำนวนสัปดาห์ที่ติดอันดับ" 
             valueField="Ranking" 
-            color="#4B0082"> 
+            color="#ADD88D"> 
         </dxi-series>
 
         <dxo-argument-axis>
-            <!-- <dxo-sorting-setting 
+            <dxo-sorting-setting 
                 mode="value" 
                 sortField="Ranking" 
                 order="desc">
-            </dxo-sorting-setting> -->
+            </dxo-sorting-setting>
 
             <dxo-label [visible]="true" template="labelTemplate"
                 [customizeText]="customizeLabel"><dxo-font [size]="10"></dxo-font>
@@ -47,7 +47,7 @@
 </div>
 
 <div id="task-grid">
-    <h2>🥇 รายละเอียดกองทุน Top 10</h2>
+    <h2>🥇 กองทุน Top 10</h2>
     <dx-data-grid 
     
         id="gridContainer" 
@@ -56,6 +56,7 @@
         [showBorders]="true"
         [width]="'100%'"
         (onRowClick)="onRowClick($event)"
+        (onPointClick)="onPointClick($event)"
         > 
       <dxi-column dataField="Id" caption="อันดับ" alignment="center"></dxi-column> 
       <dxi-column dataField="FundName" caption="กองทุน" alignment="left"></dxi-column>

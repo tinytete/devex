@@ -7,8 +7,8 @@ import { BuyFundComponent } from './buy-fund/buy-fund.component';
 import { ManageFundComponent } from './manage-fund/manage-fund.component';
 
 const routes: Routes = [
-{path: '', component: TopchartfundComponent},
-{path: 'detail/:id', component: DetailfundComponent},
+{ path: '', component: TopchartfundComponent},
+{ path: 'detail/:id', component: DetailfundComponent},
 { path: 'buy/:id', component: BuyFundComponent },
 { path: 'sell/:id', component: SellFundComponent },
 { path: 'manage', component: ManageFundComponent },

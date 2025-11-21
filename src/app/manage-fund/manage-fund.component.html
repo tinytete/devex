@@ -1,6 +1,6 @@
 <div class="crud-container">
     <h2>🛠️ หน้า 4: จัดการข้อมูลกองทุน (CRUD)</h2>
-    <p>ใช้ DevExtreme Data Grid เพื่อทำ เพิ่ม/ลบ/แก้ไข ข้อมูลกองทุนโดยตรง</p>
+    <p>เพิ่ม ลบ แก้ไข กองทุน</p>
 
     <dx-data-grid
         id="fund-crud-grid"
@@ -15,7 +15,7 @@
         <dxi-column dataField="FundName" caption="ชื่อกองทุน"></dxi-column>
         <dxi-column dataField="Company" caption="บลจ."></dxi-column>
         <dxi-column dataField="NAV" caption="NAV" dataType="number"></dxi-column>
-        <dxi-column dataField="Ranking" caption="Ranking" dataType="number"></dxi-column>
+        <dxi-column dataField="Ranking" caption="จำนวนสัปดาห์ที่ติดอันดับ" dataType="number"></dxi-column>
         <dxi-column dataField="Category" caption="ประเภทกองทุน"></dxi-column>
 
         <dxo-editing 
@@ -27,5 +27,4 @@
 
     </dx-data-grid>
     <br>
-    <a routerLink="/">🔙 กลับหน้าแรก</a>
-</div>
+    <a routerLink="/" class="pi pi-backward"> กลับหน้าแรก</a>

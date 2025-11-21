@@ -36,10 +36,9 @@
             <p><strong>ความเสี่ยง:</strong> {{ fundData.RiskLevel }}</p>
         </div>
         <div class="nav-bar">
-            <button>⭐ ติดตาม</button>
-
-            <button (click)="navigateToBuy()">⭐ ซื้อ</button>
-            <button (click)="navigateToSell()">⭐ ขาย</button>
+            <button class="pi pi-heart" (click)="navigateToFav()">ติดตาม</button>
+            <button class="pi pi-wallet" (click)="navigateToBuy()"> ซื้อ</button>
+            <button class="pi pi-money-bill" (click)="navigateToSell()"> ขาย</button>
         </div>
         <div class="chart-area">
             <h2>กราฟราคา NAV</h2>
@@ -66,10 +65,10 @@
     </div>
 
     <br>
-    <a routerLink="/">🔙 กลับหน้าแรก</a>
+    <a routerLink="/" class="pi pi-backward"> กลับหน้าแรก</a>
 </div>
 
 <ng-template #noData>
   <p>ไม่พบข้อมูลกองทุน (ID: {{ fundId }})</p>
-  <a routerLink="/">กลับหน้าแรก</a>
+  <a routerLink="/"> กลับหน้าแรก</a>
 </ng-template>

@@ -47,6 +47,11 @@ export class DetailfundComponent implements OnInit {
       this.router.navigate(['/sell', this.fundId]);
     }
   }
+  navigateToFav() {
+    if (this.fundId) {
+      return ;
+    }
+  }
 
   loadMockData(id: number) {
     // 💡 ฟังก์ชันจำลอง: ในการใช้งานจริงต้องเรียก API/Service เพื่อดึงข้อมูลจริง

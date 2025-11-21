@@ -34,6 +34,10 @@ export class TopchartfundComponent {
     this.chartData = this.topChartData;
   }
 
+  navigatetoManage() {
+    this.router.navigate(['/manage']);
+  }
+
   onRowClick(e:any) {
     if(e.data && e.data.Id){
       const fundId = e.data.Id;

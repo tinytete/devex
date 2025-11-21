@@ -22,7 +22,7 @@
     <header class="detail-header">
         <h1>{{ fundData.FundName }} <div class="nav-info">
                 <span class="nav-value">{{ fundData.NAV | number:'1.4-4' }}</span>
-                <span class="nav-change">▲ {{ fundData.Change | number:'1.4-4' }}</span>
+                
             </div></h1>
 
     </header>
@@ -58,9 +58,10 @@
     <div class="performance-table">
         <h2>ผลตอบแทนย้อนหลัง</h2>
         <dx-data-grid [dataSource]="performanceData" [showBorders]="true">
-            <dxi-column dataField="Period" caption="ช่วงเวลา"></dxi-column>
-            <dxi-column dataField="FundReturn" caption="ผลตอบแทนกองทุน"></dxi-column>
-            <dxi-column dataField="BenchmarkReturn" caption="ผลตอบแทนดัชนี"></dxi-column>
+            <dxi-column dataField="FundName" caption="กองทุน" ></dxi-column>
+            <dxi-column dataField="Period" caption="1 เดือน"></dxi-column>
+            <dxi-column dataField="FundReturn" caption="3 เดือน"></dxi-column>
+            <dxi-column dataField="BenchmarkReturn" caption="6 เดือน "></dxi-column>
             </dx-data-grid>
     </div>
 

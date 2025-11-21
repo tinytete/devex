@@ -59,9 +59,9 @@ export class DetailfundComponent implements OnInit {
     ];
 
     this.performanceData = [
-        { Period: '3 เดือน', FundReturn: '4.36%', BenchmarkReturn: '3.12%' },
-        { Period: '6 เดือน', FundReturn: '6.80%', BenchmarkReturn: '5.50%' },
-        { Period: '1 ปี', FundReturn: '13.13%', BenchmarkReturn: '10.00%' },
+        { FundName: 'SCBBANKINGP', Period: '3 เดือน', FundReturn: '4.36%', BenchmarkReturn: '3.12%' },
+        { FundName: 'SCBBANKINGP', Period: '6 เดือน', FundReturn: '6.80%', BenchmarkReturn: '5.50%' },
+        { FundName: 'SCBBANKINGP', Period: '1 ปี', FundReturn: '13.13%', BenchmarkReturn: '10.00%' },
         // ...
     ];
   }

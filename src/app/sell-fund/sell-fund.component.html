@@ -9,13 +9,13 @@
     <div class="sell-form dx-fieldset">
         
         <div class="agreement-section">
-            <dx-check-box text="ขายหน่วยลงทุนทั้งหมด" [(value)]="sellAllUnit" (onValueChanged)="updateSellAmount()"></dx-check-box>
+            <dx-check-box text="ขายหน่วยลงทุนทั้งหมด" [(value)]="sellAllUnits" (onValueChanged)="updateSellAmount()"></dx-check-box>
         </div>
         
         <div class="dx-field">
             <div class="dx-field-label">หน่วยที่ต้องการขาย:</div>
             <div class="dx-field-value">
-                <dx-number-box [(value)]="sellAmount" [disabled]="sellAllUnit" format="#,##0.0000"></dx-number-box>
+                <dx-number-box [(value)]="sellAmount" [disabled]="sellAllUnits" format="#,##0.0000"></dx-number-box>
             </div>
         </div>
         

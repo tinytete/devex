@@ -12,7 +12,7 @@ export class SellFundComponent implements OnInit {
   fundId!: number;
   fundData: any;
   sellAmount: number = 0;
-  sellAllUnit: boolean = false;
+  sellAllUnits: boolean = false;
   today: Date = new Date();
   sellSuccess: boolean = false;
   heldUnits: number = 1500;
@@ -34,7 +34,7 @@ ngOnInit(): void {
   }
 
   updateSellAmount(){
-    if(this.sellAllUnit) {
+    if(this.sellAllUnits) {
       this.sellAmount = this.heldUnits;
     }else if (this.sellAmount > this.heldUnits){
       this.sellAmount = this.heldUnits;

@@ -1,0 +1,31 @@
+<div class="crud-container">
+    <h2>🛠️ หน้า 4: จัดการข้อมูลกองทุน (CRUD)</h2>
+    <p>ใช้ DevExtreme Data Grid เพื่อทำ เพิ่ม/ลบ/แก้ไข ข้อมูลกองทุนโดยตรง</p>
+
+    <dx-data-grid
+        id="fund-crud-grid"
+        [dataSource]="fundsData"
+        [allowColumnResizing]="true"
+        [showBorders]="true"
+        (onRowInserting)="onRowInserting($event)"
+        (onRowUpdating)="onRowUpdating($event)"
+        (onRowRemoving)="onRowRemoving($event)"
+    >
+        <dxi-column dataField="Id" [allowEditing]="false" caption="ID"></dxi-column>
+        <dxi-column dataField="FundName" caption="ชื่อกองทุน"></dxi-column>
+        <dxi-column dataField="Company" caption="บลจ."></dxi-column>
+        <dxi-column dataField="NAV" caption="NAV" dataType="number"></dxi-column>
+        <dxi-column dataField="Ranking" caption="Ranking" dataType="number"></dxi-column>
+        <dxi-column dataField="Category" caption="ประเภทกองทุน"></dxi-column>
+
+        <dxo-editing 
+            mode="row" 
+            [allowAdding]="true"      [allowUpdating]="true"    [allowDeleting]="true">   </dxo-editing>
+
+        <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[5, 10, 20]"></dxo-pager>
+
+    </dx-data-grid>
+    <br>
+    <a routerLink="/">🔙 กลับหน้าแรก</a>
+</div>

@@ -4,12 +4,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class Service {
-  // 💡 สร้างข้อมูล Top 10 Fund เอง (เป็น Array of Objects)
-  FundName!: string;
-  Ranking !: number;
-
-  getTopChartsData() {
-    return [
+  private funds: any[] = [
       { 
         Id: 1, 
         FundName: 'SCBBANKINGE',
@@ -131,11 +126,33 @@ export class Service {
         RiskLevel: '7',
       }
     ];
+
+  getTopChartsData() {
+    return this.funds; 
   }
 
-getFundById(id: number) {
-    const allFunds = this.getTopChartsData();
-    // ค้นหา Object ใน Array ที่มี Id ตรงกัน
-    return allFunds.find(fund => fund.Id === id);
+  // ✅ เพิ่มฟังก์ชันสำหรับ READ (ใช้ getFundById เดิม)
+  getFundById(id: number) {
+    return this.funds.find(fund => fund.Id === id);
+  }
+
+  addFund(newFund: any) {
+    // กำหนด ID ใหม่ (ง่ายที่สุดคือเอา Max ID + 1)
+    const newId = Math.max(...this.funds.map(f => f.Id)) + 1;
+    newFund.Id = newId;
+    this.funds.push(newFund);
+  }
+
+  // U - Update (แก้ไข)
+  updateFund(updatedFund: any) {
+    const index = this.funds.findIndex(f => f.Id === updatedFund.Id);
+    if (index > -1) {
+      this.funds[index] = updatedFund; // แทนที่ Object เดิม
+    }
+  }
+
+  // D - Delete (ลบ)
+  deleteFund(id: number) {
+    this.funds = this.funds.filter(f => f.Id !== id);
   }
 }

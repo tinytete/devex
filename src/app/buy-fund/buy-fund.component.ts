@@ -17,13 +17,16 @@ export class BuyFundComponent implements OnInit {
   purchaseSuccess: boolean = false;
 
   constructor(private route: ActivatedRoute, private service: Service) {}
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
-ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      const idString = params.get('id');
-      this.fundId = idString ? +idString : 0;
-      this.fundData = this.service.getFundById(this.fundId);
-    });
+  get purchaseFee(): number {
+    return this.calculateFee(this.purchaseAmount, 0.01);
+  }
+
+  get totalPayment(): number {
+    return this.purchaseAmount + this.purchaseFee;
   }
   
   calculateFee(amount: number, percentage: number): number {

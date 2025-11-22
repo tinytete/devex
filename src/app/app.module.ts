@@ -13,6 +13,7 @@ import { DetailfundComponent } from './detailfund/detailfund.component';
 import { DxTextBoxModule } from 'devextreme-angular';
 import { SellFundComponent } from './sell-fund/sell-fund.component';
 import { BuyFundComponent } from './buy-fund/buy-fund.component';
+import { ManageFundComponent } from './manage-fund/manage-fund.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { BuyFundComponent } from './buy-fund/buy-fund.component';
     DetailfundComponent,
     SellFundComponent,
     BuyFundComponent,
+    ManageFundComponent,
   ],
   imports: [
     BrowserModule, 

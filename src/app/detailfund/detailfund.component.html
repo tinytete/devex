@@ -1,74 +1,58 @@
-<div class="content-container">
-
-    <br class="filter-area">
-        <div class="filter-left">
-            <div class="top-charts-branding">
-                <span class="chart-icon">📊</span>
-                <span class="chart-text">Top Charts</span>
-            </div>
-
-        <div class="filter-right">
-            <label for="search-fund">ค้นหาชื่อกองทุน:</label>
-            <dx-text-box
-                id="search-fund"
-                placeholder="ค้นหากองทุน..."
-                mode="search">
-            </dx-text-box>
-        </div>
-    </div>
-<br>
 <div *ngIf="fundData; else noData" class="fund-detail-container">
     
     <header class="detail-header">
-        <h1>{{ fundData.FundName }} <div class="nav-info">
-                <span class="nav-value">{{ fundData.NAV | number:'1.4-4' }}</span>
-                <span class="nav-change">▲ {{ fundData.Change | number:'1.4-4' }}</span>
-            </div></h1>
-
+        <h1>{{ fundData.FundName }} ({{ fundData.Company }})
+            <div class="nav-info">
+                <span class="nav-label">NAV: </span>
+                <span class="nav-value">{{ fundData.NAV | number:'1.4-4' }} บาท</span>
+            </div>
+        </h1>
     </header>
 
     <div class="main-content-area">
-        <div class="key-metrics-box" >
+        <div class="key-metrics-box">
             <h3>ข้อมูลสำคัญ</h3>
             <p><strong>ประเภทกองทุน:</strong> {{ fundData.Category }}</p>
-            <p><strong>มูลค่าสินทรัพย์สุธิ:</strong> {{ fundData.AUM }}</p>
+            <p><strong>มูลค่าสินทรัพย์สุทธิ:</strong> {{ fundData.AUM | number }} บาท</p>
             <p><strong>วันที่จดทะเบียน:</strong> {{ fundData.RegisterDate }}</p>
-            <p><strong>ความเสี่ยง:</strong> {{ fundData.RiskLevel }}</p>
+            <p><strong>ความเสี่ยง:</strong> <span class="risk-level-{{ fundData.RiskLevel }}">{{ fundData.RiskLevel }}</span></p>
         </div>
-        <div class="nav-bar">
-            <button>⭐ ติดตาม</button>
-
-            <button (click)="navigateToBuy()">⭐ ซื้อ</button>
-            <button (click)="navigateToSell()">⭐ ขาย</button>
+        
+        <div class="action-buttons-bar">
+            <dx-button icon="pi pi-heart" text="ติดตาม" (onClick)="navigateToFav()"></dx-button>
+            <dx-button icon="pi pi-wallet" text="ซื้อกองทุน" type="success" (onClick)="navigateToBuy()"></dx-button>
+            <dx-button icon="pi pi-money-bill" text="ขาย" type="danger" (onClick)="navigateToSell()"></dx-button>
         </div>
-        <div class="chart-area">
-            <h2>กราฟราคา NAV</h2>
-            <div class="nav-chart-controls">
-                </div>
-            
-            <dx-chart id="nav-chart" [dataSource]="navHistoryData">
-                <dxi-series argumentField="Date" valueField="NAV" type="line" color="#00AEEF"></dxi-series>
-                <dxo-argument-axis argumentType="datetime"></dxo-argument-axis>
-                <dxo-legend [visible]="false"></dxo-legend>
-                <dxo-tooltip [enabled]="true"></dxo-tooltip>
-            </dx-chart>
-        </div>
+    </div>
+    
+    <div class="chart-area">
+        <h2>กราฟราคา NAV</h2>
+        <dx-chart id="nav-chart" [dataSource]="navHistoryData">
+            <dxi-series argumentField="Date" valueField="NAV" type="line" color="#00AEEF"></dxi-series>
+            <dxo-argument-axis argumentType="datetime"></dxo-argument-axis>
+            <dxo-legend [visible]="false"></dxo-legend>
+            <dxo-tooltip [enabled]="true"></dxo-tooltip>
+        </dx-chart>
     </div>
 
     <div class="performance-table">
         <h2>ผลตอบแทนย้อนหลัง</h2>
-        <dx-data-grid [dataSource]="performanceData" [showBorders]="true">
-            <dxi-column dataField="Period" caption="ช่วงเวลา"></dxi-column>
-            <dxi-column dataField="FundReturn" caption="ผลตอบแทนกองทุน"></dxi-column>
-            <dxi-column dataField="BenchmarkReturn" caption="ผลตอบแทนดัชนี"></dxi-column>
-            </dx-data-grid>
+        <dx-data-grid [dataSource]="performanceData" [showBorders]="true" [showColumnHeaders]="true" [columnAutoWidth]="true">
+            <dxi-column dataField="Period" caption="ช่วงเวลา" alignment="center"></dxi-column> 
+            <dxi-column dataField="FundReturn" caption="ผลตอบแทนกองทุน" alignment="right"></dxi-column>
+            <dxi-column dataField="BenchmarkReturn" caption="ผลตอบแทน Benchmark" alignment="right"></dxi-column>
+            
+            <dxo-pager [visible]="false"></dxo-pager>
+            <dxo-sorting mode="none"></dxo-sorting>
+
+        </dx-data-grid>
     </div>
 
     <br>
-    <a routerLink="/">🔙 กลับหน้าแรก</a>
+    <a routerLink="/" class="pi pi-backward"> กลับหน้าแรก</a>
 </div>
 
 <ng-template #noData>
   <p>ไม่พบข้อมูลกองทุน (ID: {{ fundId }})</p>
-  <a routerLink="/">กลับหน้าแรก</a>
+  <a routerLink="/"> กลับหน้าแรก</a>
 </ng-template>

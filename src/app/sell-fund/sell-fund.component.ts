@@ -1,5 +1,3 @@
-// src/app/sell-fund/sell-fund.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Service } from '../app.service';
@@ -8,18 +6,16 @@ import { Service } from '../app.service';
   selector: 'app-sell-fund',
   templateUrl: './sell-fund.component.html',
   styleUrl: './sell-fund.component.scss',
-  providers: [Service] // ✅ เพิ่ม Service Provider
+  providers: [Service]
 })
-export class SellFundComponent implements OnInit { // ✅ Implement OnInit
+export class SellFundComponent implements OnInit {
   fundId!: number;
   fundData: any;
   sellAmount: number = 0;
-  sellAllUnits: boolean = false; // สำหรับ Checkbox
+  sellAllUnits: boolean = false;
   today: Date = new Date();
   sellSuccess: boolean = false;
-
-  // Mock data: สมมติว่าถือครองอยู่ 1500 หน่วย
-  heldUnits: number = 1500; 
+  heldUnits: number = 1500;
 
   constructor(private route: ActivatedRoute, private service: Service) {}
 
@@ -28,16 +24,15 @@ export class SellFundComponent implements OnInit { // ✅ Implement OnInit
       const idString = params.get('id');
       this.fundId = idString ? +idString : 0;
       this.fundData = this.service.getFundById(this.fundId);
-      this.updateSellAmount(); // อัปเดตเมื่อโหลด
+      this.updateSellAmount();
     });
   }
   
-  // ฟังก์ชันคำนวณค่าธรรมเนียม
   calculateFee(amount: number, percentage: number): number {
     if (!amount || amount < 0) return 0;
     return amount * percentage;
   }
-  
+
   // ฟังก์ชันอัปเดตมูลค่าที่ต้องการขายเมื่อกดขายทั้งหมด
   updateSellAmount() {
     if (this.sellAllUnits) {
@@ -50,6 +45,6 @@ export class SellFundComponent implements OnInit { // ✅ Implement OnInit
   confirmSell() {
     // 💡 Logic สำหรับส่งคำสั่งขาย
     this.sellSuccess = true;
-    console.log(`ยืนยันขาย ${this.fundData.FundName} จำนวน ${this.sellAmount} หน่วย`);
+    console.log(`ยืนยันการขาย ${this.fundData.FundName} จำนวน ${this.sellAmount} หน่วย`);
   }
 }

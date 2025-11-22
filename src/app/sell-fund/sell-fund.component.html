@@ -8,21 +8,31 @@
 
     <div class="sell-form dx-fieldset">
         
-        <div class="agreement-section">
-            <dx-check-box text="ขายหน่วยลงทุนทั้งหมด" [(value)]="sellAllUnits" (onValueChanged)="updateSellAmount()"></dx-check-box>
-        </div>
-        
         <div class="dx-field">
             <div class="dx-field-label">หน่วยที่ต้องการขาย:</div>
             <div class="dx-field-value">
-                <dx-number-box [(value)]="sellAmount" [disabled]="sellAllUnits" format="#,##0.0000"></dx-number-box>
+                <dx-number-box [(value)]="sellAmount" [disabled]="sellAllUnits" [max]="heldUnits" format="#,##0.0000"></dx-number-box>
+            </div>
+        </div>
+
+        <div class="dx-field">
+            <div class="dx-field-label">มูลค่าที่ได้จากการขาย (NAV * หน่วย):</div>
+            <div class="dx-field-value">
+                <strong>{{ sellAmount * fundData.NAV | number:'1.2-2' }} บาท</strong>
             </div>
         </div>
         
-        <div class="dx-field">
+        <div class="dx-field fee-line">
             <div class="dx-field-label">ค่าธรรมเนียมขาย (2%):</div>
-            <div class="dx-field-value">
+            <div class="dx-field-value fee-value">
                 {{ calculateFee(sellAmount * fundData.NAV, 0.02) | number:'1.2-2' }} บาท
+            </div>
+        </div>
+        
+        <div class="dx-field total-line">
+            <div class="dx-field-label">ยอดเงินสุทธิที่จะได้รับ:</div>
+            <div class="dx-field-value total-value">
+                <strong>{{ (sellAmount * fundData.NAV) - calculateFee(sellAmount * fundData.NAV, 0.02) | number:'1.2-2' }} บาท</strong>
             </div>
         </div>
         
@@ -45,3 +55,5 @@
         </div>
     </div>
 </div>
+<br>
+    <a routerLink="/" class="pi pi-backward"> กลับหน้าแรก</a>

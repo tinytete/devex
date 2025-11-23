@@ -1,48 +1,92 @@
+<header class="top-header">
+    <div class="header-left">
+        <span class="site-title">Top Charts Fund</span>
+    </div>
+</header>
 <div class="buy-sell-container">
-    <h2>📈 หน้าซื้อ: {{ fundData?.FundName }} (ID: {{ fundId }})</h2>
+    <div class="header-section buy-mode">
+        <h2>📈 ซื้อหน่วยลงทุน</h2>
+        <div class="fund-id-tag">ID: {{ fundId }}</div>
+    </div>
+    <h3 style="margin-top: 0; color: #333;">{{ fundData?.FundName }}</h3>
 
-    <div class="portfolio-info">
-        <p>ยอดเงินปัจจุบันใน Portfolio: <strong>{{ 150000 | number }} บาท</strong></p>
+    <div class="portfolio-card buy-style">
+        <div class="info-row">
+            <span>บัญชีหักเงินอัตโนมัติ:</span>
+            <strong>ธนาคารกสิกรไทย (x-1234)</strong>
+        </div>
+        <div class="info-row">
+            <span>ยอดเงินคงเหลือในบัญชี:</span>
+            <strong>{{ 150000 | number }} บาท</strong>
+        </div>
     </div>
 
-    <div class="buy-form dx-fieldset">
+    <div class="form-area dx-fieldset">
         
         <div class="dx-field">
-            <div class="dx-field-label">มูลค่าที่ต้องการซื้อ (บาท):</div>
+            <div class="dx-field-label">ระบุจำนวนเงิน (บาท):</div>
             <div class="dx-field-value">
-                <dx-number-box [(value)]="purchaseAmount" [min]="1000" format="#,##0.00"></dx-number-box>
+                <dx-number-box 
+                    [(value)]="purchaseAmount" 
+                    [min]="1000" 
+                    format="#,##0.00">
+                </dx-number-box>
+                <div style="font-size: 0.8rem; color: #888; margin-top: 5px;">*ขั้นต่ำ 1,000 บาท</div>
             </div>
         </div>
 
         <div class="dx-field">
-            <div class="dx-field-label">ค่าธรรมเนียมซื้อ (1%):</div>
-            <div class="dx-field-value">
-                {{ calculateFee(purchaseAmount, 0.01) | number:'1.2-2' }} บาท
-            </div>
-        </div>
-        
-        <div class="dx-field">
-            <div class="dx-field-label">วันที่ยอมรับคำสั่ง:</div>
+            <div class="dx-field-label">วันที่ทำรายการ:</div>
             <div class="dx-field-value">
                 <dx-date-box [value]="today" [min]="today" displayFormat="dd/MM/yyyy"></dx-date-box>
             </div>
         </div>
 
-        <div class="agreement-section">
-            <dx-check-box text="ข้าพเจ้ายินยอมและรับทราบเงื่อนไขการซื้อ" [(value)]="isAgreed"></dx-check-box>
+        <div class="summary-box">
+            <div class="dx-field">
+                <div class="dx-field-label">จำนวนเงินลงทุน:</div>
+                <div class="dx-field-value" style="text-align: right;">
+                    {{ purchaseAmount | number:'1.2-2' }} บาท
+                </div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">ค่าธรรมเนียม (1%):</div>
+                <div class="dx-field-value fee-text" style="text-align: right;">
+                    + {{ purchaseFee | number:'1.2-2' }} บาท
+                </div>
+            </div>
+            <hr style="border: 0; border-top: 1px solid #ccc; margin: 10px 0;">
+            <div class="dx-field">
+                <div class="dx-field-label" style="align-self: flex-end;">ยอดรวมที่ต้องชำระ:</div>
+                <div class="dx-field-value net-amount" style="text-align: right; color: #28a745;">
+                    {{ totalPayment | number:'1.2-2' }} บาท
+                </div>
+            </div>
         </div>
-        
-        <dx-button 
-            text="ยืนยันคำสั่งซื้อ"
-            type="success"
-            [disabled]="!isAgreed || purchaseAmount < 1000"
-            (onClick)="confirmPurchase()">
-        </dx-button>
+
+        <div style="margin-bottom: 20px;">
+            <dx-check-box text="ข้าพเจ้ายินยอมและรับทราบเงื่อนไขหนังสือชี้ชวน" [(value)]="isAgreed"></dx-check-box>
+        </div>
+
+        <div class="action-buttons">
+            <dx-button 
+                text="ยืนยันคำสั่งซื้อ" 
+                type="success" 
+                [width]="'100%'" 
+                [height]="50"
+                [disabled]="!isAgreed || purchaseAmount < 1000"
+                (onClick)="confirmPurchase()">
+            </dx-button>
+        </div>
 
         <div *ngIf="purchaseSuccess" class="success-message">
-            ✅ ซื้อเสร็จเรียบร้อย! คำสั่งซื้อของคุณอยู่ระหว่างดำเนินการ
+            <i class="pi pi-check-circle" style="font-size: 2rem;"></i>
+            <h3>ซื้อสำเร็จ!</h3>
+            <p>คำสั่งซื้อของคุณได้รับการบันทึกแล้ว</p>
         </div>
     </div>
 </div>
-<br>
-    <a routerLink="/" class="pi pi-backward"> กลับหน้าแรก</a>
+
+<div class="back-nav">
+    <a routerLink="/" class="pi pi-arrow-left"> กลับหน้าหลัก</a>
+</div>

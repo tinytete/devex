@@ -39,53 +39,48 @@
             <dx-data-grid 
                 id="gridContainer" 
                 [dataSource]="topChartData" 
-                [width]="'100%'" 
                 [showBorders]="true"
                 [showRowLines]="true"
                 [showColumnLines]="true"
                 [allowColumnReordering]="false"
                 [rowAlternationEnabled]="true"
+                [columnAutoWidth]="true" 
                 (onRowClick)="onRowClick($event)"> 
                 
-                <dxi-column dataField="Id" caption="อันดับ" alignment="center" [width]="60">
+                <dxi-column dataField="Id" caption="อันดับ" alignment="center" [width]="50" [allowResizing]="false">
                     <div *dxTemplate="let data of 'cell'"> 
                         <span class="rank-badge rank-{{data.value}}">{{ data.value }}</span>
                     </div>
                 </dxi-column>
                 
-                <dxi-column dataField="FundName" caption="กองทุน" alignment="left">
+                <dxi-column dataField="FundName" caption="กองทุน" alignment="left" [minWidth]="200">
                     <div *dxTemplate="let data of 'cell'">
                         <div class="fund-name">{{ data.value }}</div>
                         <div class="fund-company-sub">บลจ. {{ data.data.Company }}</div>
                     </div>
                 </dxi-column>
 
-                <dxi-column dataField="Company" caption="บลจ." alignment="center" [width]="80">
-                     <div *dxTemplate="let data of 'cell'">
-                        <strong>{{ data.value }}</strong>
-                    </div>
-                </dxi-column>
+                <dxi-column dataField="Company" caption="บลจ." alignment="center" [width]="150"></dxi-column>
                 
-                <dxi-column dataField="Ranking" caption="จำนวนสัปดาห์" alignment="center" [width]="100"></dxi-column>
+                <dxi-column dataField="Ranking" caption="จำนวนสัปดาห์ที่ติดอันดับ" alignment="center" [width]="200"></dxi-column>
 
-                <dxi-column dataField="Return1Y" caption="ผลตอบแทน 3 ปี (% ต่อปี)" alignment="center" [width]="150">
+                <dxi-column dataField="Return1Y" caption="ผลตอบแทนย้อนหลัง 3 ปี (% ต่อปี)" alignment="center" [width]="200">
                     <div *dxTemplate="let data of 'cell'">
-                        <div class="return-val">{{ data.value | number:'1.2-2' }}</div>
+                        <div class="return-val">{{ data.value | number:'1.2-2' }}%</div>
                     </div>
                 </dxi-column>
 
-                <dxi-column dataField="Category" caption="ประเภทกองทุน" alignment="center" [width]="150"></dxi-column>
+                <dxi-column dataField="Category" caption="ประเภทของกองทุน" alignment="center" [width]="180"></dxi-column>
 
-                <dxi-column caption="ซื้อกองทุน" alignment="center" [width]="80">
-                    <div *dxTemplate="let data of 'cell'">
-                        <dx-button 
-                            icon="cart" 
-                            class="btn-buy-cart"
-                            hint="ซื้อกองทุน"
-                            (onClick)="onBuyClick($event, data.data.Id)">
-                        </dx-button>
-                    </div>
-                </dxi-column>
+                <dxi-column caption="ซื้อ" alignment="center" [width]="70" cellTemplate="buyCell"></dxi-column>
+                
+                <div *dxTemplate="let data of 'buyCell'">
+                    <dx-button 
+                        class="pi pi-shopping-cart"
+                        hint="ซื้อกองทุน"
+                        (onClick)="onBuyClick($event, data.data.Id)">
+                    </dx-button>
+                </div>
                 
                 <dxo-paging [pageSize]="10"></dxo-paging>
             </dx-data-grid>

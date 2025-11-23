@@ -3,6 +3,7 @@
         <span class="site-title">Top Charts Fund</span>
     </div>
 </header>
+
 <div *ngIf="fundData" class="fund-detail-container">
     
     <header class="detail-header">
@@ -20,10 +21,8 @@
             <p><strong>ประเภทกองทุน:</strong> {{ fundData.Category }}</p>
             <p><strong>มูลค่าสินทรัพย์สุทธิ:</strong> {{ fundData.AUM}}</p>
             <p><strong>วันที่จดทะเบียน:</strong> {{ fundData.RegisterDate }}</p>
-            <p><strong>ความเสี่ยง:</strong> <span class="risk-level-{{ fundData.RiskLevel }}">{{ fundData.RiskLevel }}</span></p>
-            
-            </div>
-        
+            <p><strong>ความเสี่ยง:</strong> <span class="risk-level-{{ fundData.RiskLevel }}"> {{ fundData.RiskLevel }}</span></p>
+        </div>
     </div>
     
     <div class="chart-area">
@@ -50,21 +49,21 @@
             <dxi-column dataField="Fundname" caption="กองทุน" alignment="left">
                 <div *dxTemplate="let data of 'cell'">
                     <div class="fund-performance-cell" style="display: flex; align-items: center;">
-                        <span style="width:10px; height:10px; background:#007bff; margin-right:5px; display:inline-block;"></span>
+                        <span style="width:250px; height: 250px; background:#007bff; margin-right:5px; display:inline-block;"></span>
                         <span style="font-weight: bold;">{{ data.data.Fundname }}</span>
                     </div>
                 </div>
             </dxi-column>
 
-            <dxi-column dataField="R_1D" caption="1 วัน" alignment="center" [width]="100" cellTemplate="returnCell"></dxi-column>
-            <dxi-column dataField="R_1M" caption="1 เดือน" alignment="center" [width]="100" cellTemplate="returnCell"></dxi-column>
-            <dxi-column dataField="R_1Y" caption="1 ปี" alignment="center" [width]="100" cellTemplate="returnCell"></dxi-column>
-            <dxi-column dataField="R_3Y" caption="3 ปี" alignment="center" [width]="100" cellTemplate="returnCell"></dxi-column>
-            <dxi-column dataField="R_5Y" caption="5 ปี" alignment="center" [width]="100" cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_1D" caption="1 วัน" alignment="center" [width]="180" cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_1M" caption="1 เดือน" alignment="center" [width]="180" cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_1Y" caption="1 ปี" alignment="center" [width]="180" cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_3Y" caption="3 ปี" alignment="center" [width]="180" cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_5Y" caption="5 ปี" alignment="center" [width]="180" cellTemplate="returnCell"></dxi-column>
             
             <div *dxTemplate="let data of 'returnCell'">
                 <span [ngClass]="{'negative-return': data.value < 0, 'positive-return': data.value >= 0}" 
-                      style="font-weight: bold;" 
+                      style="font-weight: bold;" alignment="center;"
                       [style.color]="data.value < 0 ? 'red' : 'green'">
                     {{ data.value}}%
                 </span>
@@ -74,6 +73,7 @@
         </dx-data-grid>
     </div>
         
+    <div class="action-buttons-container" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 30px;">
         <dx-button 
             text="ซื้อกองทุน" 
             type="success" 
@@ -85,16 +85,16 @@
 
         <dx-button 
             text="ขาย" 
-            type="normal" 
+            type="danger" 
             [width]="200" 
             [height]="50"
             [elementAttr]="{ style: 'font-size: 18px; font-weight: bold;' }"
             (onClick)="navigateToSell()">
         </dx-button>
-
     </div>
 
-    <div style="margin-bottom: 20px;">
+    <div style="margin-bottom: 20px; text-align: left ;">
         <a routerLink="/" class="pi pi-backward"> กลับหน้าแรก</a>
     </div>
-    
+
+</div>

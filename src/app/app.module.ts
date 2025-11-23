@@ -15,6 +15,7 @@ import { SellFundComponent } from './sell-fund/sell-fund.component';
 import { BuyFundComponent } from './buy-fund/buy-fund.component';
 import { ManageFundComponent } from './manage-fund/manage-fund.component';
 import { DxButtonModule } from 'devextreme-angular';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { DxButtonModule } from 'devextreme-angular';
     DxChartModule,
     DxTextBoxModule,
     DxButtonModule,
+    FormsModule
   ],
   providers: [], // ประกาศ Service ถ้าต้องการให้ใช้ได้ทั้งแอปฯ (แต่คุณประกาศใน Component แล้ว)
   schemas: [

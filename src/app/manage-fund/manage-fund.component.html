@@ -1,30 +1,79 @@
-<div class="crud-container">
-    <h2>🛠️ หน้า 4: จัดการข้อมูลกองทุน (CRUD)</h2>
-    <p>เพิ่ม ลบ แก้ไข กองทุน</p>
+<div class="manage-container">
+    <h2>🛠️ จัดการข้อมูลกองทุน (Manage Funds)</h2>
+    
+    <div class="top-actions">
+        <button class="btn btn-add" (click)="startAdd()">+ เพิ่มกองทุนใหม่</button>
+    </div>
 
-    <dx-data-grid
-        id="fund-crud-grid"
-        [dataSource]="fundsData"
-        [allowColumnResizing]="true"
-        [showBorders]="true"
-        (onRowInserting)="onRowInserting($event)"
-        (onRowUpdating)="onRowUpdating($event)"
-        (onRowRemoving)="onRowRemoving($event)"
-    >
-        <dxi-column dataField="Id" [allowEditing]="false" caption="ID"></dxi-column>
-        <dxi-column dataField="FundName" caption="ชื่อกองทุน"></dxi-column>
-        <dxi-column dataField="Company" caption="บลจ."></dxi-column>
-        <dxi-column dataField="NAV" caption="NAV" dataType="number"></dxi-column>
-        <dxi-column dataField="Ranking" caption="จำนวนสัปดาห์ที่ติดอันดับ" dataType="number"></dxi-column>
-        <dxi-column dataField="Category" caption="ประเภทกองทุน"></dxi-column>
+    <table class="simple-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ชื่อกองทุน</th>
+                <th>บริษัท (บลจ.)</th>
+                <th>NAV</th>
+                <th>ประเภท</th>
+                <th style="text-align: center;">จัดการ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let fund of fundsData">
+                <td>{{ fund.Id }}</td>
+                <td style="font-weight: bold; color: #007bff;">{{ fund.FundName }}</td>
+                <td>{{ fund.Company }}</td>
+                <td>{{ fund.NAV | number:'1.4-4' }}</td>
+                <td>{{ fund.Category }}</td>
+                <td style="text-align: center;">
+                    <button class="btn btn-edit" (click)="startEdit(fund)">แก้ไข</button>
+                    <button class="btn btn-delete" (click)="delete(fund.Id)">ลบ</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-        <dxo-editing 
-        mode="row" 
-        [allowAdding]="true" [allowUpdating]="true" [allowDeleting]="true"></dxo-editing>
+    <hr style="margin: 30px 0; border: 0; border-top: 1px dashed #ccc;">
 
-        <dxo-paging [pageSize]="10"></dxo-paging>
-        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[5, 10, 20]"></dxo-pager>
+    <div *ngIf="selectedFund" class="edit-form-card">
+        <h3>{{ isNew ? '✨ เพิ่มกองทุนใหม่' : '✏️ แก้ไขข้อมูลกองทุน' }}</h3>
+        
+        <div class="form-grid">
+            <div class="form-group">
+                <label>ชื่อกองทุน:</label>
+                <input [(ngModel)]="selectedFund.FundName" placeholder="ชื่อกองทุน" />
+            </div>
 
-    </dx-data-grid>
+            <div class="form-group">
+                <label>บริษัท (บลจ.):</label>
+                <input [(ngModel)]="selectedFund.Company" placeholder="เช่น SCBAM" />
+            </div>
+
+            <div class="form-group">
+                <label>NAV:</label>
+                <input type="number" [(ngModel)]="selectedFund.NAV" placeholder="0.0000" />
+            </div>
+
+            <div class="form-group">
+                <label>ประเภทกองทุน:</label>
+                <input [(ngModel)]="selectedFund.Category" placeholder="เช่น Equity General" />
+            </div>
+            
+            <div class="form-group">
+                <label>ความเสี่ยง (Level):</label>
+                <input [(ngModel)]="selectedFund.RiskLevel" placeholder="1-8" />
+            </div>
+
+            <div class="form-group">
+                <label>วันที่จดทะเบียน:</label>
+                <input [(ngModel)]="selectedFund.RegisterDate" placeholder="dd/mm/yyyy" />
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn btn-save" (click)="save()">บันทึกข้อมูล</button>
+            <button class="btn btn-cancel" (click)="cancel()">ยกเลิก</button>
+        </div>
+    </div>
+    
     <br>
-    <a routerLink="/" class="pi pi-backward"> กลับหน้าแรก</a>
+    <a routerLink="/" class="pi pi-backward back-link"> กลับหน้าแรก</a>
+</div>

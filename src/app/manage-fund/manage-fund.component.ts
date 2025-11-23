@@ -1,40 +1,84 @@
 import { Component, OnInit } from '@angular/core';
 import { Service } from '../app.service';
-import { DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
+import { Fund } from '../fund'; // อย่าลืม import Interface Fund
 
 @Component({
   selector: 'app-manage-fund',
   templateUrl: './manage-fund.component.html',
-  styleUrl: './manage-fund.component.scss',
+  styleUrls: ['./manage-fund.component.scss'], // แก้ styleUrl เป็น styleUrls (มี s)
   providers: [Service]
 })
 export class ManageFundComponent implements OnInit {
-  fundsData: any[] = [];
-  
+  fundsData: Fund[] = [];
+  selectedFund: Fund | null = null;
+  isNew: boolean = false;
+
   constructor(private service: Service) {}
 
   ngOnInit(): void {
-    // ดึงข้อมูลทั้งหมดมาแสดงในตาราง
-    this.fundsData = this.service.getTopChartsData();
+    this.loadFunds();
+  }
+  loadFunds() {
+    throw new Error('Method not implemented.');
   }
 
-  // C - Create: DevExtreme DataGrid จะมี event สำหรับเพิ่มข้อมูลใหม่
-  onRowInserting(e: DxDataGridTypes.RowInsertingEvent) {
-    this.service.addFund(e.data);
-    e.cancel = true; // หยุดการทำงานซ้ำของ DataGrid
+  // 1. กดปุ่ม "เพิ่มข้อมูลใหม่"
+  startAdd() {
+    this.isNew = true;
+    this.selectedFund = {
+      Id: 0, // เดี๋ยว Service รัน ID ให้
+      FundName: '',
+      Company: '',
+      NAV: 0,
+      Ranking: 0,
+      Return1Y: 0,
+      Category: '',
+      AUM: '',
+      RegisterDate: new Date().toLocaleDateString('th-TH'),
+      RiskLevel: '1'
+    };
   }
 
-  // U - Update: DevExtreme DataGrid จะมี event สำหรับแก้ไขข้อมูล
-  onRowUpdating(e: DxDataGridTypes.RowUpdatingEvent) {
-    // ผสานข้อมูลใหม่เข้ากับข้อมูลเดิม
-    const updatedFund = { ...e.oldData, ...e.newData };
-    this.service.updateFund(updatedFund);
-    e.cancel = true; // หยุดการทำงานซ้ำของ DataGrid
+  // 2. กดปุ่ม "แก้ไข" (ดึงข้อมูลมาใส่ Form)
+  startEdit(fund: Fund) {
+    this.isNew = false;
+    // Clone ข้อมูลออกมา เพื่อไม่ให้กระทบตารางทันทีระหว่างพิมพ์ (ต้องกด Save ก่อนถึงจะเปลี่ยน)
+    this.selectedFund = { ...fund }; 
   }
 
-  // D - Delete: DevExtreme DataGrid จะมี event สำหรับลบข้อมูล
-  onRowRemoving(e: DxDataGridTypes.RowRemovingEvent) {
-    this.service.deleteFund(e.data.Id);
-    e.cancel = true; // หยุดการทำงานซ้ำของ DataGrid
+  // 3. กดปุ่ม "บันทึก" (Save)
+  save() {
+    if (this.selectedFund) {
+      if (this.isNew) {
+        // กรณีเพิ่มใหม่
+        this.service.addFund(this.selectedFund);
+      } else {
+        // กรณีแก้ไข
+        this.service.updateFund(this.selectedFund);
+      }
+      
+      // รีเซ็ตค่าและโหลดตารางใหม่
+      this.selectedFund = null;
+      this.isNew = false;
+      this.loadFunds(); 
+    }
+  }
+
+  // 4. กดปุ่ม "ลบ" (Delete)
+  delete(id: number) {
+    if(confirm('ยืนยันที่จะลบข้อมูลนี้?')) {
+      this.service.deleteFund(id);
+      this.loadFunds();
+      // ถ้าลบตัวที่กำลังแก้ไขอยู่ ให้ปิดฟอร์มทิ้ง
+      if (this.selectedFund && this.selectedFund.Id === id) {
+        this.selectedFund = null;
+      }
+    }
+  }
+
+  // 5. กดปุ่ม "ยกเลิก"
+  cancel() {
+    this.selectedFund = null;
+    this.isNew = false;
   }
 }

@@ -1,128 +1,93 @@
 <header class="top-header">
     <div class="header-left">
-        <span class="page-title">Top Charts</span>
+        <span class="site-title">Top Charts Fund</span>
     </div>
     <div class="header-right">
-        <button (click)="navigateToManage()" class="manage-button">
-            <span class="pi pi-list"></span> จัดการข้อมูลกองทุน
+        <button (click)="navigateToManage()" class="manage-button" title="จัดการกองทุน">
+            <span class="pi pi-sliders-h"></span> จัดการกองทุน
         </button>
-        <dx-button 
-            text="ซื้อกองทุน" 
-            type="success"
-            icon="cart"
-            (onClick)="navigateToBuy(null)"
-        ></dx-button>
-        <dx-button 
-            text="ขาย" 
-            type="danger"
-            icon="tags"
-            (onClick)="navigateToSell(null)"
-        ></dx-button>
     </div>
 </header>
 
 <div class="content-container">
-
     <div class="filter-area">
         <div class="filter-left">
             <div class="top-charts-branding">
-                <span class="chart-icon">📊</span>
-                <span class="chart-text">10 อันดับกองทุนรวมที่ติด Top Returns</span>
+                <span class="pi pi-chart-bar"></span>
+                <span class="chart-text"> 10 อันดับกองทุนรวมที่ติด Top Returns มากที่สุด</span>
             </div>
         </div>
-
         <div class="filter-right">
             <label for="search-fund">ค้นหาชื่อกองทุน:</label>
-            <dx-text-box
-                id="search-fund"
-                placeholder="ค้นหากองทุน..."
-                mode="search">
-            </dx-text-box>
+            <dx-text-box id="search-fund" placeholder="ชื่อกองทุน..." mode="search" width="250"></dx-text-box>
         </div>
     </div>
     
     <div class="chart-grid-area">
-        <dx-chart
-            id="chart"
-            title="จำนวนสัปดาห์ที่ติดอันดับสูงสุด"
-            [dataSource]="chartData"
-            (onPointClick)="onPointClick($event)">
-            
-            <dxo-common-series-settings type="bar" argumentField="FundName">
-                <dxo-label [visible]="true" [customizeText]="customizeSeriesLabel">
-                <dxo-font color="#444" [size]="10"></dxo-font>
-                </dxo-label>
+        <dx-chart id="chart" title="จำนวนสัปดาห์ที่ติดอันดับสูงสุด" [dataSource]="chartData" (onPointClick)="onPointClick($event)">
+             <dxo-common-series-settings type="bar" argumentField="FundName">
+                <dxo-label [visible]="true" [customizeText]="customizeSeriesLabel"></dxo-label>
             </dxo-common-series-settings>
-
-            <dxi-series 
-                name="จำนวนสัปดาห์ที่ติดอันดับ" 
-                valueField="Ranking" 
-                color="#7D3C98"> 
-            </dxi-series>
-
-            <dxo-argument-axis>
-                <dxo-label [visible]="true" [customizeText]="customizeLabel"><dxo-font [size]="10"></dxo-font>
-                </dxo-label>
-            </dxo-argument-axis>
-            
-            <dxo-value-axis> 
-                 <dxo-title text="จำนวนสัปดาห์ (สัปดาห์)"></dxo-title>
-            </dxo-value-axis>
-
+            <dxi-series name="จำนวนสัปดาห์ที่ติดอันดับ" valueField="Ranking" color="#7D3C98"></dxi-series>
+            <dxo-argument-axis><dxo-label [visible]="true" [customizeText]="customizeLabel"><dxo-font [size]="10"></dxo-font></dxo-label></dxo-argument-axis>
+            <dxo-value-axis><dxo-title text="จำนวนสัปดาห์"></dxo-title></dxo-value-axis>
             <dxo-legend [visible]="false"></dxo-legend>
             <dxo-tooltip [enabled]="true"></dxo-tooltip>
         </dx-chart>
-<div class="content-container">
-    <div class="chart-grid-area">
+
         <div id="fund-list-grid">
-            <h2>📜 ตารางกองทุน Top 10</h2>
             <dx-data-grid 
                 id="gridContainer" 
                 [dataSource]="topChartData" 
-                [allowColumnReordering]="true"
-                [rowAlternationEnabled]="true"
+                [width]="'100%'" 
                 [showBorders]="true"
                 [showRowLines]="true"
-                [width]="'100%'"
+                [showColumnLines]="true"
+                [allowColumnReordering]="false"
+                [rowAlternationEnabled]="true"
                 (onRowClick)="onRowClick($event)"> 
                 
-                <dxi-column dataField="Id" caption="อันดับ" [width]="60" alignment="center">
+                <dxi-column dataField="Id" caption="อันดับ" alignment="center" [width]="60">
                     <div *dxTemplate="let data of 'cell'"> 
-                        <span class="rank-icon rank-{{data.value}}">
-                            {{ data.value }}
-                        </span>
+                        <span class="rank-badge rank-{{data.value}}">{{ data.value }}</span>
                     </div>
                 </dxi-column>
                 
-                <dxi-column dataField="FundName" caption="กองทุน" alignment="left" [width]="250">
+                <dxi-column dataField="FundName" caption="กองทุน" alignment="left">
                     <div *dxTemplate="let data of 'cell'">
-                        <div style="font-weight: 600; cursor: pointer;" (click)="onRowClick({ data: data.data, event: $event })">{{ data.value }}</div>
-                        <div style="font-size: 0.8em; color: #666;">
-                            บลจ. {{ data.data.Company }}
-                        </div>
+                        <div class="fund-name">{{ data.value }}</div>
+                        <div class="fund-company-sub">บลจ. {{ data.data.Company }}</div>
                     </div>
                 </dxi-column>
 
-                <dxi-column dataField="NAV" caption="NAV" dataType="number" format="#,##0.0000" alignment="right" [width]="100"></dxi-column>
+                <dxi-column dataField="Company" caption="บลจ." alignment="center" [width]="80">
+                     <div *dxTemplate="let data of 'cell'">
+                        <strong>{{ data.value }}</strong>
+                    </div>
+                </dxi-column>
                 
-                <dxi-column dataField="Ranking" caption="สัปดาห์ที่ติดอันดับ" alignment="center" [width]="120"></dxi-column>
+                <dxi-column dataField="Ranking" caption="จำนวนสัปดาห์" alignment="center" [width]="100"></dxi-column>
 
-                <dxi-column dataField="Return1Y" caption="ผลตอบแทน 3 ปี (%)" alignment="right" [width]="120">
+                <dxi-column dataField="Return1Y" caption="ผลตอบแทน 3 ปี (% ต่อปี)" alignment="center" [width]="150">
                     <div *dxTemplate="let data of 'cell'">
-                        <div [ngClass]="{'positive-return': data.value > 0}">{{ data.value | number:'1.2-2' }}%</div>
+                        <div class="return-val">{{ data.value | number:'1.2-2' }}</div>
                     </div>
                 </dxi-column>
 
-                <dxi-column caption="Action" alignment="center" [width]="150" [allowSorting]="false" [allowReordering]="false">
+                <dxi-column dataField="Category" caption="ประเภทกองทุน" alignment="center" [width]="150"></dxi-column>
+
+                <dxi-column caption="ซื้อกองทุน" alignment="center" [width]="80">
                     <div *dxTemplate="let data of 'cell'">
-                        <dx-button icon="cart" type="success" hint="ซื้อกองทุน" (onClick)="navigateToBuy(data.data.Id)"></dx-button>
-                        <dx-button icon="tags" type="danger" hint="ขายกองทุน" (onClick)="navigateToSell(data.data.Id)"></dx-button>
+                        <dx-button 
+                            icon="cart" 
+                            class="btn-buy-cart"
+                            hint="ซื้อกองทุน"
+                            (onClick)="onBuyClick($event, data.data.Id)">
+                        </dx-button>
                     </div>
                 </dxi-column>
                 
                 <dxo-paging [pageSize]="10"></dxo-paging>
-                <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[5, 10, 20]"></dxo-pager>
-
             </dx-data-grid>
         </div>
     </div>

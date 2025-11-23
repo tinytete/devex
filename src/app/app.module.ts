@@ -14,6 +14,7 @@ import { DxTextBoxModule } from 'devextreme-angular';
 import { SellFundComponent } from './sell-fund/sell-fund.component';
 import { BuyFundComponent } from './buy-fund/buy-fund.component';
 import { ManageFundComponent } from './manage-fund/manage-fund.component';
+import { DxButtonModule } from 'devextreme-angular';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { ManageFundComponent } from './manage-fund/manage-fund.component';
     DxBulletModule,  // DevExtreme Bullet Chart
     DxChartModule,
     DxTextBoxModule,
+    DxButtonModule,
   ],
   providers: [], // ประกาศ Service ถ้าต้องการให้ใช้ได้ทั้งแอปฯ (แต่คุณประกาศใน Component แล้ว)
   schemas: [

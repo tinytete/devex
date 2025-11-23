@@ -11,32 +11,35 @@ import { Service } from '../app.service';
 export class BuyFundComponent implements OnInit {
   fundId!: number;
   fundData: any;
-  purchaseAmount: number = 1000; // มูลค่าเริ่มต้น
+  purchaseAmount: number = 1000; 
   isAgreed: boolean = false;
   today: Date = new Date();
   purchaseSuccess: boolean = false;
 
   constructor(private route: ActivatedRoute, private service: Service) {}
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    // ✅ Logic การดึงข้อมูลกองทุนตาม ID ถูกต้องและไม่ Crash
+    this.route.paramMap.subscribe(params => {
+      const idString = params.get('id');
+      this.fundId = idString ? +idString : 0;
+      this.fundData = this.service.getFundById(this.fundId);
+    });
   }
 
-  get purchaseFee(): number {
-    return this.calculateFee(this.purchaseAmount, 0.01);
+  get purchaseFee(): number { 
+    return this.calculateFee(this.purchaseAmount, 0.01); 
   }
 
   get totalPayment(): number {
-    return this.purchaseAmount + this.purchaseFee;
-  }
-  
-  calculateFee(amount: number, percentage: number): number {
-    if (!amount || amount < 0) return 0;
-    return amount * percentage;
+    return this.purchaseAmount + this.purchaseFee; 
   }
 
-  confirmPurchase() {
-    // 💡 Logic สำหรับส่งคำสั่งซื้อ (ใน Production ต้องเรียก API)
+  calculateFee(amount: number, percentage: number): number {
+    if (!amount || amount < 0) return 0; return amount * percentage; 
+  }
+
+  confirmPurchase() { 
     this.purchaseSuccess = true;
-    console.log(`ยืนยันซื้อ ${this.fundData.FundName} มูลค่า ${this.purchaseAmount} บาท`);
   }
 }

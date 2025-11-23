@@ -1,10 +1,15 @@
-<div *ngIf="fundData; else noData" class="fund-detail-container">
+<header class="top-header">
+    <div class="header-left">
+        <span class="site-title">Top Charts Fund</span>
+    </div>
+</header>
+<div *ngIf="fundData" class="fund-detail-container">
     
     <header class="detail-header">
         <h1>{{ fundData.FundName }} ({{ fundData.Company }})
             <div class="nav-info">
                 <span class="nav-label">NAV: </span>
-                <span class="nav-value">{{ fundData.NAV | number:'1.4-4' }} บาท</span>
+                <span class="nav-value">{{ fundData.NAV }}</span>
             </div>
         </h1>
     </header>
@@ -13,46 +18,94 @@
         <div class="key-metrics-box">
             <h3>ข้อมูลสำคัญ</h3>
             <p><strong>ประเภทกองทุน:</strong> {{ fundData.Category }}</p>
-            <p><strong>มูลค่าสินทรัพย์สุทธิ:</strong> {{ fundData.AUM | number }} บาท</p>
+            <p><strong>มูลค่าสินทรัพย์สุทธิ:</strong> {{ fundData.AUM}}</p>
             <p><strong>วันที่จดทะเบียน:</strong> {{ fundData.RegisterDate }}</p>
             <p><strong>ความเสี่ยง:</strong> <span class="risk-level-{{ fundData.RiskLevel }}">{{ fundData.RiskLevel }}</span></p>
+            
+            <dx-button icon="favorites" text="ติดตาม" stylingMode="text" class="follow-button" (onClick)="navigateToFav()"></dx-button>
         </div>
         
-        <div class="action-buttons-bar">
-            <dx-button icon="pi pi-heart" text="ติดตาม" (onClick)="navigateToFav()"></dx-button>
-            <dx-button icon="pi pi-wallet" text="ซื้อกองทุน" type="success" (onClick)="navigateToBuy()"></dx-button>
-            <dx-button icon="pi pi-money-bill" text="ขาย" type="danger" (onClick)="navigateToSell()"></dx-button>
-        </div>
     </div>
     
     <div class="chart-area">
         <h2>กราฟราคา NAV</h2>
         <dx-chart id="nav-chart" [dataSource]="navHistoryData">
-            <dxi-series argumentField="Date" valueField="NAV" type="line" color="#00AEEF"></dxi-series>
+            <dxi-series argumentField="Date" valueField="NAV" type="line" color="#00AEEF" name="NAV"></dxi-series>
             <dxo-argument-axis argumentType="datetime"></dxo-argument-axis>
-            <dxo-legend [visible]="false"></dxo-legend>
-            <dxo-tooltip [enabled]="true"></dxo-tooltip>
+            <dxo-tooltip [enabled]="true" title="{point.argument}"></dxo-tooltip>
         </dx-chart>
     </div>
 
-    <div class="performance-table">
+    <div class="performance-table" style="margin-bottom: 30px;">
         <h2>ผลตอบแทนย้อนหลัง</h2>
-        <dx-data-grid [dataSource]="performanceData" [showBorders]="true" [showColumnHeaders]="true" [columnAutoWidth]="true">
-            <dxi-column dataField="Period" caption="ช่วงเวลา" alignment="center"></dxi-column> 
-            <dxi-column dataField="FundReturn" caption="ผลตอบแทนกองทุน" alignment="right"></dxi-column>
-            <dxi-column dataField="BenchmarkReturn" caption="ผลตอบแทน Benchmark" alignment="right"></dxi-column>
+        
+        <dx-data-grid 
+            [dataSource]="performanceData" 
+            [width]="'100%'" 
+            [showBorders]="true" 
+            [showColumnHeaders]="true"
+            [showRowLines]="true"
+            [columnAutoWidth]="false" 
+            [rowAlternationEnabled]="false"> 
             
-            <dxo-pager [visible]="false"></dxo-pager>
-            <dxo-sorting mode="none"></dxo-sorting>
+            <dxi-column dataField="Fundname" caption="กองทุน" alignment="left">
+                <div *dxTemplate="let data of 'cell'">
+                    <div class="fund-performance-cell" style="display: flex; align-items: center;">
+                        <span style="width:10px; height:10px; background:#007bff; margin-right:5px; display:inline-block;"></span>
+                        <span style="font-weight: bold;">{{ data.data.Fundname }}</span>
+                    </div>
+                </div>
+            </dxi-column>
 
+            <dxi-column dataField="R_1D" caption="1 วัน" alignment="center" [width]="100" cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_1M" caption="1 เดือน" alignment="center" [width]="100" cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_1Y" caption="1 ปี" alignment="center" [width]="100" cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_3Y" caption="3 ปี" alignment="center" [width]="100" cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_5Y" caption="5 ปี" alignment="center" [width]="100" cellTemplate="returnCell"></dxi-column>
+            
+            <div *dxTemplate="let data of 'returnCell'">
+                <span [ngClass]="{'negative-return': data.value < 0, 'positive-return': data.value >= 0}" 
+                      style="font-weight: bold;" 
+                      [style.color]="data.value < 0 ? 'red' : 'green'">
+                    {{ data.value}}%
+                </span>
+            </div>
+
+            <dxo-pager [visible]="false"></dxo-pager>
         </dx-data-grid>
     </div>
 
-    <br>
-    <a routerLink="/" class="pi pi-backward"> กลับหน้าแรก</a>
-</div>
+    <div style="
+        display: flex; 
+        justify-content: center; 
+        gap: 20px; 
+        margin-top: 40px; /* เพิ่มระยะห่างจากตาราง */
+        margin-bottom: 80px; /* เพิ่มพื้นที่ด้านล่างให้มองเห็นปุ่ม */
+        z-index: 100; 
+        position: relative; /* ให้ z-index ทำงาน */
+    ">
+        
+        <dx-button 
+            text="ซื้อกองทุน" 
+            type="success" 
+            [width]="200" 
+            [height]="50"
+            [elementAttr]="{ style: 'font-size: 18px; font-weight: bold;' }"
+            (onClick)="navigateToBuy()">
+        </dx-button>
 
-<ng-template #noData>
-  <p>ไม่พบข้อมูลกองทุน (ID: {{ fundId }})</p>
-  <a routerLink="/"> กลับหน้าแรก</a>
-</ng-template>
+        <dx-button 
+            text="ขาย" 
+            type="normal" 
+            [width]="200" 
+            [height]="50"
+            [elementAttr]="{ style: 'font-size: 18px; font-weight: bold;' }"
+            (onClick)="navigateToSell()">
+        </dx-button>
+
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <a routerLink="/" class="pi pi-backward"> กลับหน้าแรก</a>
+    </div>
+    </div>

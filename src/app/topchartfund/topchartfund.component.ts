@@ -1,5 +1,4 @@
 // src/app/topchartfund/topchartfund.component.ts
-
 import { Component } from '@angular/core';
 import { Service } from '../app.service';
 import { Router } from '@angular/router';
@@ -11,38 +10,27 @@ import { Router } from '@angular/router';
   providers: [Service],
 })
 export class TopchartfundComponent {
+  // ... (ตัวแปรเดิม คงไว้) ...
   title = 'topchartsfund';
-  shouldBeDisabled: boolean = true;
-
   topChartData: any[] = [];
   chartData: any[] = [];
 
-  public customizeLabel = (e:any)=> {
-    return e.value;
-  }
+  // ... (customizeLabel, customizeSeriesLabel คงไว้) ...
+  public customizeLabel = (e:any)=> { return e.value; }
+  public customizeSeriesLabel = (e: any) => { return e.point.data.Company; }
 
-  public customizeSeriesLabel = (e:any)=> {
-    return {
-      text : e.point.data.Company ,
-      font : { size: 10, weight: 600 }
-    };
-  }
-
-  constructor(service: Service,private router: Router) {
+  constructor(service: Service, private router: Router) {
     this.topChartData = service.getTopChartsData();
     this.topChartData.sort((a,b)=>b.Ranking-a.Ranking);
     this.chartData = this.topChartData;
   }
 
-  // ✅ แก้ไข: ชื่อฟังก์ชันที่ถูกต้องตรงกับ HTML
-  navigateToManage() { 
-    this.router.navigate(['/manage']);
-  }
+  // ... (navigateToManage, onRowClick, onPointClick คงไว้) ...
+  navigateToManage() { this.router.navigate(['/manage']); }
 
   onRowClick(e:any) {
     if(e.data && e.data.Id){
-      const fundId = e.data.Id;
-      this.router.navigate(['/detail', fundId]);
+      this.router.navigate(['/detail', e.data.Id]);
     }
   }
 
@@ -53,26 +41,23 @@ export class TopchartfundComponent {
     }
   }
 
-  // ✅ เพิ่ม: ฟังก์ชัน navigateToBuy
   navigateToBuy(fundId: number | null) {
       if (fundId) {
           this.router.navigate(['/buy', fundId]);
-      } else {
-          // กรณีคลิกจากปุ่ม Header (My Port/Bundle Buy)
-          console.log("Navigating to Buy Page (My Port/Bundle)");
-          // สามารถ navigate ไปที่หน้า Buy โดยไม่มี ID ได้ หรือกำหนด Route แยก
-          // this.router.navigate(['/buy/all']); 
       }
   }
 
-  // ✅ เพิ่ม: ฟังก์ชัน navigateToSell
   navigateToSell(fundId: number | null) {
       if (fundId) {
           this.router.navigate(['/sell', fundId]);
-      } else {
-          // กรณีคลิกจากปุ่ม Header (My Port/Bundle Sell)
-          console.log("Navigating to Sell Page (My Port/Bundle)");
-          // this.router.navigate(['/sell/all']); 
       }
+  }
+
+  // ✅ เพิ่มฟังก์ชันนี้กลับเข้ามาครับ ไม่งั้นกดปุ่มซื้อไม่ได้
+  onBuyClick(e: any, fundId: number) {
+    if (e && e.event) {
+      e.event.stopPropagation(); // หยุดไม่ให้เด้งไปหน้า Detail
+    }
+    this.navigateToBuy(fundId); // ไปหน้าซื้อ
   }
 }

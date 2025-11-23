@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Fund } from './fund';
 import { FUNDS } from './mock-funds';
+import { Observable, of } from 'rxjs'; // 1. Import เพิ่ม
 
 @Injectable()
 export class Service {
@@ -30,5 +31,18 @@ export class Service {
 
   deleteFund(id: number) {
     this.funds = this.funds.filter(f => f.Id !== id);
+  }
+
+  // ✅ 2. เพิ่มฟังก์ชันค้นหา (Search)
+  searchFunds(term: string): Observable<Fund[]> {
+    if (!term.trim()) {
+      // ถ้าไม่พิมพ์อะไรเลย ให้คืนค่าว่างกลับไป
+      return of([]);
+    }
+    // กรองข้อมูล (Case Insensitive: ตัวเล็กตัวใหญ่มีค่าเท่ากัน)
+    const filteredList = this.funds.filter(fund => 
+        fund.FundName.toLowerCase().includes(term.toLowerCase())
+    );
+    return of(filteredList);
   }
 }

@@ -1,84 +1,94 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Service } from '../app.service';
-import { Fund } from '../fund'; // อย่าลืม import Interface Fund
+import { Fund } from '../fund';
 
 @Component({
   selector: 'app-manage-fund',
   templateUrl: './manage-fund.component.html',
-  styleUrls: ['./manage-fund.component.scss'], // แก้ styleUrl เป็น styleUrls (มี s)
+  styleUrls: ['./manage-fund.component.scss'],
   providers: [Service]
 })
 export class ManageFundComponent implements OnInit {
   fundsData: Fund[] = [];
-  selectedFund: Fund | null = null;
+  selectedFund: any = null; // เปลี่ยน Type เป็น any ชั่วคราวเพื่อให้ยืดหยุ่นกับ Date
   isNew: boolean = false;
 
-  constructor(private service: Service) {}
+  constructor(private service: Service, private router: Router) {}
 
   ngOnInit(): void {
     this.loadFunds();
   }
+
   loadFunds() {
-    throw new Error('Method not implemented.');
+    this.fundsData = this.service.getTopChartsData();
   }
 
-  // 1. กดปุ่ม "เพิ่มข้อมูลใหม่"
+  // --- CRUD Functions ---
+
   startAdd() {
     this.isNew = true;
     this.selectedFund = {
-      Id: 0, // เดี๋ยว Service รัน ID ให้
+      Id: 0,
       FundName: '',
       Company: '',
       NAV: 0,
-      Ranking: 0,
-      Return1Y: 0,
       Category: '',
-      AUM: '',
-      RegisterDate: new Date().toLocaleDateString('th-TH'),
-      RiskLevel: '1'
+      RiskLevel: '',
+      RegisterDate: new Date() // Date Box ต้องการ Date Object
     };
+    this.scrollToForm();
   }
 
-  // 2. กดปุ่ม "แก้ไข" (ดึงข้อมูลมาใส่ Form)
   startEdit(fund: Fund) {
     this.isNew = false;
-    // Clone ข้อมูลออกมา เพื่อไม่ให้กระทบตารางทันทีระหว่างพิมพ์ (ต้องกด Save ก่อนถึงจะเปลี่ยน)
-    this.selectedFund = { ...fund }; 
+    // Clone ข้อมูลออกมา
+    this.selectedFund = { ...fund };
+    
+    // แปลง String วันที่ เป็น Date Object (ถ้าจำเป็น) เพื่อให้ dx-date-box แสดงผลถูก
+    // สมมติว่าใน Mock Data เป็น String 'dd/mm/yyyy' อาจต้องแปลง หรือถ้าเป็น mock ง่ายๆ ปล่อยไว้ก่อนได้
+    // this.selectedFund.RegisterDate = new Date(); // Mock ไว้ก่อนเพื่อกัน error
+    
+    this.scrollToForm();
   }
 
-  // 3. กดปุ่ม "บันทึก" (Save)
   save() {
     if (this.selectedFund) {
+      // แปลง Date กลับเป็น String สวยๆ ก่อนบันทึก (ถ้าต้องการ)
+      // หรือส่งไปทั้งอย่างนั้นเลยก็ได้ตาม Interface
+      
       if (this.isNew) {
-        // กรณีเพิ่มใหม่
         this.service.addFund(this.selectedFund);
       } else {
-        // กรณีแก้ไข
         this.service.updateFund(this.selectedFund);
       }
       
-      // รีเซ็ตค่าและโหลดตารางใหม่
       this.selectedFund = null;
       this.isNew = false;
       this.loadFunds(); 
     }
   }
 
-  // 4. กดปุ่ม "ลบ" (Delete)
   delete(id: number) {
-    if(confirm('ยืนยันที่จะลบข้อมูลนี้?')) {
+    if(confirm('ยืนยันการลบข้อมูล ID ' + id + '?')) {
       this.service.deleteFund(id);
       this.loadFunds();
-      // ถ้าลบตัวที่กำลังแก้ไขอยู่ ให้ปิดฟอร์มทิ้ง
       if (this.selectedFund && this.selectedFund.Id === id) {
         this.selectedFund = null;
       }
     }
   }
 
-  // 5. กดปุ่ม "ยกเลิก"
   cancel() {
     this.selectedFund = null;
     this.isNew = false;
+  }
+
+  // Helper: เลื่อนหน้าจอลงมาที่ฟอร์ม
+  scrollToForm() {
+    setTimeout(() => {
+        const element = document.getElementById('edit-form');
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
   }
 }

@@ -4,7 +4,7 @@
   "SEARCH_LABEL": "Search Fund:",
   "SEARCH_PLACEHOLDER": "Fund Name...",
   "CHART_TITLE": "Most Popular Funds (Weeks)",
-  "TABLE_RANKING": "Ranking",
+  "TABLE_RANK": "Rank",
   "TABLE_FUND": "Fund",
   "TABLE_COMPANY": "Company",
   "TABLE_WEEKS": "Weeks Ranked",
@@ -12,5 +12,8 @@
   "TABLE_LASTRANK": "Last Ranking",
   "TABLE_CATEGORY": "Category",
   "TABLE_BUY": "Buy",
-  "BUTTON_BUY": "Buy Fund"
+  "BUTTON_EDIT": "Edit",
+  "BUTTON_ADD": "Add",
+  "BUTTON_DELETE": "Delete"
+
 }

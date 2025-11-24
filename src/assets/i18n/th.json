@@ -12,5 +12,8 @@
   "TABLE_LASTRANK": "อันดับสัปดาห์ที่แล้ว",
   "TABLE_CATEGORY": "ประเภทของกองทุน",
   "TABLE_BUY": "ซื้อ",
-  "BUTTON_BUY": "ซื้อหน่วยลงทุน"
+  "BUTTON_BUY": "ซื้อหน่วยลงทุน",
+  "BUTTON_EDIT": "แก้ไข",
+  "BUTTON_ADD": "เพิ่ม",
+  "BUTTON_DELETE": "ลบ"
 }

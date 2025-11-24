@@ -53,19 +53,19 @@
 
             <dxi-column dataField="Category" [caption]="'TABLE_CATEGORY' | translate" alignment="center" [width]="150"></dxi-column>
 
-            <dxi-column caption="จัดการ" cellTemplate="actionCell" alignment="center" [width]="150" [fixed]="true" fixedPosition="right"></dxi-column>
+            <dxi-column [caption]="'MANAGE_FUND' | translate" cellTemplate="actionCell" alignment="center" [width]="150" [fixed]="true" fixedPosition="right"></dxi-column>
             
             <div *dxTemplate="let data of 'actionCell'">
                 <div class="action-buttons-container">
                     <dx-button 
-                        text="แก้ไข"
+                        [caption]="'BUTTON_EDIT' | translate"
                         class="btn-custom-edit"
                         [elementAttr]="{ style: 'z-index: 999;' }" 
                         (onClick)="startEdit(data.data)">
                     </dx-button>
                     
                     <dx-button 
-                        text="ลบ"
+                        [caption]="'BUTTON_DELETE' | translate"
                         class="btn-custom-delete"
                         [elementAttr]="{ style: 'z-index: 999;' }"
                         (onClick)="delete(data.data.Id)">

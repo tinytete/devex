@@ -1,7 +1,8 @@
 {
-  "TOP_CHART_TITLE": "10 อันดับกองทุนรวม",
+  "TOP_CHART_TITLE": "กองทุนรวมยอดฮิต",
+  "TOP_CHART": "10 อันดับกองทุนรวมที่ติด Top Returns มากที่สุด",
   "MANAGE_FUND": "จัดการกองทุน",
-  "SEARCH_LABEL": "ค้นหาชื่อกองทุน:",
+  "SEARCH_LABEL": "ค้นหาชื่อกองทุนรวม:",
   "SEARCH_PLACEHOLDER": "พิมพ์ชื่อกองทุน...",
   "CHART_TITLE": "จำนวนสัปดาห์ที่ติดอันดับสูงสุด",
   "TABLE_RANK": "อันดับ",
@@ -17,7 +18,7 @@
   "BUTTON_ADD": "เพิ่ม",
   "BUTTON_DELETE": "ลบ",
   "BUTTON_ADD_NEW": "เพิ่มกองทุนใหม่",
-  "BUTTON_SAVE": "บันทึกข้อมูล",
+  "BUTTON_SAVE": "บันทึก",
   "BUTTON_CANCEL": "ยกเลิก",
   "TITLE_ADD": "✨ เพิ่มกองทุนใหม่",
   "TITLE_EDIT": "✏️ แก้ไขข้อมูลกองทุน",
@@ -30,4 +31,5 @@
   "LABEL_CATEGORY": "ประเภทกองทุน:",
   "LABEL_DATE": "วันที่จดทะเบียน:",
   "LINK_BACK": "กลับหน้าแรก"
+  
 }

@@ -1,5 +1,6 @@
 {
   "TOP_CHART_TITLE": "Top Charts Fund",
+  "TOP_CHART": "Top 10 Mutual Funds with the Highest Returns",
   "MANAGE_FUND": "Manage Funds",
   "SEARCH_LABEL": "Search Fund:",
   "SEARCH_PLACEHOLDER": "Fund Name...",
@@ -16,7 +17,7 @@
   "BUTTON_ADD": "Add",
   "BUTTON_DELETE": "Delete",
   "BUTTON_ADD_NEW": "Add New Fund",
-  "BUTTON_SAVE": "Save Data",
+  "BUTTON_SAVE": "Save",
   "BUTTON_CANCEL": "Cancel",
   "TITLE_ADD": "✨ Add New Fund",
   "TITLE_EDIT": "✏️ Edit Fund",

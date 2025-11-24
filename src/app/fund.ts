@@ -6,6 +6,7 @@ export interface Fund {
     Company: string;
     Ranking: number;
     Return1Y: number;
+    Lastrank: number;
     Category: string;
     AUM: string;
     RegisterDate: string;

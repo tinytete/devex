@@ -5,7 +5,7 @@ export interface Fund {
     NAV: number;
     Company: string;
     Ranking: number;
-    Return1Y: number;
+    Return3Y: number;
     Lastrank: number;
     Category: string;
     AUM: string;

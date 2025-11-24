@@ -100,3 +100,4 @@
     border: 1px solid #ddd !important;
 }
 
+.back-link { text-decoration: none; color: #666; display: inline-block; margin-top: 10px; &:hover { color: #000; } }

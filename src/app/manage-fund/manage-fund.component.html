@@ -1,10 +1,10 @@
 <header class="top-header">
     <div class="header-left">
-        <span class="site-title">Top Charts Fund</span>
+        <span class="site-title">{{ 'MANAGE_FUND' | translate }}</span>
     </div>
 </header>
+
 <div class="manage-container">
-    <h2> จัดการข้อมูลกองทุน</h2>
     
     <div class="top-actions">
         <dx-button 
@@ -23,33 +23,49 @@
             [showBorders]="true"
             [showRowLines]="true"
             [showColumnLines]="true"
-            [rowAlternationEnabled]="false"
+            [rowAlternationEnabled]="true"
             [columnAutoWidth]="true" 
-            [allowColumnResizing]="true"> <dxi-column dataField="Id" caption="ID" [width]="50" alignment="center"></dxi-column>
+            [allowColumnResizing]="true">
+
+            <dxi-column dataField="Id" [caption]="'TABLE_RANK' | translate" alignment="center" [width]="70" [allowResizing]="false">
+                <div *dxTemplate="let data of 'cell'"> 
+                    <span class="rank-badge rank-{{data.value}}">{{ data.value }}</span>
+                </div>
+            </dxi-column>
             
-            <dxi-column dataField="FundName" caption="ชื่อกองทุน" [minWidth]="150">
+            <dxi-column dataField="FundName" [caption]="'TABLE_FUND' | translate" alignment="left" [minWidth]="170">
                 <div *dxTemplate="let data of 'cell'">
-                    <span class="fund-name-text">{{ data.value }}</span>
+                    <div class="fund-name">{{ data.value }}</div>
+                    <div class="fund-company-sub">{{ 'TABLE_COMPANY' | translate }} {{ data.data.Company }}</div>
                 </div>
             </dxi-column>
 
-            <dxi-column dataField="Company" caption="บริษัท (บลจ.)" [width]="100"></dxi-column>
-            <dxi-column dataField="NAV" caption="NAV" format="#,##0.0000" [width]="100"></dxi-column>
-            <dxi-column dataField="Category" caption="ประเภท" [width]="140"></dxi-column>
+            <dxi-column dataField="Company" [caption]="'TABLE_COMPANY' | translate" alignment="center" [width]="100"></dxi-column>
+            
+            <dxi-column dataField="Ranking" [caption]="'TABLE_WEEKS' | translate" alignment="center" [width]="170"></dxi-column>
 
-            <dxi-column caption="จัดการ" cellTemplate="actionCell" alignment="center" [width]="180" [fixed]="true" fixedPosition="right"></dxi-column>
+            <dxi-column dataField="Return3Y" [caption]="'TABLE_RETURN' | translate" alignment="center" [width]="200">
+                <div *dxTemplate="let data of 'cell'">
+                    <div class="return-val">{{ data.value | number:'1.2-2' }}%</div>
+                </div>
+            </dxi-column>
+            <dxi-column dataField="Lastrank" [caption]="'TABLE_LASTRANK' | translate" alignment="center" [width]="160"></dxi-column>
+
+            <dxi-column dataField="Category" [caption]="'TABLE_CATEGORY' | translate" alignment="center" [width]="150"></dxi-column>
+
+            <dxi-column caption="จัดการ" cellTemplate="actionCell" alignment="center" [width]="150" [fixed]="true" fixedPosition="right"></dxi-column>
             
             <div *dxTemplate="let data of 'actionCell'">
                 <div class="action-buttons-container">
                     <dx-button 
-                        text="แก้ไข" 
+                        text="แก้ไข"
                         class="btn-custom-edit"
                         [elementAttr]="{ style: 'z-index: 999;' }" 
                         (onClick)="startEdit(data.data)">
                     </dx-button>
                     
                     <dx-button 
-                        text="ลบ" 
+                        text="ลบ"
                         class="btn-custom-delete"
                         [elementAttr]="{ style: 'z-index: 999;' }"
                         (onClick)="delete(data.data.Id)">
@@ -68,24 +84,32 @@
         
         <div class="form-grid">
             <div class="form-group">
-                <label>ชื่อกองทุน:</label>
+                <label>อันดับ:</label>
+                <dx-text-box [(value)]="selectedFund.Id"></dx-text-box>
+            </div>
+            <div class="form-group">
+                <label>กองทุน:</label>
                 <dx-text-box [(value)]="selectedFund.FundName"></dx-text-box>
             </div>
             <div class="form-group">
-                <label>บริษัท (บลจ.):</label>
+                <label>บลจ.:</label>
                 <dx-text-box [(value)]="selectedFund.Company"></dx-text-box>
             </div>
             <div class="form-group">
-                <label>NAV:</label>
-                <dx-number-box [(value)]="selectedFund.NAV" format="#,##0.0000"></dx-number-box>
+                <label>จำนวนสัปดาห์ที่ติดอันดับ</label>
+                <dx-text-box [(value)]="selectedFund.Ranking"></dx-text-box>
+            </div>
+            <div class="form-group">
+                <label>ผลตอบแทนย้อนหลัง:</label>
+                <dx-text-box [(value)]="selectedFund.ReturnY"></dx-text-box>
+            </div>
+            <div class="form-group">
+                <label>อันดับสัปดาห์ที่แล้ว:</label>
+                <dx-text-box [(value)]="selectedFund.Lastrank"></dx-text-box>
             </div>
             <div class="form-group">
                 <label>ประเภทกองทุน:</label>
                 <dx-text-box [(value)]="selectedFund.Category"></dx-text-box>
-            </div>
-            <div class="form-group">
-                <label>วันที่จดทะเบียน:</label>
-                <dx-date-box [value]="selectedFund.RegisterDate" displayFormat="dd/MM/yyyy" type="date"></dx-date-box>
             </div>
         </div>
 

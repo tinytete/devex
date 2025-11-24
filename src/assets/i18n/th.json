@@ -7,9 +7,10 @@
   "TABLE_RANK": "อันดับ",
   "TABLE_FUND": "กองทุน",
   "TABLE_COMPANY": "บลจ.",
-  "TABLE_WEEKS": "จำนวนสัปดาห์",
-  "TABLE_RETURN": "ผลตอบแทน 3 ปี",
-  "TABLE_CATEGORY": "ประเภทกองทุน",
+  "TABLE_WEEKS": "จำนวนสัปดาห์ที่ติดอันดับ",
+  "TABLE_RETURN": "ผลตอบแทนย้อนหลัง 3 ปี (% ต่อปี)",
+  "TABLE_LASTRANK": "อันดับสัปดาห์ที่แล้ว",
+  "TABLE_CATEGORY": "ประเภทของกองทุน",
   "TABLE_BUY": "ซื้อ",
   "BUTTON_BUY": "ซื้อหน่วยลงทุน"
 }

@@ -67,7 +67,7 @@
                 
                 <dxi-column dataField="Ranking" caption="จำนวนสัปดาห์ที่ติดอันดับ" alignment="center" [width]="210"></dxi-column>
 
-                <dxi-column dataField="Return1Y" caption="ผลตอบแทนย้อนหลัง 3 ปี (% ต่อปี)" alignment="center" [width]="270">
+                <dxi-column dataField="Return3Y" caption="ผลตอบแทนย้อนหลัง 3 ปี (% ต่อปี)" alignment="center" [width]="270">
                     <div *dxTemplate="let data of 'cell'">
                         <div class="return-val">{{ data.value | number:'1.2-2' }}%</div>
                     </div>

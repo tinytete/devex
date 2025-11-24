@@ -1,134 +1,134 @@
-/* copy ใส่ buy-fund.component.scss และ sell-fund.component.scss */
-@import "primeicons/primeicons.css";
+// /* copy ใส่ buy-fund.component.scss และ sell-fund.component.scss */
+// @import "primeicons/primeicons.css";
 
-.top-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background-color: #ffffff; border-bottom: 1px solid #e0e0e0; }
-.site-title { font-weight: 800; font-size: 1.6em; color: #2c3e50; }
+// .top-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background-color: #ffffff; border-bottom: 1px solid #e0e0e0; }
+// .site-title { font-weight: 800; font-size: 1.6em; color: #2c3e50; }
 
-.buy-sell-container {
-    max-width: 700px;
-    margin: 40px auto;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    padding: 35px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+// .buy-sell-container {
+//     max-width: 700px;
+//     margin: 40px auto;
+//     background-color: #ffffff;
+//     border-radius: 12px;
+//     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+//     padding: 35px;
+//     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+// }
 
-.header-section {
-    border-bottom: 2px solid #f0f0f0;
-    padding-bottom: 15px;
-    margin-bottom: 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+// .header-section {
+//     border-bottom: 2px solid #f0f0f0;
+//     padding-bottom: 15px;
+//     margin-bottom: 25px;
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
     
-    h2 {
-        margin: 0;
-        font-weight: 700;
-        font-size: 1.6rem;
-    }
-    .fund-id-tag {
-        background: #eee;
-        padding: 5px 10px;
-        border-radius: 4px;
-        font-size: 0.85rem;
-        color: #666;
-    }
+//     h2 {
+//         margin: 0;
+//         font-weight: 700;
+//         font-size: 1.6rem;
+//     }
+//     .fund-id-tag {
+//         background: #eee;
+//         padding: 5px 10px;
+//         border-radius: 4px;
+//         font-size: 0.85rem;
+//         color: #666;
+//     }
 
-    &.buy-mode h2 { color: #28a745; }
-    &.sell-mode h2 { color: #dc3545; }
-}
+//     &.buy-mode h2 { color: #28a745; }
+//     &.sell-mode h2 { color: #dc3545; }
+// }
 
-.portfolio-card {
-    background: linear-gradient(to right, #f8f9fa, #ffffff);
-    border: 1px solid #e9ecef;
-    border-left: 5px solid;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 30px;
+// .portfolio-card {
+//     background: linear-gradient(to right, #f8f9fa, #ffffff);
+//     border: 1px solid #e9ecef;
+//     border-left: 5px solid;
+//     border-radius: 8px;
+//     padding: 20px;
+//     margin-bottom: 30px;
 
-    &.buy-style { border-left-color: #28a745; }
-    &.sell-style { border-left-color: #dc3545; }
+//     &.buy-style { border-left-color: #28a745; }
+//     &.sell-style { border-left-color: #dc3545; }
 
-    .info-row {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 8px;
-        font-size: 1.05rem;
-        color: #495057;
+//     .info-row {
+//         display: flex;
+//         justify-content: space-between;
+//         margin-bottom: 8px;
+//         font-size: 1.05rem;
+//         color: #495057;
 
-        strong { font-weight: 700; color: #212529; }
-        &:last-child { margin-bottom: 0; }
-    }
-}
+//         strong { font-weight: 700; color: #212529; }
+//         &:last-child { margin-bottom: 0; }
+//     }
+// }
 
-.form-area {
-    .dx-field {
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center; /* จัดให้อยู่กึ่งกลางแนวตั้ง */
-    }
-    .dx-field-label {
-        width: 40%;
-        font-weight: 600;
-        color: #555;
-    }
-    .dx-field-value {
-        width: 60%;
-    }
-}
+// .form-area {
+//     .dx-field {
+//         margin-bottom: 20px;
+//         display: flex;
+//         align-items: center; /* จัดให้อยู่กึ่งกลางแนวตั้ง */
+//     }
+//     .dx-field-label {
+//         width: 40%;
+//         font-weight: 600;
+//         color: #555;
+//     }
+//     .dx-field-value {
+//         width: 60%;
+//     }
+// }
 
-.summary-box {
-    background-color: #f1f8ff;
-    border: 1px dashed #007bff;
-    padding: 15px;
-    border-radius: 8px;
-    margin: 20px 0;
+// .summary-box {
+//     background-color: #f1f8ff;
+//     border: 1px dashed #007bff;
+//     padding: 15px;
+//     border-radius: 8px;
+//     margin: 20px 0;
     
-    .dx-field { margin-bottom: 10px; }
-    .dx-field:last-child { margin-bottom: 0; }
+//     .dx-field { margin-bottom: 10px; }
+//     .dx-field:last-child { margin-bottom: 0; }
 
-    .net-amount {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: #0056b3;
-    }
-    .fee-text { color: #dc3545; }
-}
+//     .net-amount {
+//         font-size: 1.5rem;
+//         font-weight: 800;
+//         color: #0056b3;
+//     }
+//     .fee-text { color: #dc3545; }
+// }
 
-.action-buttons {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-}
+// .action-buttons {
+//     margin-top: 30px;
+//     padding-top: 20px;
+//     border-top: 1px solid #eee;
+// }
 
-.success-message {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #d4edda;
-    border: 1px solid #c3e6cb;
-    color: #155724;
-    border-radius: 8px;
-    text-align: center;
-    animation: fadeIn 0.5s ease-in;
+// .success-message {
+//     margin-top: 20px;
+//     padding: 20px;
+//     background-color: #d4edda;
+//     border: 1px solid #c3e6cb;
+//     color: #155724;
+//     border-radius: 8px;
+//     text-align: center;
+//     animation: fadeIn 0.5s ease-in;
 
-    i { margin-bottom: 10px; display: block; }
-    h3 { margin: 0 0 5px 0; }
-}
+//     i { margin-bottom: 10px; display: block; }
+//     h3 { margin: 0 0 5px 0; }
+// }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+// @keyframes fadeIn {
+//     from { opacity: 0; transform: translateY(-10px); }
+//     to { opacity: 1; transform: translateY(0); }
+// }
 
-.back-nav {
-    text-align: center;
-    margin-top: 20px;
-    a {
-        text-decoration: none;
-        color: #6c757d;
-        font-weight: 500;
-        transition: color 0.2s;
-        &:hover { color: #343a40; }
-    }
-}
+// .back-nav {
+//     text-align: center;
+//     margin-top: 20px;
+//     a {
+//         text-decoration: none;
+//         color: #6c757d;
+//         font-weight: 500;
+//         transition: color 0.2s;
+//         &:hover { color: #343a40; }
+//     }
+// }

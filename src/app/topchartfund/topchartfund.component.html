@@ -2,9 +2,12 @@
     <div class="header-left">
         <span class="site-title">Top Charts Fund</span>
     </div>
+    
     <div class="header-right">
-        <button (click)="navigateToManage()" class="manage-button" title="จัดการกองทุน">
-            <span class="pi pi-sliders-h"></span> จัดการกองทุน
+        <app-language-switcher></app-language-switcher>
+
+        <button (click)="navigateToManage()" class="manage-button" title="{{ 'MANAGE_FUND' | translate }}">
+            <span class="pi pi-sliders-h"></span> {{ 'MANAGE_FUND' | translate }}
         </button>
     </div>
 </header>
@@ -47,7 +50,7 @@
                 [columnAutoWidth]="true" 
                 (onRowClick)="onRowClick($event)"> 
                 
-                <dxi-column dataField="Id" caption="อันดับ" alignment="center" [width]="50" [allowResizing]="false">
+                <dxi-column dataField="Id" caption="อันดับ" alignment="center" [width]="80" [allowResizing]="false">
                     <div *dxTemplate="let data of 'cell'"> 
                         <span class="rank-badge rank-{{data.value}}">{{ data.value }}</span>
                     </div>
@@ -64,7 +67,7 @@
                 
                 <dxi-column dataField="Ranking" caption="จำนวนสัปดาห์ที่ติดอันดับ" alignment="center" [width]="200"></dxi-column>
 
-                <dxi-column dataField="Return1Y" caption="ผลตอบแทนย้อนหลัง 3 ปี (% ต่อปี)" alignment="center" [width]="200">
+                <dxi-column dataField="Return1Y" caption="ผลตอบแทนย้อนหลัง 3 ปี (% ต่อปี)" alignment="center" [width]="300">
                     <div *dxTemplate="let data of 'cell'">
                         <div class="return-val">{{ data.value | number:'1.2-2' }}%</div>
                     </div>

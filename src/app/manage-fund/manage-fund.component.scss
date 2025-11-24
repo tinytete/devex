@@ -1,116 +1,116 @@
-@import "primeicons/primeicons.css";
+// @import "primeicons/primeicons.css";
 
-.top-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background-color: #ffffff; border-bottom: 1px solid #e0e0e0; }
-.site-title { font-weight: 800; font-size: 1.6em; color: #2c3e50; }
+// .top-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background-color: #ffffff; border-bottom: 1px solid #e0e0e0; }
+// .site-title { font-weight: 800; font-size: 1.6em; color: #2c3e50; }
 
-.manage-container {
-    max-width: 1200px; /* ✅ แก้จุดที่ 1: ขยายความกว้างเป็น 1200px หรือใส่ 95% ก็ได้ */
-    margin: 30px auto;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
+// .manage-container {
+//     max-width: 1200px; /* ✅ แก้จุดที่ 1: ขยายความกว้างเป็น 1200px หรือใส่ 95% ก็ได้ */
+//     margin: 30px auto;
+//     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+//     padding: 20px;
+//     background-color: #fff;
+//     border-radius: 8px;
+//     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+// }
 
-h2 {justify-content: center; color: #333; margin-bottom: 40px; }
-.top-actions { margin-bottom: 20px; }
+// h2 {justify-content: center; color: #333; margin-bottom: 40px; }
+// .top-actions { margin-bottom: 20px; }
 
-/* Grid Styles */
-::ng-deep #gridContainer {
-    .dx-datagrid-headers .dx-header-row {
-        background-color: #f5f5f5;
-        color: #333;
-        font-weight: bold;
-    }
-    .fund-name-text {
-        color: #007bff;
-        font-weight: bold;
-    }
-}
+// /* Grid Styles */
+// ::ng-deep #gridContainer {
+//     .dx-datagrid-headers .dx-header-row {
+//         background-color: #f5f5f5;
+//         color: #333;
+//         font-weight: bold;
+//     }
+//     .fund-name-text {
+//         color: #007bff;
+//         font-weight: bold;
+//     }
+// }
 
-/* ปุ่ม Action */
-.action-buttons-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
+// /* ปุ่ม Action */
+// .action-buttons-container {
+//     display: flex;
+//     justify-content: center;
+//     gap: 10px;
+// }
 
-/* ปุ่มแก้ไข */
-::ng-deep .btn-custom-edit {
-    background-color: #ffc107 !important;
-    color: #333 !important;
-    border: none !important;
-    border-radius: 4px;
-    font-weight: 600;
-    cursor: pointer; /* ✅ เพิ่ม cursor pointer */
-    z-index: 10; /* ✅ เพิ่มเพื่อให้แน่ใจว่าอยู่ชั้นบนสุด */
+// /* ปุ่มแก้ไข */
+// ::ng-deep .btn-custom-edit {
+//     background-color: #ffc107 !important;
+//     color: #333 !important;
+//     border: none !important;
+//     border-radius: 4px;
+//     font-weight: 600;
+//     cursor: pointer; /* ✅ เพิ่ม cursor pointer */
+//     z-index: 10; /* ✅ เพิ่มเพื่อให้แน่ใจว่าอยู่ชั้นบนสุด */
 
-    .dx-button-content { padding: 5px 15px; } 
-    &:hover { background-color: #e0a800 !important; }
-}
+//     .dx-button-content { padding: 5px 15px; } 
+//     &:hover { background-color: #e0a800 !important; }
+// }
 
-/* ปุ่มลบ */
-::ng-deep .btn-custom-delete {
-    background-color: #dc3545 !important;
-    color: white !important;
-    border: none !important;
-    border-radius: 4px;
-    font-weight: 600;
-    cursor: pointer;
+// /* ปุ่มลบ */
+// ::ng-deep .btn-custom-delete {
+//     background-color: #dc3545 !important;
+//     color: white !important;
+//     border: none !important;
+//     border-radius: 4px;
+//     font-weight: 600;
+//     cursor: pointer;
 
-    .dx-button-content { padding: 5px 15px; }
-    &:hover { background-color: #c82333 !important; }
-}
-/* --- Form Styles --- */
-.edit-form-card {
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
-    padding: 25px;
-    border-radius: 8px;
-    animation: fadeIn 0.3s ease-in;
+//     .dx-button-content { padding: 5px 15px; }
+//     &:hover { background-color: #c82333 !important; }
+// }
+// /* --- Form Styles --- */
+// .edit-form-card {
+//     background-color: #f8f9fa;
+//     border: 1px solid #e9ecef;
+//     padding: 25px;
+//     border-radius: 8px;
+//     animation: fadeIn 0.3s ease-in;
     
-    h3 { margin-top: 0; margin-bottom: 20px; color: #495057; }
-}
+//     h3 { margin-top: 0; margin-bottom: 20px; color: #495057; }
+// }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+// @keyframes fadeIn {
+//     from { opacity: 0; transform: translateY(10px); }
+//     to { opacity: 1; transform: translateY(0); }
+// }
 
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    gap: 20px;
-    margin-bottom: 20px;
-}
+// .form-grid {
+//     display: grid;
+//     grid-template-columns: 1fr 1fr; 
+//     gap: 20px;
+//     margin-bottom: 20px;
+// }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
+// .form-group {
+//     display: flex;
+//     flex-direction: column;
 
-    label {
-        font-weight: 600;
-        margin-bottom: 5px;
-        color: #666;
-    }
+//     label {
+//         font-weight: 600;
+//         margin-bottom: 5px;
+//         color: #666;
+//     }
     
-    /* ปรับแต่ง input ของ DevExtreme ให้เข้ากับ Grid */
-    ::ng-deep .dx-texteditor {
-        border-radius: 4px;
-    }
-}
+//     /* ปรับแต่ง input ของ DevExtreme ให้เข้ากับ Grid */
+//     ::ng-deep .dx-texteditor {
+//         border-radius: 4px;
+//     }
+// }
 
-.form-actions {
-    display: flex;
-    gap: 10px;
-    justify-content: flex-end;
-}
+// .form-actions {
+//     display: flex;
+//     gap: 10px;
+//     justify-content: flex-end;
+// }
 
-.back-link {
-    text-decoration: none;
-    color: #666;
-    display: inline-block;
-    margin-top: 10px;
-    &:hover { color: #000; }
-}
+// .back-link {
+//     text-decoration: none;
+//     color: #666;
+//     display: inline-block;
+//     margin-top: 10px;
+//     &:hover { color: #000; }
+// }

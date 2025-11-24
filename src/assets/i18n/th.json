@@ -15,5 +15,19 @@
   "BUTTON_BUY": "ซื้อหน่วยลงทุน",
   "BUTTON_EDIT": "แก้ไข",
   "BUTTON_ADD": "เพิ่ม",
-  "BUTTON_DELETE": "ลบ"
+  "BUTTON_DELETE": "ลบ",
+  "BUTTON_ADD_NEW": "เพิ่มกองทุนใหม่",
+  "BUTTON_SAVE": "บันทึกข้อมูล",
+  "BUTTON_CANCEL": "ยกเลิก",
+  "TITLE_ADD": "✨ เพิ่มกองทุนใหม่",
+  "TITLE_EDIT": "✏️ แก้ไขข้อมูลกองทุน",
+  "LABEL_ID": "อันดับ:",
+  "LABEL_FUND": "กองทุน:",
+  "LABEL_COMPANY": "บลจ.:",
+  "LABEL_WEEKS": "จำนวนสัปดาห์:",
+  "LABEL_RETURN": "ผลตอบแทน:",
+  "LABEL_LASTRANK": "อันดับสัปดาห์ที่แล้ว:",
+  "LABEL_CATEGORY": "ประเภทกองทุน:",
+  "LABEL_DATE": "วันที่จดทะเบียน:",
+  "LINK_BACK": "กลับหน้าแรก"
 }

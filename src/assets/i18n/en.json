@@ -14,6 +14,19 @@
   "TABLE_BUY": "Buy",
   "BUTTON_EDIT": "Edit",
   "BUTTON_ADD": "Add",
-  "BUTTON_DELETE": "Delete"
-
+  "BUTTON_DELETE": "Delete",
+  "BUTTON_ADD_NEW": "Add New Fund",
+  "BUTTON_SAVE": "Save Data",
+  "BUTTON_CANCEL": "Cancel",
+  "TITLE_ADD": "✨ Add New Fund",
+  "TITLE_EDIT": "✏️ Edit Fund",
+  "LABEL_ID": "Rank:",
+  "LABEL_FUND": "Fund Name:",
+  "LABEL_COMPANY": "Company:",
+  "LABEL_WEEKS": "Weeks Ranked:",
+  "LABEL_RETURN": "Return:",
+  "LABEL_LASTRANK": "Last Rank:",
+  "LABEL_CATEGORY": "Category:",
+  "LABEL_DATE": "Registration Date:",
+  "LINK_BACK": "Back to Home"
 }

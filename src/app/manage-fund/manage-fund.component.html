@@ -8,7 +8,7 @@
     
     <div class="top-actions">
         <dx-button 
-            text="+ เพิ่มกองทุนใหม่" 
+            [text]="'+ ' + ('BUTTON_ADD_NEW' | translate)" 
             type="success" 
             stylingMode="contained"
             icon="plus"
@@ -56,23 +56,25 @@
             <dxi-column [caption]="'MANAGE_FUND' | translate" cellTemplate="actionCell" alignment="center" [width]="150" [fixed]="true" fixedPosition="right"></dxi-column>
             
             <div *dxTemplate="let data of 'actionCell'">
-                <div class="action-buttons-container">
-                    <dx-button 
-                        [caption]="'BUTTON_EDIT' | translate"
-                        class="btn-custom-edit"
-                        [elementAttr]="{ style: 'z-index: 999;' }" 
-                        (onClick)="startEdit(data.data)">
-                    </dx-button>
-                    
-                    <dx-button 
-                        [caption]="'BUTTON_DELETE' | translate"
-                        class="btn-custom-delete"
-                        [elementAttr]="{ style: 'z-index: 999;' }"
-                        (onClick)="delete(data.data.Id)">
-                    </dx-button>
-                </div>
+            <div class="action-buttons-container">
+                <dx-button 
+                    icon="edit"
+                    [text]="'BUTTON_EDIT' | translate" 
+                    class="btn-custom-edit"
+                    [elementAttr]="{ style: 'z-index: 999;' }" 
+                    (onClick)="startEdit(data.data)">
+                </dx-button>
+        
+                <dx-button 
+                    icon="trash"
+                    [text]="'BUTTON_DELETE' | translate"
+                    class="btn-custom-delete"
+                    [elementAttr]="{ style: 'z-index: 999;' }"
+                    (onClick)="delete(data.data.Id)">
+                </dx-button>
             </div>
-            
+            </div>
+                        
             <dxo-paging [pageSize]="10"></dxo-paging>
         </dx-data-grid>
     </div>
@@ -80,45 +82,45 @@
     <hr style="margin: 30px 0; border: 0; border-top: 1px dashed #ccc;">
     
     <div *ngIf="selectedFund" id="edit-form" class="edit-form-card">
-         <h3>{{ isNew ? '✨ เพิ่มกองทุนใหม่' : '✏️ แก้ไขข้อมูลกองทุน' }}</h3>
+         <h3>{{ isNew ? ('TITLE_ADD' | translate) : ('TITLE_EDIT' | translate) }}</h3>
         
         <div class="form-grid">
             <div class="form-group">
-                <label>อันดับ:</label>
+                <label>{{ 'LABEL_ID' | translate }}</label>
                 <dx-text-box [(value)]="selectedFund.Id"></dx-text-box>
             </div>
             <div class="form-group">
-                <label>กองทุน:</label>
+                <label>{{ 'LABEL_FUND' | translate }}</label>
                 <dx-text-box [(value)]="selectedFund.FundName"></dx-text-box>
             </div>
             <div class="form-group">
-                <label>บลจ.:</label>
+                <label>{{ 'LABEL_COMPANY' | translate }}</label>
                 <dx-text-box [(value)]="selectedFund.Company"></dx-text-box>
             </div>
             <div class="form-group">
-                <label>จำนวนสัปดาห์ที่ติดอันดับ</label>
+                <label>{{ 'LABEL_WEEKS' | translate }}</label>
                 <dx-text-box [(value)]="selectedFund.Ranking"></dx-text-box>
             </div>
             <div class="form-group">
-                <label>ผลตอบแทนย้อนหลัง:</label>
-                <dx-text-box [(value)]="selectedFund.ReturnY"></dx-text-box>
+                <label>{{ 'TABLE_RETURN' | translate }}</label>
+                <dx-text-box [(value)]="selectedFund.Return3Y"></dx-text-box>
             </div>
             <div class="form-group">
-                <label>อันดับสัปดาห์ที่แล้ว:</label>
+                <label>{{ 'LABEL_LASTRANK' | translate }}</label>
                 <dx-text-box [(value)]="selectedFund.Lastrank"></dx-text-box>
             </div>
             <div class="form-group">
-                <label>ประเภทกองทุน:</label>
+                <label>{{ 'LABEL_CATEGORY' | translate }}</label>
                 <dx-text-box [(value)]="selectedFund.Category"></dx-text-box>
             </div>
         </div>
 
         <div class="form-actions">
-            <dx-button text="บันทึกข้อมูล" type="default" icon="save" (onClick)="save()"></dx-button>
-            <dx-button text="ยกเลิก" type="normal" icon="close" (onClick)="cancel()"></dx-button>
+            <dx-button [text]="'BUTTON_SAVE' | translate" type="default" icon="save" (onClick)="save()"></dx-button>
+            <dx-button [text]="'BUTTON_CANCEL' | translate" type="normal" icon="close" (onClick)="cancel()"></dx-button>
         </div>
     </div>
 
     <br>
-    <a routerLink="/" class="pi pi-backward back-link"> กลับหน้าแรก</a>
+    <a routerLink="/" class="pi pi-backward back-link"> {{ 'LINK_BACK' | translate }}</a>
 </div>

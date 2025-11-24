@@ -1,4 +1,15 @@
 {
-  "TITLE": "Welcome to Top Chart Fund Web",
-  "DESCRIPTION": "This is a multi-language Angular application."
+  "TOP_CHART_TITLE": "Top Charts Fund",
+  "MANAGE_FUND": "Manage Funds",
+  "SEARCH_LABEL": "Search Fund:",
+  "SEARCH_PLACEHOLDER": "Fund Name...",
+  "CHART_TITLE": "Most Popular Funds (Weeks)",
+  "TABLE_RANK": "Rank",
+  "TABLE_FUND": "Fund",
+  "TABLE_COMPANY": "Company",
+  "TABLE_WEEKS": "Weeks Ranked",
+  "TABLE_RETURN": "3Y Return",
+  "TABLE_CATEGORY": "Category",
+  "TABLE_BUY": "Buy",
+  "BUTTON_BUY": "Buy Fund"
 }

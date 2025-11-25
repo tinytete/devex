@@ -116,11 +116,13 @@
         </div>
 
         <div class="form-actions">
-            <dx-button [text]="'BUTTON_SAVE' | translate" type="default" icon="save" (onClick)="save()"></dx-button>
-            <dx-button [text]="'BUTTON_CANCEL' | translate" type="normal" icon="close" (onClick)="cancel()"></dx-button>
+            <dx-button icon="save" [text]="'BUTTON_SAVE' | translate" type="default" class="btn-custom-save" [elementAttr]="{ style: 'z-index: 999;' }"  (onClick)="save()"></dx-button>
+            <dx-button icon="close" [text]="'BUTTON_CANCEL' | translate" type="normal" class="btn-custom-cancel" [elementAttr]="{ style: 'z-index: 999;' }" (onClick)="cancel()"></dx-button>
         </div>
     </div>
 
     <br>
     <a routerLink="/" class="pi pi-backward back-link"> {{ 'LINK_BACK' | translate }}</a>
 </div>
+
+

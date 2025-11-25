@@ -58,8 +58,7 @@
     .dx-datagrid-headers .dx-header-row {
         
         background-color: #f8f8f8 !important; /* หัวตารางสีเทาอ่อน */
-        max-width: 1250px;
-        margin: 30px auto;
+        
         color: #333 !important;
         font-weight: bold;
         text-align: center;
@@ -104,3 +103,27 @@
 }
 
 .back-link { text-decoration: none; color: #666; display: inline-block; margin-top: 10px; &:hover { color: #000; } }
+
+::ng-deep .btn-custom-buy {
+    background-color: #00ff55 !important;
+    color: #333 !important;
+    border: none !important;
+    border-radius: 4px;
+    font-weight: 600;
+    
+    .dx-button-content { padding: 0; display: flex; justify-content: center; align-items: center; width: 130px; height: 32px; } 
+    
+    &:hover { background-color: #e0a800 !important; }
+}
+
+/* ปุ่มลบ (สีแดง) */
+::ng-deep .btn-custom-sell {
+    background-color: #dc3545 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 4px;
+    font-weight: 600;
+
+    .dx-button-content { padding: 0; display: flex; justify-content: center; align-items: center; width: 130px; height: 32px; }
+    &:hover { background-color: #c82333 !important; }
+}

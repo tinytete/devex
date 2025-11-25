@@ -73,21 +73,19 @@
         </dx-data-grid>
     </div>
         
-    <div class="action-buttons-container" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 30px;">
+    <div class="action-buttons-container" style="display: flex; justify-content: center; gap: 130px; margin-bottom: 30px;">
         <dx-button 
+            icon="buy"
             [text]="'BUTTON_BUY' | translate" 
-            type="success" 
-            [width]="200" 
-            [height]="50"
+            class="btn-custom-buy"
             [elementAttr]="{ style: 'font-size: 18px; font-weight: bold;' }"
             (onClick)="navigateToBuy()">
         </dx-button>
 
         <dx-button 
+            icon="sell"
             [text]="'BUTTON_SELL' | translate"
-            type="danger" 
-            [width]="200" 
-            [height]="50"
+            class="btn-custom-sell"
             [elementAttr]="{ style: 'font-size: 18px; font-weight: bold;' }"
             (onClick)="navigateToSell()">
         </dx-button>
@@ -96,3 +94,4 @@
      <br>
     <a routerLink="/" class="pi pi-backward back-link"> {{ 'LINK_BACK' | translate }}</a>
 </div>
+

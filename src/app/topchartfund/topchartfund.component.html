@@ -73,15 +73,15 @@
                     </div>
                 </dxi-column>
 
-                <dxi-column dataField="Lastrank" [caption]="'TABLE_LASTRANK' | translate" alignment="center" [width]="170"></dxi-column>
+                <dxi-column dataField="Lastrank" [caption]="'TABLE_LASTRANK' | translate" alignment="center" [width]="160"></dxi-column>
 
                 <dxi-column dataField="Category" [caption]="'TABLE_CATEGORY' | translate" alignment="center" [width]="175"></dxi-column>
 
-                <dxi-column [caption]="'TABLE_BUY' | translate" alignment="center" [width]="70" cellTemplate="buyCell"></dxi-column>
+                <dxi-column [caption]="'TABLE_BUY' | translate" alignment="center" [width]="90" cellTemplate="buyCell"></dxi-column>
                 
                 <div *dxTemplate="let data of 'buyCell'">
                     <dx-button 
-                        class="pi pi-shopping-cart"
+                        icon = "cart"
                         hint="ซื้อกองทุน"
                         [elementAttr]="{ style: 'z-index: 999;' }" 
                         (onClick)="onBuyClick($event, data.data.Id)">

@@ -30,13 +30,13 @@
             [columnAutoWidth]="true" 
             [allowColumnResizing]="true">
 
-            <dxi-column dataField="Id" [caption]="'TABLE_RANK' | translate" alignment="center" [width]="70" [allowResizing]="false">
+            <dxi-column dataField="Id" [caption]="'TABLE_RANK' | translate" alignment="center" [width]="60" [allowResizing]="false">
                 <div *dxTemplate="let data of 'cell'"> 
                     <span class="rank-badge rank-{{data.value}}">{{ data.value }}</span>
                 </div>
             </dxi-column>
             
-            <dxi-column dataField="FundName" [caption]="'TABLE_FUND' | translate" alignment="left" [minWidth]="170">
+            <dxi-column dataField="FundName" [caption]="'TABLE_FUND' | translate" alignment="left" [minWidth]="130">
                 <div *dxTemplate="let data of 'cell'">
                     <div class="fund-name">{{ data.value }}</div>
                     <div class="fund-company-sub">{{ 'TABLE_COMPANY' | translate }} {{ data.data.Company }}</div>
@@ -47,7 +47,7 @@
             
             <dxi-column dataField="Ranking" [caption]="'TABLE_WEEKS' | translate" alignment="center" [width]="170"></dxi-column>
 
-            <dxi-column dataField="Return3Y" [caption]="'TABLE_RETURN' | translate" alignment="center" [width]="200">
+            <dxi-column dataField="Return3Y" [caption]="'TABLE_RETURN' | translate" alignment="center" [width]="170">
                 <div *dxTemplate="let data of 'cell'">
                     <div class="return-val">{{ data.value | number:'1.2-2' }}%</div>
                 </div>
@@ -56,7 +56,7 @@
 
             <dxi-column dataField="Category" [caption]="'TABLE_CATEGORY' | translate" alignment="center" [width]="150"></dxi-column>
 
-            <dxi-column [caption]="'MANAGE_FUND' | translate" cellTemplate="actionCell" alignment="center" [width]="150" [fixed]="true" fixedPosition="right"></dxi-column>
+            <dxi-column [caption]="'MANAGE_FUND' | translate" cellTemplate="actionCell" alignment="center" [width]="200" fixedPosition="right"></dxi-column>
             
             <div *dxTemplate="let data of 'actionCell'">
             <div class="action-buttons-container">

@@ -113,7 +113,7 @@
     
     .dx-button-content { padding: 0; display: flex; justify-content: center; align-items: center; width: 100px; height: 32px; } 
     
-    &:hover { background-color: #e0a800 !important; }
+    &:hover { background-color: hsl(120, 60%, 81%) !important; }
 }
 
 /* ปุ่มลบ (สีแดง) */
@@ -125,5 +125,5 @@
     font-weight: 600;
 
     .dx-button-content { padding: 0; display: flex; justify-content: center; align-items: center; width: 100px; height: 32px; }
-    &:hover { background-color: #c82333 !important; }
+    &:hover { background-color: #e77f89 !important; }
 }

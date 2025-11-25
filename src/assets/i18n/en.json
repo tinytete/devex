@@ -10,7 +10,7 @@
   "TABLE_FUND": "Fund",
   "TABLE_COMPANY": "Company",
   "TABLE_WEEKS": "Weeks Ranked",
-  "TABLE_RETURN": "3Y Return",
+  "TABLE_RETURN": "Return for the past 3 years (% per year)",
   "TABLE_LASTRANK": "Last Ranking",
   "TABLE_CATEGORY": "Category",
   "TABLE_BUY": "Buy",

@@ -2,8 +2,10 @@
     <div class="header-left">
         <span class="site-title">{{ 'TOP_CHART_TITLE' | translate }}</span>
     </div>
+    <div class="header-right">
+        <app-language-switcher></app-language-switcher>
+    </div>
 </header>
-
 <div *ngIf="fundData" class="fund-detail-container">
     
     <header class="detail-header">

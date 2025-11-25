@@ -77,7 +77,7 @@
 
                 <dxi-column dataField="Category" [caption]="'TABLE_CATEGORY' | translate" alignment="center" [width]="175"></dxi-column>
 
-                <dxi-column caption="ซื้อ" [caption]="'TABLE_BUY' | translate" [width]="70" cellTemplate="buyCell"></dxi-column>
+                <dxi-column [caption]="'TABLE_BUY' | translate" alignment="center" [width]="70" cellTemplate="buyCell"></dxi-column>
                 
                 <div *dxTemplate="let data of 'buyCell'">
                     <dx-button 

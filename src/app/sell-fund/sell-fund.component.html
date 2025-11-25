@@ -13,7 +13,7 @@
     <div class="portfolio-card sell-style">
         <div class="info-row">
             <span>{{ 'SELL_HELD_UNITS' | translate }}</span>
-            <strong>{{ heldUnits | number:'1.4-4' }} Units</strong>
+            <strong>{{ heldUnits | number:'1.2-2' }} Units</strong>
         </div>
         <div class="info-row">
             <span>{{ 'SELL_CURRENT_VAL' | translate }} (NAV {{ fundData?.NAV }}):</span>
@@ -38,7 +38,7 @@
                     [(value)]="sellAmount" 
                     [max]="heldUnits" 
                     [min]="0"
-                    format="#,##0.0000"
+                    format="#,##0.00"
                     (onValueChanged)="onAmountChange()">
                 </dx-number-box>
             </div>

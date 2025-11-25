@@ -2,20 +2,20 @@
     <div class="header-left">
         <span class="site-title">{{ 'TOP_CHART_TITLE' | translate }}</span>
     </div>
+    <div class="header-right">
+        <app-language-switcher></app-language-switcher>
+    </div>
 </header>
+
 <div class="buy-sell-container">
     <div class="header-section buy-mode">
         <h2>{{ 'BUY_TITLE' | translate }}</h2>
         <div class="fund-id-tag">ID: {{ fundId }}</div>
     </div>
+    
     <h3 style="margin-top: 0; color: #333;">{{ fundData?.FundName }}</h3>
 
-    <div class="portfolio-card buy-style">
-        <div class="info-row">
-            <span>{{ 'BUY_ACCOUNT' | translate }}</span>
-            <strong>KBANK (x-1234)</strong>
-        </div>
-        </div>
+    
 
     <div class="form-area dx-fieldset">
         
@@ -64,7 +64,7 @@
             <dx-check-box [text]="'BUY_AGREE' | translate" [(value)]="isAgreed"></dx-check-box>
         </div>
 
-        <div class="action-buttons" >
+        <div class="action-buttons">
             <dx-button 
                 [text]="'BUTTON_CONFIRM_BUY' | translate" 
                 type="success" 
@@ -84,7 +84,7 @@
         <p>{{ 'BUY_SUCCESS_MSG' | translate }}</p>
         
         <dx-button 
-            text="ตกลง" 
+            [text]="'ตกลง' | translate"  
             type="default" 
             [width]="120"
             (onClick)="closeSuccess()">

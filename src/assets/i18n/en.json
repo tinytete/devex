@@ -51,10 +51,8 @@
   "PERF_5Y": "5 Years",
 
   "BUY_TITLE": "Buy Funds",
-  "BUY_ACCOUNT": "Direct Debit Account:",
-  "BUY_BALANCE": "Account Balance:",
   "BUY_AMOUNT_LABEL": "Amount (THB):",
-  "BUY_MIN_NOTE": "*Minimum 1,000 THB",
+  "BUY_MIN_NOTE": "*Minimum 500 THB",
   "BUY_DATE": "Transaction Date:",
   "BUY_SUM_INVEST": "Investment Amount:",
   "BUY_FEE": "Fee (1%):",

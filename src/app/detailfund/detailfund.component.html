@@ -48,7 +48,7 @@
             [columnAutoWidth]="false" 
             [rowAlternationEnabled]="false"> 
             
-            <dxi-column dataField="Fundname" [caption]="'TABLE_FUND' | translate" alignment="center" [width]="180">
+            <dxi-column dataField="Fundname" [caption]="'TABLE_FUND' | translate" alignment="center" [width]="230">
                 <div *dxTemplate="let data of 'cell'">
                     <div class="fund-performance-cell" style="display: flex; align-items: center;">
                         <span style="width:10px; height:10px; background:#007bff; margin-right:5px; display:inline-block;"></span>
@@ -57,11 +57,11 @@
                 </div>
             </dxi-column>
 
-            <dxi-column dataField="R_1D" [caption]="'PERF_1D' | translate" alignment="center" [width]="180" cellTemplate="returnCell"></dxi-column>
-            <dxi-column dataField="R_1M" [caption]="'PERF_1M' | translate" alignment="center" [width]="180" cellTemplate="returnCell"></dxi-column>
-            <dxi-column dataField="R_1Y" [caption]="'PERF_1Y' | translate" alignment="center" [width]="180" cellTemplate="returnCell"></dxi-column>
-            <dxi-column dataField="R_3Y" [caption]="'PERF_3Y' | translate" alignment="center" [width]="180" cellTemplate="returnCell"></dxi-column>
-            <dxi-column dataField="R_5Y" [caption]="'PERF_5Y' | translate" alignment="center" [width]="180" cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_1D" [caption]="'PERF_1D' | translate" alignment="center" [width]="210" cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_1M" [caption]="'PERF_1M' | translate" alignment="center" [width]="210" cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_1Y" [caption]="'PERF_1Y' | translate" alignment="center" [width]="210" cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_3Y" [caption]="'PERF_3Y' | translate" alignment="center" [width]="210" cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_5Y" [caption]="'PERF_5Y' | translate" alignment="center" [width]="210" cellTemplate="returnCell"></dxi-column>
             
             <div *dxTemplate="let data of 'returnCell'">
                 <span [ngClass]="{'negative-return': data.value < 0, 'positive-return': data.value >= 0}" 

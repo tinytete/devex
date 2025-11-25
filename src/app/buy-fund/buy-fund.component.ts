@@ -11,7 +11,7 @@ import { Service } from '../app.service';
 export class BuyFundComponent implements OnInit {
   fundId!: number;
   fundData: any;
-  purchaseAmount: number = 5000; 
+  purchaseAmount: number = 500; 
   isAgreed: boolean = false;
   today: Date = new Date();
   purchaseSuccess: boolean = false;

@@ -83,6 +83,7 @@
                     <dx-button 
                         class="pi pi-shopping-cart"
                         hint="ซื้อกองทุน"
+                        [elementAttr]="{ style: 'z-index: 999;' }" 
                         (onClick)="onBuyClick($event, data.data.Id)">
                     </dx-button>
                 </div>

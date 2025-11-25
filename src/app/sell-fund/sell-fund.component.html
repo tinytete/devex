@@ -26,14 +26,6 @@
     </div>
 
     <div class="form-area dx-fieldset">
-        
-        <div style="margin-bottom: 20px;">
-            <dx-check-box 
-                [text]="'SELL_OPTION_ALL' | translate"
-                [(value)]="sellAllUnits"
-                (onValueChanged)="updateSellAmount()">
-            </dx-check-box>
-        </div>
 
         <div class="dx-field">
             <div class="dx-field-label">{{ 'SELL_AMOUNT_LABEL' | translate }}</div>
@@ -45,6 +37,14 @@
                     format="#,##0.00"
                     (onValueChanged)="onAmountChange()">
                 </dx-number-box>
+                <br>
+                 <div style="margin-bottom: 20px;">
+                    <dx-check-box 
+                        [text]="'SELL_OPTION_ALL' | translate"
+                        [(value)]="sellAllUnits"
+                        (onValueChanged)="updateSellAmount()">
+                     </dx-check-box>
+                 </div>
             </div>
         </div>
 

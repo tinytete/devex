@@ -1,6 +1,6 @@
 <header class="top-header">
     <div class="header-left">
-        <span class="site-title">{{ 'MANAGE_FUND' | translate }}</span>
+        <span class="site-title">{{ 'TOP_CHART_TITLE' | translate }}</span>
     </div>
 </header>
 
@@ -17,16 +17,16 @@
 
     <div class="main-content-area">
         <div class="key-metrics-box">
-            <h3>ข้อมูลสำคัญ</h3>
-            <p><strong>ประเภทกองทุน:</strong> {{ fundData.Category }}</p>
-            <p><strong>มูลค่าสินทรัพย์สุทธิ:</strong> {{ fundData.AUM}}</p>
-            <p><strong>วันที่จดทะเบียน:</strong> {{ fundData.RegisterDate }}</p>
-            <p><strong>ความเสี่ยง:</strong> <span class="risk-level-{{ fundData.RiskLevel }}"> {{ fundData.RiskLevel }}</span></p>
+            <h3>{{ 'DETAIL_KEY_INFO' | translate }}</h3>
+            <p><strong>{{ 'LABEL_CATEGORY' | translate }}</strong> {{ fundData.Category }}</p>
+            <p><strong>{{ 'DETAIL_AUM' | translate }}</strong> {{ fundData.AUM}}</p>
+            <p><strong>{{ 'LABEL_DATE' | translate }}</strong> {{ fundData.RegisterDate }}</p>
+            <p><strong>{{ 'DETAIL_RISK' | translate }}</strong> <span class="risk-level-{{ fundData.RiskLevel }}"> {{ fundData.RiskLevel }}</span></p>
         </div>
     </div>
     
     <div class="chart-area">
-        <h2>กราฟราคา NAV</h2>
+        <h2>{{ 'DETAIL_GRAPH' | translate }}</h2>
         <dx-chart id="nav-chart" [dataSource]="navHistoryData">
             <dxi-series argumentField="Date" valueField="NAV" type="line" color="#00AEEF" name="NAV"></dxi-series>
             <dxo-argument-axis argumentType="datetime"></dxo-argument-axis>
@@ -35,7 +35,7 @@
     </div>
 
     <div class="performance-table" style="margin-bottom: 30px;">
-        <h2>ผลตอบแทนย้อนหลัง</h2>
+        <h2>{{ 'DETAIL_PERFORMANCE' | translate }}</h2>
         
         <dx-data-grid 
             [dataSource]="performanceData" 
@@ -46,24 +46,24 @@
             [columnAutoWidth]="false" 
             [rowAlternationEnabled]="false"> 
             
-            <dxi-column dataField="Fundname" caption="กองทุน" alignment="left">
+            <dxi-column dataField="Fundname" [caption]="'TABLE_FUND' | translate" alignment="left">
                 <div *dxTemplate="let data of 'cell'">
                     <div class="fund-performance-cell" style="display: flex; align-items: center;">
-                        <span style="width:250px; height: 250px; background:#007bff; margin-right:5px; display:inline-block;"></span>
+                        <span style="width:10px; height:10px; background:#007bff; margin-right:5px; display:inline-block;"></span>
                         <span style="font-weight: bold;">{{ data.data.Fundname }}</span>
                     </div>
                 </div>
             </dxi-column>
 
-            <dxi-column dataField="R_1D" caption="1 วัน" alignment="center" [width]="180" cellTemplate="returnCell"></dxi-column>
-            <dxi-column dataField="R_1M" caption="1 เดือน" alignment="center" [width]="180" cellTemplate="returnCell"></dxi-column>
-            <dxi-column dataField="R_1Y" caption="1 ปี" alignment="center" [width]="180" cellTemplate="returnCell"></dxi-column>
-            <dxi-column dataField="R_3Y" caption="3 ปี" alignment="center" [width]="180" cellTemplate="returnCell"></dxi-column>
-            <dxi-column dataField="R_5Y" caption="5 ปี" alignment="center" [width]="180" cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_1D" [caption]="'PERF_1D' | translate" alignment="center" [width]="180" cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_1M" [caption]="'PERF_1M' | translate" alignment="center" [width]="180" cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_1Y" [caption]="'PERF_1Y' | translate" alignment="center" [width]="180" cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_3Y" [caption]="'PERF_3Y' | translate" alignment="center" [width]="180" cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_5Y" [caption]="'PERF_5Y' | translate" alignment="center" [width]="180" cellTemplate="returnCell"></dxi-column>
             
             <div *dxTemplate="let data of 'returnCell'">
                 <span [ngClass]="{'negative-return': data.value < 0, 'positive-return': data.value >= 0}" 
-                      style="font-weight: bold;" alignment="center;"
+                      style="font-weight: bold;" 
                       [style.color]="data.value < 0 ? 'red' : 'green'">
                     {{ data.value}}%
                 </span>
@@ -75,7 +75,7 @@
         
     <div class="action-buttons-container" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 30px;">
         <dx-button 
-            text="ซื้อกองทุน" 
+            [text]="'BUTTON_BUY' | translate" 
             type="success" 
             [width]="200" 
             [height]="50"
@@ -84,7 +84,7 @@
         </dx-button>
 
         <dx-button 
-            text="ขาย" 
+            [text]="'BUTTON_SELL' | translate"
             type="danger" 
             [width]="200" 
             [height]="50"
@@ -94,5 +94,5 @@
     </div>
 
      <br>
-    <a routerLink="/" class="pi pi-backward back-link"> กลับหน้าแรก</a>
+    <a routerLink="/" class="pi pi-backward back-link"> {{ 'LINK_BACK' | translate }}</a>
 </div>

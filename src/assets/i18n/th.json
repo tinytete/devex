@@ -5,6 +5,7 @@
   "SEARCH_LABEL": "ค้นหาชื่อกองทุนรวม:",
   "SEARCH_PLACEHOLDER": "พิมพ์ชื่อกองทุน...",
   "CHART_TITLE": "จำนวนสัปดาห์ที่ติดอันดับสูงสุด",
+  
   "TABLE_RANK": "อันดับ",
   "TABLE_FUND": "กองทุน",
   "TABLE_COMPANY": "บลจ.",
@@ -13,6 +14,7 @@
   "TABLE_LASTRANK": "อันดับสัปดาห์ที่แล้ว",
   "TABLE_CATEGORY": "ประเภทของกองทุน",
   "TABLE_BUY": "ซื้อ",
+  
   "BUTTON_BUY": "ซื้อหน่วยลงทุน",
   "BUTTON_EDIT": "แก้ไข",
   "BUTTON_ADD": "เพิ่ม",
@@ -20,8 +22,13 @@
   "BUTTON_ADD_NEW": "เพิ่มกองทุนใหม่",
   "BUTTON_SAVE": "บันทึก",
   "BUTTON_CANCEL": "ยกเลิก",
-  "TITLE_ADD": "✨ เพิ่มกองทุนใหม่",
-  "TITLE_EDIT": "✏️ แก้ไขข้อมูลกองทุน",
+  "BUTTON_CONFIRM_BUY": "ยืนยันคำสั่งซื้อ",
+  "BUTTON_CONFIRM_SELL": "ยืนยันคำสั่งขาย",
+  "BUTTON_SELL": "ขาย",
+  
+  "TITLE_ADD": "เพิ่มกองทุนใหม่",
+  "TITLE_EDIT": "แก้ไขข้อมูลกองทุน",
+  
   "LABEL_ID": "อันดับ:",
   "LABEL_FUND": "กองทุน:",
   "LABEL_COMPANY": "บลจ.:",
@@ -30,6 +37,40 @@
   "LABEL_LASTRANK": "อันดับสัปดาห์ที่แล้ว:",
   "LABEL_CATEGORY": "ประเภทกองทุน:",
   "LABEL_DATE": "วันที่จดทะเบียน:",
-  "LINK_BACK": "กลับหน้าแรก"
-  
+  "LINK_BACK": "กลับหน้าแรก",
+
+  "DETAIL_KEY_INFO": "ข้อมูลสำคัญ",
+  "DETAIL_AUM": "มูลค่าสินทรัพย์สุทธิ:",
+  "DETAIL_RISK": "ความเสี่ยง:",
+  "DETAIL_GRAPH": "กราฟราคา NAV",
+  "DETAIL_PERFORMANCE": "ผลตอบแทนย้อนหลัง",
+  "PERF_1D": "1 วัน",
+  "PERF_1M": "1 เดือน",
+  "PERF_1Y": "1 ปี",
+  "PERF_3Y": "3 ปี",
+  "PERF_5Y": "5 ปี",
+
+  "BUY_TITLE": "ซื้อหน่วยลงทุน",
+  "BUY_ACCOUNT": "บัญชีหักเงินอัตโนมัติ:",
+  "BUY_BALANCE": "ยอดเงินคงเหลือในบัญชี:",
+  "BUY_AMOUNT_LABEL": "ระบุจำนวนเงิน (บาท):",
+  "BUY_MIN_NOTE": "*ขั้นต่ำ 1,000 บาท",
+  "BUY_DATE": "วันที่ทำรายการ:",
+  "BUY_SUM_INVEST": "จำนวนเงินลงทุน:",
+  "BUY_FEE": "ค่าธรรมเนียม (1%):",
+  "BUY_TOTAL": "ยอดรวมที่ต้องชำระ:",
+  "BUY_AGREE": "ข้าพเจ้ายินยอมและรับทราบเงื่อนไขหนังสือชี้ชวน",
+  "BUY_SUCCESS_TITLE": "ซื้อสำเร็จ!",
+  "BUY_SUCCESS_MSG": "คำสั่งซื้อของคุณได้รับการบันทึกแล้ว",
+
+  "SELL_TITLE": "ขายคืนหน่วยลงทุน",
+  "SELL_HELD_UNITS": "หน่วยลงทุนที่มี:",
+  "SELL_CURRENT_VAL": "มูลค่าปัจจุบัน",
+  "SELL_OPTION_ALL": "ขายคืนทั้งหมด",
+  "SELL_AMOUNT_LABEL": "จำนวนหน่วยที่ขาย:",
+  "SELL_SUM_TOTAL": "มูลค่าขายรวม:",
+  "SELL_FEE": "ค่าธรรมเนียมขาย (2%):",
+  "SELL_NET_RECEIVE": "ยอดเงินสุทธิที่จะได้รับ:",
+  "SELL_SUCCESS_TITLE": "ทำรายการสำเร็จ!",
+  "SELL_SUCCESS_MSG": "ระบบได้รับคำสั่งขายเรียบร้อยแล้ว"
 }

@@ -12,7 +12,7 @@ export class DetailfundComponent implements OnInit {
   fundId: number | undefined;
   fundData: any;
   navHistoryData: any[] = [];
-  performanceData: any[] = []; // ใช้สำหรับตารางแนวนอน
+  performanceData: any[] = [];
 
   constructor(private route: ActivatedRoute,
     private service: Service,
@@ -45,6 +45,7 @@ export class DetailfundComponent implements OnInit {
       this.router.navigate(['/sell', this.fundId]);
     }
   }
+  
   navigateToFav() {
     if (this.fundId) {
       return ;
@@ -52,7 +53,6 @@ export class DetailfundComponent implements OnInit {
   }
 
   loadMockData(id: number) {
-    // ข้อมูล NAV สำหรับ Chart
     this.navHistoryData = [
         { Date: new Date(2024, 0, 1), NAV: 14.0000 },
         { Date: new Date(2024, 3, 1), NAV: 14.2500 },
@@ -61,7 +61,6 @@ export class DetailfundComponent implements OnInit {
         { Date: new Date(2024, 11, 1), NAV: 15.1000 },
     ];
 
-    // ✅ FIXED: Mock Data สำหรับตารางผลตอบแทน (รูปแบบแนวนอน 1 แถว)
     this.performanceData = [{
         Fundname: this.fundData.FundName,
         R_1D: -0.10,
@@ -69,7 +68,6 @@ export class DetailfundComponent implements OnInit {
         R_1Y: 23.25,
         R_3Y: 12.35, 
         R_5Y: 14.38, 
-
     }];
   }
 }

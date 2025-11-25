@@ -3,20 +3,18 @@ import { Service } from './app.service';
 import { TranslateService } from "@ngx-translate/core";
 
 @Component({
-  selector: 'demo-app', // ⚠️ เช็ค index.html ด้วยนะครับว่าใช้ <demo-app> หรือ <app-root>
+  selector: 'demo-app',
   templateUrl: 'app.component.html',
-  styleUrl: 'app.component.scss', // ถ้า Angular รุ่นเก่าอาจต้องใช้ styleUrls (มี s)
+  styleUrl: 'app.component.scss',
   providers: [Service],
 })
 export class AppComponent implements OnInit {
   title = 'topchartsfund';
 
   constructor(private translate: TranslateService) {
-     // ควรตั้งค่า default lang ไว้กันเหนียว
      translate.setDefaultLang('th');
      translate.use('th');
   }
-
   
   ngOnInit() {
     const storedLang = localStorage.getItem('language');

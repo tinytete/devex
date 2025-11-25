@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router'; // ✅ Import Router
+import { ActivatedRoute, Router } from '@angular/router';
 import { Service } from '../app.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class BuyFundComponent implements OnInit {
   constructor(
     private route: ActivatedRoute, 
     private service: Service,
-    private router: Router // ✅ Inject Router
+    private router: Router
 ) {}
 
   ngOnInit(): void {
@@ -30,9 +30,8 @@ export class BuyFundComponent implements OnInit {
     });
   }
 
-  // ✅ คำนวณอัตโนมัติ (Real-time)
   get purchaseFee(): number {
-    return this.purchaseAmount * 0.01; // ค่าธรรมเนียม 1%
+    return this.purchaseAmount * 0.01;
   }
 
   get totalPayment(): number {
@@ -40,10 +39,9 @@ export class BuyFundComponent implements OnInit {
   }
 
   confirmPurchase() {
-    this.purchaseSuccess = true; // โชว์ Popup
+    this.purchaseSuccess = true;
   }
 
-  // ✅ ฟังก์ชันกดปุ่ม "ตกลง" แล้วกลับหน้าแรก
   closeSuccess() {
     this.router.navigate(['/']); 
   }

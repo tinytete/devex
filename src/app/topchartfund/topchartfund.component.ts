@@ -1,4 +1,3 @@
-// src/app/topchartfund/topchartfund.component.ts
 import { Component } from '@angular/core';
 import { Service } from '../app.service';
 import { Router } from '@angular/router';
@@ -10,12 +9,10 @@ import { Router } from '@angular/router';
   providers: [Service],
 })
 export class TopchartfundComponent {
-  // ... (ตัวแปรเดิม คงไว้) ...
   title = 'topchartsfund';
   topChartData: any[] = [];
   chartData: any[] = [];
 
-  // ... (customizeLabel, customizeSeriesLabel คงไว้) ...
   public customizeLabel = (e:any)=> { return e.value; }
   public customizeSeriesLabel = (e: any) => { return e.point.data.Company; }
 
@@ -25,7 +22,6 @@ export class TopchartfundComponent {
     this.chartData = this.topChartData;
   }
 
-  // ... (navigateToManage, onRowClick, onPointClick คงไว้) ...
   navigateToManage() { this.router.navigate(['/manage']); }
 
   onRowClick(e:any) {
@@ -53,11 +49,10 @@ export class TopchartfundComponent {
       }
   }
 
-  // ✅ เพิ่มฟังก์ชันนี้กลับเข้ามาครับ ไม่งั้นกดปุ่มซื้อไม่ได้
   onBuyClick(e: any, fundId: number) {
     if (e && e.event) {
-      e.event.stopPropagation(); // หยุดไม่ให้เด้งไปหน้า Detail
+      e.event.stopPropagation();
     }
-    this.navigateToBuy(fundId); // ไปหน้าซื้อ
+    this.navigateToBuy(fundId);
   }
 }

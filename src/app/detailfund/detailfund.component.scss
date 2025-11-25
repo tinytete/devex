@@ -1,4 +1,3 @@
-/* src/app/detailfund/detailfund.component.scss */
 @import "primeicons/primeicons.css";
 
 .top-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background-color: #ffffff; border-bottom: 1px solid #e0e0e0; }
@@ -42,7 +41,7 @@
     border: 1px solid #eee;
     border-radius: 5px;
     background-color: white; 
-    width: 100%; /* ✅ FIX: ทำให้ตารางเต็มจอ */
+    width: 100%;
 
     h2 {
         font-size: 1.5em;
@@ -53,12 +52,10 @@
     .data-date { font-size: 0.8em; color: #777; font-weight: normal; }
 }
 
-/* --- ตาราง Performance Styles --- */
+/* --- Performance Table Styles --- */
 ::ng-deep .performance-table {
     .dx-datagrid-headers .dx-header-row {
-        
-        background-color: #f8f8f8 !important; /* หัวตารางสีเทาอ่อน */
-        
+        background-color: #f8f8f8 !important;
         color: #333 !important;
         font-weight: bold;
         text-align: center;
@@ -74,20 +71,18 @@
     .fund-color-box {
         width: 20px; height: 12px; background-color: #007bff; border-radius: 3px;
     }
-    
-    /* สีเขียว/แดง ตามค่าผลตอบแทน */
     .positive-return { color: #28a745; font-weight: 600; }
     .negative-return { color: #dc3545; font-weight: 600; }
 }
 
-/* --- Action Footer (ปุ่มซื้อ/ขาย) --- */
+/* --- Buttons --- */
 .action-buttons-compact {
     display: flex;
     justify-content: space-between;
     gap: 10px;
     margin-top: 20px;
     padding-top: 15px;
-    border-top: 1px dashed #ddd; /* เส้นกั้นให้ดูเป็นระเบียบ */
+    border-top: 1px dashed #ddd;
 }
 
 .action-buy-sm, .action-sell-sm {
@@ -116,7 +111,6 @@
     &:hover { background-color: hsl(120, 60%, 81%) !important; }
 }
 
-/* ปุ่มลบ (สีแดง) */
 ::ng-deep .btn-custom-sell {
     background-color: #dc3545 !important;
     color: white !important;

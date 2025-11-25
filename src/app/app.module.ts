@@ -11,11 +11,13 @@ import { ManageFundComponent } from './manage-fund/manage-fund.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
-// ✅ 1. เพิ่ม MissingTranslationHandler เข้าไปใน Import
 import { TranslateLoader, TranslateModule, MissingTranslationHandler } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'; 
 import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
 import { MyMissingTranslationHandler } from "./language.service";
+import { DxNumberBoxModule } from 'devextreme-angular';
+import { DxCheckBoxModule } from 'devextreme-angular';
+import { DxDateBoxModule } from 'devextreme-angular';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -40,6 +42,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     DxChartModule,
     DxTextBoxModule,
     DxButtonModule,
+    DxNumberBoxModule,
+    DxCheckBoxModule,
+    DxDateBoxModule,
     FormsModule,
     DxAutocompleteModule,
     HttpClientModule,

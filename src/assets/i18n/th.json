@@ -15,7 +15,7 @@
   "TABLE_CATEGORY": "ประเภทของกองทุน",
   "TABLE_BUY": "ซื้อ",
   
-  "BUTTON_BUY": "ซื้อหน่วยลงทุน",
+  "BUTTON_BUY": "ซื้อกองทุน",
   "BUTTON_EDIT": "แก้ไข",
   "BUTTON_ADD": "เพิ่ม",
   "BUTTON_DELETE": "ลบ",
@@ -50,7 +50,7 @@
   "PERF_3Y": "3 ปี",
   "PERF_5Y": "5 ปี",
 
-  "BUY_TITLE": "ซื้อหน่วยลงทุน",
+  "BUY_TITLE": "ซื้อกองทุน",
   "BUY_ACCOUNT": "บัญชีหักเงินอัตโนมัติ:",
   "BUY_BALANCE": "ยอดเงินคงเหลือในบัญชี:",
   "BUY_AMOUNT_LABEL": "ระบุจำนวนเงิน (บาท):",
@@ -63,7 +63,7 @@
   "BUY_SUCCESS_TITLE": "ซื้อสำเร็จ!",
   "BUY_SUCCESS_MSG": "คำสั่งซื้อของคุณได้รับการบันทึกแล้ว",
 
-  "SELL_TITLE": "ขายคืนหน่วยลงทุน",
+  "SELL_TITLE": "ขายกองทุน",
   "SELL_HELD_UNITS": "หน่วยลงทุนที่มี:",
   "SELL_CURRENT_VAL": "มูลค่าปัจจุบัน",
   "SELL_OPTION_ALL": "ขายคืนทั้งหมด",

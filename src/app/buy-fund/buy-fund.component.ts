@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router'; // ✅ Import Router
 import { Service } from '../app.service';
 
 @Component({
   selector: 'app-buy-fund',
   templateUrl: './buy-fund.component.html',
-  styleUrls: ['./buy-fund.component.scss'], // ใช้ SCSS เดียวกับหน้าขาย หรือไฟล์ตัวเองที่มี code เหมือนกัน
+  styleUrls: ['./buy-fund.component.scss'],
   providers: [Service]
 })
 export class BuyFundComponent implements OnInit {
@@ -16,7 +16,11 @@ export class BuyFundComponent implements OnInit {
   today: Date = new Date();
   purchaseSuccess: boolean = false;
 
-  constructor(private route: ActivatedRoute, private service: Service) {}
+  constructor(
+    private route: ActivatedRoute, 
+    private service: Service,
+    private router: Router // ✅ Inject Router
+) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -26,9 +30,9 @@ export class BuyFundComponent implements OnInit {
     });
   }
 
-  // Helper สำหรับคำนวณใน html
+  // ✅ คำนวณอัตโนมัติ (Real-time)
   get purchaseFee(): number {
-    return this.purchaseAmount * 0.01; // 1% Fee
+    return this.purchaseAmount * 0.01; // ค่าธรรมเนียม 1%
   }
 
   get totalPayment(): number {
@@ -36,7 +40,11 @@ export class BuyFundComponent implements OnInit {
   }
 
   confirmPurchase() {
-    this.purchaseSuccess = true;
-    console.log(`ซื้อกองทุน ID: ${this.fundId}, ยอดเงิน: ${this.purchaseAmount}`);
+    this.purchaseSuccess = true; // โชว์ Popup
+  }
+
+  // ✅ ฟังก์ชันกดปุ่ม "ตกลง" แล้วกลับหน้าแรก
+  closeSuccess() {
+    this.router.navigate(['/']); 
   }
 }

@@ -50,7 +50,7 @@
   "PERF_3Y": "3 Years",
   "PERF_5Y": "5 Years",
 
-  "BUY_TITLE": "Buy Investment Units",
+  "BUY_TITLE": "Buy Funds",
   "BUY_ACCOUNT": "Direct Debit Account:",
   "BUY_BALANCE": "Account Balance:",
   "BUY_AMOUNT_LABEL": "Amount (THB):",
@@ -63,7 +63,7 @@
   "BUY_SUCCESS_TITLE": "Purchase Successful!",
   "BUY_SUCCESS_MSG": "Your purchase order has been recorded.",
 
-  "SELL_TITLE": "Sell Investment Units",
+  "SELL_TITLE": "Sell Funds",
   "SELL_HELD_UNITS": "Units Held:",
   "SELL_CURRENT_VAL": "Current Value",
   "SELL_OPTION_ALL": "Sell All Units",

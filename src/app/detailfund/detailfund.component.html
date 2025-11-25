@@ -46,7 +46,7 @@
             [columnAutoWidth]="false" 
             [rowAlternationEnabled]="false"> 
             
-            <dxi-column dataField="Fundname" [caption]="'TABLE_FUND' | translate" alignment="left">
+            <dxi-column dataField="Fundname" [caption]="'TABLE_FUND' | translate" alignment="center" [width]="180">
                 <div *dxTemplate="let data of 'cell'">
                     <div class="fund-performance-cell" style="display: flex; align-items: center;">
                         <span style="width:10px; height:10px; background:#007bff; margin-right:5px; display:inline-block;"></span>

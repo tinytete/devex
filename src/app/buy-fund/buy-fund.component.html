@@ -1,42 +1,38 @@
 <header class="top-header">
     <div class="header-left">
-        <span class="site-title">Top Charts Fund</span>
+        <span class="site-title">{{ 'TOP_CHART_TITLE' | translate }}</span>
     </div>
 </header>
 <div class="buy-sell-container">
     <div class="header-section buy-mode">
-        <h2>📈 ซื้อหน่วยลงทุน</h2>
+        <h2>{{ 'BUY_TITLE' | translate }}</h2>
         <div class="fund-id-tag">ID: {{ fundId }}</div>
     </div>
     <h3 style="margin-top: 0; color: #333;">{{ fundData?.FundName }}</h3>
 
     <div class="portfolio-card buy-style">
         <div class="info-row">
-            <span>บัญชีหักเงินอัตโนมัติ:</span>
-            <strong>ธนาคารกสิกรไทย (x-1234)</strong>
+            <span>{{ 'BUY_ACCOUNT' | translate }}</span>
+            <strong>KBANK (x-1234)</strong>
         </div>
-        <div class="info-row">
-            <span>ยอดเงินคงเหลือในบัญชี:</span>
-            <strong>{{ 150000 | number }} บาท</strong>
         </div>
-    </div>
 
     <div class="form-area dx-fieldset">
         
         <div class="dx-field">
-            <div class="dx-field-label">ระบุจำนวนเงิน (บาท):</div>
+            <div class="dx-field-label">{{ 'BUY_AMOUNT_LABEL' | translate }}</div>
             <div class="dx-field-value">
                 <dx-number-box 
                     [(value)]="purchaseAmount" 
                     [min]="1000" 
                     format="#,##0.00">
                 </dx-number-box>
-                <div style="font-size: 0.8rem; color: #888; margin-top: 5px;">*ขั้นต่ำ 1,000 บาท</div>
+                <div style="font-size: 0.8rem; color: #888; margin-top: 5px;">{{ 'BUY_MIN_NOTE' | translate }}</div>
             </div>
         </div>
 
         <div class="dx-field">
-            <div class="dx-field-label">วันที่ทำรายการ:</div>
+            <div class="dx-field-label">{{ 'BUY_DATE' | translate }}</div>
             <div class="dx-field-value">
                 <dx-date-box [value]="today" [min]="today" displayFormat="dd/MM/yyyy"></dx-date-box>
             </div>
@@ -44,33 +40,33 @@
 
         <div class="summary-box">
             <div class="dx-field">
-                <div class="dx-field-label">จำนวนเงินลงทุน:</div>
+                <div class="dx-field-label">{{ 'BUY_SUM_INVEST' | translate }}</div>
                 <div class="dx-field-value" style="text-align: right;">
-                    {{ purchaseAmount | number:'1.2-2' }} บาท
+                    {{ purchaseAmount | number:'1.2-2' }} ฿
                 </div>
             </div>
             <div class="dx-field">
-                <div class="dx-field-label">ค่าธรรมเนียม (1%):</div>
+                <div class="dx-field-label">{{ 'BUY_FEE' | translate }}</div>
                 <div class="dx-field-value fee-text" style="text-align: right;">
-                    + {{ purchaseFee | number:'1.2-2' }} บาท
+                    + {{ purchaseFee | number:'1.2-2' }} ฿
                 </div>
             </div>
             <hr style="border: 0; border-top: 1px solid #ccc; margin: 10px 0;">
             <div class="dx-field">
-                <div class="dx-field-label" style="align-self: flex-end;">ยอดรวมที่ต้องชำระ:</div>
+                <div class="dx-field-label" style="align-self: flex-end;">{{ 'BUY_TOTAL' | translate }}</div>
                 <div class="dx-field-value net-amount" style="text-align: right; color: #28a745;">
-                    {{ totalPayment | number:'1.2-2' }} บาท
+                    {{ totalPayment | number:'1.2-2' }} ฿
                 </div>
             </div>
         </div>
 
         <div style="margin-bottom: 20px;">
-            <dx-check-box text="ข้าพเจ้ายินยอมและรับทราบเงื่อนไขหนังสือชี้ชวน" [(value)]="isAgreed"></dx-check-box>
+            <dx-check-box [text]="'BUY_AGREE' | translate" [(value)]="isAgreed"></dx-check-box>
         </div>
 
-        <div class="action-buttons">
+        <div class="action-buttons" >
             <dx-button 
-                text="ยืนยันคำสั่งซื้อ" 
+                [text]="'BUTTON_CONFIRM_BUY' | translate" 
                 type="success" 
                 [width]="'100%'" 
                 [height]="50"
@@ -78,15 +74,24 @@
                 (onClick)="confirmPurchase()">
             </dx-button>
         </div>
+    </div>
+</div>
 
-        <div *ngIf="purchaseSuccess" class="success-message">
-            <i class="pi pi-check-circle" style="font-size: 2rem;"></i>
-            <h3>ซื้อสำเร็จ!</h3>
-            <p>คำสั่งซื้อของคุณได้รับการบันทึกแล้ว</p>
-        </div>
+<div *ngIf="purchaseSuccess" class="popup-overlay">
+    <div class="success-card">
+        <i class="pi pi-check-circle" style="font-size: 3rem; color: #28a745; margin-bottom: 10px;"></i>
+        <h3>{{ 'BUY_SUCCESS_TITLE' | translate }}</h3>
+        <p>{{ 'BUY_SUCCESS_MSG' | translate }}</p>
+        
+        <dx-button 
+            text="ตกลง" 
+            type="default" 
+            [width]="120"
+            (onClick)="closeSuccess()">
+        </dx-button>
     </div>
 </div>
 
 <div class="back-nav">
-    <a routerLink="/" class="pi pi-backward"> กลับหน้าหลัก</a>
+    <a routerLink="/" class="pi pi-backward"> {{ 'LINK_BACK' | translate }}</a>
 </div>

@@ -1,23 +1,23 @@
 <header class="top-header">
     <div class="header-left">
-        <span class="site-title">Top Charts Fund</span>
+        <span class="site-title">{{ 'TOP_CHART_TITLE' | translate }}</span>
     </div>
 </header>
 <div class="buy-sell-container">
     <div class="header-section sell-mode">
-        <h2>🔻 ขายคืนหน่วยลงทุน</h2>
+        <h2>{{ 'SELL_TITLE' | translate }}</h2>
         <div class="fund-id-tag">ID: {{ fundId }}</div>
     </div>
     <h3 style="margin-top: 0; color: #333;">{{ fundData?.FundName }}</h3>
 
     <div class="portfolio-card sell-style">
         <div class="info-row">
-            <span>หน่วยลงทุนที่มี:</span>
-            <strong>{{ heldUnits | number:'1.4-4' }} หน่วย</strong>
+            <span>{{ 'SELL_HELD_UNITS' | translate }}</span>
+            <strong>{{ heldUnits | number:'1.4-4' }} Units</strong>
         </div>
         <div class="info-row">
-            <span>มูลค่าปัจจุบัน (NAV {{ fundData?.NAV }}):</span>
-            <strong>{{ heldUnits * fundData?.NAV | number:'1.2-2' }} บาท</strong>
+            <span>{{ 'SELL_CURRENT_VAL' | translate }} (NAV {{ fundData?.NAV }}):</span>
+            <strong>{{ heldUnits * fundData?.NAV | number:'1.2-2' }} ฿</strong>
         </div>
     </div>
 
@@ -25,14 +25,14 @@
         
         <div style="margin-bottom: 20px;">
             <dx-check-box 
-                text="ขายคืนทั้งหมด (Sell All)" 
+                [text]="'SELL_OPTION_ALL' | translate"
                 [(value)]="sellAllUnits"
                 (onValueChanged)="updateSellAmount()">
             </dx-check-box>
         </div>
 
         <div class="dx-field">
-            <div class="dx-field-label">จำนวนหน่วยที่ขาย:</div>
+            <div class="dx-field-label">{{ 'SELL_AMOUNT_LABEL' | translate }}</div>
             <div class="dx-field-value">
                 <dx-number-box 
                     [(value)]="sellAmount" 
@@ -45,7 +45,7 @@
         </div>
 
         <div class="dx-field">
-            <div class="dx-field-label">วันที่ทำรายการ:</div>
+            <div class="dx-field-label">{{ 'BUY_DATE' | translate }}</div>
             <div class="dx-field-value">
                 <dx-date-box [value]="today" [min]="today" displayFormat="dd/MM/yyyy" type="date"></dx-date-box>
             </div>
@@ -53,29 +53,29 @@
 
         <div class="summary-box">
             <div class="dx-field">
-                <div class="dx-field-label">มูลค่าขายรวม:</div>
+                <div class="dx-field-label">{{ 'SELL_SUM_TOTAL' | translate }}</div>
                 <div class="dx-field-value" style="text-align: right; font-weight: bold;">
-                    {{ sellAmount * fundData?.NAV | number:'1.2-2' }} บาท
+                    {{ sellAmount * fundData?.NAV | number:'1.2-2' }} ฿
                 </div>
             </div>
             <div class="dx-field">
-                <div class="dx-field-label">ค่าธรรมเนียม (2%):</div>
+                <div class="dx-field-label">{{ 'SELL_FEE' | translate }}</div>
                 <div class="dx-field-value fee-text" style="text-align: right;">
-                    - {{ calculateFee(sellAmount * fundData?.NAV, 0.02) | number:'1.2-2' }} บาท
+                    - {{ calculateFee(sellAmount * fundData?.NAV, 0.02) | number:'1.2-2' }} ฿
                 </div>
             </div>
             <hr style="border: 0; border-top: 1px solid #ccc; margin: 10px 0;">
             <div class="dx-field">
-                <div class="dx-field-label" style="align-self: flex-end;">ยอดเงินสุทธิที่จะได้รับ:</div>
+                <div class="dx-field-label" style="align-self: flex-end;">{{ 'SELL_NET_RECEIVE' | translate }}</div>
                 <div class="dx-field-value net-amount" style="text-align: right;">
-                    {{ (sellAmount * fundData?.NAV) - calculateFee(sellAmount * fundData?.NAV, 0.02) | number:'1.2-2' }} บาท
+                    {{ (sellAmount * fundData?.NAV) - calculateFee(sellAmount * fundData?.NAV, 0.02) | number:'1.2-2' }} ฿
                 </div>
             </div>
         </div>
 
         <div class="action-buttons">
             <dx-button 
-                text="ยืนยันคำสั่งขาย" 
+                [text]="'BUTTON_CONFIRM_SELL' | translate"
                 type="danger" 
                 [width]="'100%'" 
                 [height]="50"
@@ -83,15 +83,24 @@
                 (onClick)="confirmSell()">
             </dx-button>
         </div>
+    </div>
+</div>
 
-        <div *ngIf="sellSuccess" class="success-message">
-            <i class="pi pi-check-circle" style="font-size: 2rem;"></i>
-            <h3>ทำรายการสำเร็จ!</h3>
-            <p>ระบบได้รับคำสั่งขายเรียบร้อยแล้ว</p>
-        </div>
+<div *ngIf="sellSuccess" class="popup-overlay">
+    <div class="success-card">
+        <i class="pi pi-check-circle" style="font-size: 3rem; color: #28a745; margin-bottom: 10px;"></i>
+        <h3>{{ 'SELL_SUCCESS_TITLE' | translate }}</h3>
+        <p>{{ 'SELL_SUCCESS_MSG' | translate }}</p>
+        
+        <dx-button 
+            text="ตกลง" 
+            type="default" 
+            [width]="120"
+            (onClick)="closeSuccess()">
+        </dx-button>
     </div>
 </div>
 
 <div class="back-nav">
-    <a routerLink="/" class="pi pi-backward"> กลับหน้าหลัก</a>
+    <a routerLink="/" class="pi pi-backward"> {{ 'LINK_BACK' | translate }}</a>
 </div>

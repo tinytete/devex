@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
      translate.use('th');
   }
 
-  // ✅ แก้ไขตรงนี้: ลบ async ออก (เพราะ ngOnInit ต้อง return void)
+  
   ngOnInit() {
     const storedLang = localStorage.getItem('language');
     if (storedLang) {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router'; // ✅ Import Router
 import { Service } from '../app.service';
 
 @Component({
@@ -12,12 +12,16 @@ export class SellFundComponent implements OnInit {
   fundId!: number;
   fundData: any;
   sellAmount: number = 0;
-  heldUnits: number = 1500; // Mock: จำนวนหน่วยที่มี
+  heldUnits: number = 1500;
   sellAllUnits: boolean = false;
   today: Date = new Date();
   sellSuccess: boolean = false;
 
-  constructor(private route: ActivatedRoute, private service: Service) {}
+  constructor(
+      private route: ActivatedRoute, 
+      private service: Service,
+      private router: Router // ✅ Inject
+) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -27,21 +31,17 @@ export class SellFundComponent implements OnInit {
     });
   }
 
-  // คำนวณค่าธรรมเนียม
   calculateFee(amount: number, percentage: number): number {
     if (!amount || amount < 0) return 0;
     return amount * percentage;
   }
 
-  // เมื่อกด Checkbox ขายทั้งหมด
   updateSellAmount() {
     if (this.sellAllUnits) {
       this.sellAmount = this.heldUnits;
     }
-    // ถ้าติ๊กออก ไม่ต้องทำอะไร ให้ user แก้ตัวเลขเองได้
   }
 
-  // เมื่อแก้ไขตัวเลขเอง -> ถ้าเลขไม่เท่ากับ Max ให้เอาติ๊กถูกออก
   onAmountChange() {
     if (this.sellAllUnits && this.sellAmount !== this.heldUnits) {
        this.sellAllUnits = false;
@@ -50,6 +50,10 @@ export class SellFundComponent implements OnInit {
 
   confirmSell() {
     this.sellSuccess = true;
-    console.log(`ขายกองทุน ID: ${this.fundId}, จำนวน: ${this.sellAmount}`);
+  }
+
+  // ✅ กดตกลงแล้วกลับหน้าแรก
+  closeSuccess() {
+    this.router.navigate(['/']); 
   }
 }

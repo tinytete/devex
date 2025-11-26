@@ -6,14 +6,12 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-// DevExtreme Modules
 import { 
   DxBulletModule, DxTemplateModule, DxChartModule, DxDataGridModule, 
   DxTextBoxModule, DxButtonModule, DxAutocompleteModule, 
   DxNumberBoxModule, DxCheckBoxModule, DxDateBoxModule 
 } from 'devextreme-angular';
 
-// Components
 import { TopchartfundComponent } from './topchartfund/topchartfund.component';
 import { DetailfundComponent } from './detailfund/detailfund.component';
 import { SellFundComponent } from './sell-fund/sell-fund.component';
@@ -21,7 +19,6 @@ import { BuyFundComponent } from './buy-fund/buy-fund.component';
 import { ManageFundComponent } from './manage-fund/manage-fund.component';
 import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
 
-// Translation
 import { TranslateLoader, TranslateModule, MissingTranslationHandler } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MyMissingTranslationHandler } from "./language.service";

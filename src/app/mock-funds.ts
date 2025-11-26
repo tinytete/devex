@@ -1,4 +1,3 @@
-// src/app/mock-funds.ts
 import { Fund } from './fund';
 
 export const FUNDS: Fund[] = [

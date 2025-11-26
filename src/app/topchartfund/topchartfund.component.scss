@@ -1,12 +1,11 @@
 @import "primeicons/primeicons.css";
 
-// --- Header Styles ---
 .top-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background-color: #ffffff; border-bottom: 1px solid #e0e0e0; }
 .site-title { font-weight: 800; font-size: 1.6em; color: #2c3e50; }
 .header-right { display: flex; gap: 10px; gap: 20px;}
 .manage-button { background-color: #f8f9fa; border: 1px solid #ddd; padding: 8px 15px; border-radius: 20px; cursor: pointer; display: flex; align-items: center; gap: 8px; }
 
-// --- Layout ---
+
 .content-container { 
     width: 100%; 
     padding: 30px; 
@@ -20,7 +19,7 @@
 #chart { background: white; padding: 20px; border-radius: 8px; height: 400px; width: 100%; }
 #fund-list-grid { background: white; padding: 0; width: 100%; border-radius: 8px; overflow: hidden; }
 
-// --- Table Styles ---
+
 ::ng-deep #fund-list-grid {
     .dx-datagrid-headers .dx-header-row {
         background-color: #909090; 
@@ -45,7 +44,7 @@
     }
 }
 
-// --- Text Styles ---
+
 .rank-badge { font-weight: 900; font-size: 1.2em; }
 .rank-1 { color: #d4af37; } .rank-2 { color: #2ecc71; } .rank-3 { color: #e74c3c; }
 .fund-name { color: #2e8b57; font-weight: bold; }

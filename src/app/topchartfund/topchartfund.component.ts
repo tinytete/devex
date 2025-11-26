@@ -43,12 +43,6 @@ export class TopchartfundComponent {
       }
   }
 
-  navigateToSell(fundId: number | null) {
-      if (fundId) {
-          this.router.navigate(['/sell', fundId]);
-      }
-  }
-
   onBuyClick(e: any, fundId: number) {
     if (e && e.event) {
       e.event.stopPropagation();

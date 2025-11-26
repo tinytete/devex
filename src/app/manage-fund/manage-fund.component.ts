@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Service } from '../app.service';
 import { Fund } from '../fund';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-manage-fund',
@@ -14,7 +15,11 @@ export class ManageFundComponent implements OnInit {
   selectedFund: any = null;
   isNew: boolean = false;
 
-  constructor(private service: Service, private router: Router) {}
+  constructor(
+    private service: Service, 
+    private router: Router,
+    private translate: TranslateService,
+  ) {}
 
   ngOnInit(): void {
     this.loadFunds();
@@ -38,6 +43,13 @@ export class ManageFundComponent implements OnInit {
     this.scrollToForm();
   }
 
+  scrollToForm() {
+      setTimeout(() => {
+          const element = document.getElementById('edit-form');
+          if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+
   startEdit(fund: Fund) {
     this.isNew = false;
     this.selectedFund = { ...fund };
@@ -59,7 +71,9 @@ export class ManageFundComponent implements OnInit {
   }
 
   delete(id: number) {
-    if(confirm('ยืนยันการลบข้อมูล ID ' + id + '?')) {
+    const confirmMessage = this.translate.instant('LABEL_SURE')+ id + '?';
+
+    if(confirm(confirmMessage)) {
       this.service.deleteFund(id);
       this.loadFunds();
       if (this.selectedFund && this.selectedFund.Id === id) {
@@ -73,10 +87,4 @@ export class ManageFundComponent implements OnInit {
     this.isNew = false;
   }
 
-  scrollToForm() {
-    setTimeout(() => {
-        const element = document.getElementById('edit-form');
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
-  }
 }

@@ -35,6 +35,7 @@
   "LABEL_WEEKS": "จำนวนสัปดาห์:",
   "LABEL_RETURN": "ผลตอบแทน:",
   "LABEL_LASTRANK": "อันดับสัปดาห์ที่แล้ว:",
+  "LABEL_SURE": "ยืนยันการลบข้อมูล ID",
   "LABEL_CATEGORY": "ประเภทกองทุน:",
   "LABEL_DATE": "วันที่จดทะเบียน:",
   "LINK_BACK": "กลับหน้าแรก",

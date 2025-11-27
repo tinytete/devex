@@ -38,7 +38,9 @@
   "LABEL_CATEGORY": "ประเภทกองทุน:",
   "LABEL_DATE": "วันที่จดทะเบียน:",
   "LABEL_SURE": "ยืนยันการลบข้อมูล ID",
-  "LINK_BACK": "กลับหน้าแรก",
+  "LINK_BACK": "กลับหน้าพอร์ต",
+  "LINK_BACK_HOME": "กลับหน้าหลัก",
+  "LINK_BACK_DETAIL": "ย้อนกลับ",
 
   "DETAIL_KEY_INFO": "ข้อมูลสำคัญ",
   "DETAIL_AUM": "มูลค่าสินทรัพย์สุทธิ:",
@@ -71,7 +73,22 @@
   "SELL_FEE": "ค่าธรรมเนียมขาย (2%):",
   "SELL_NET_RECEIVE": "ยอดเงินสุทธิที่จะได้รับ:",
   "SELL_SUCCESS_TITLE": "ทำรายการสำเร็จ!",
-  "SELL_SUCCESS_MSG": "ระบบได้รับคำสั่งขายเรียบร้อยแล้ว"
+  "SELL_SUCCESS_MSG": "ระบบได้รับคำสั่งขายเรียบร้อยแล้ว",
 
+  "PORT_TITLE": "สัดส่วนการลงทุน",
+  "PORT_SUBTITLE": "พอร์ตการลงทุนของฉัน",
+  "PORT_MY_ASSETS": "ตารางการลงทุน",
+  "PORT_HISTORY": "ประวัติการทำรายการ",
   
+  "COL_LAST_UPDATE": "อัปเดตล่าสุด",
+  "COL_UNITS": "จำนวนหน่วยที่มี",
+  "COL_NAV": "NAV ล่าสุด",
+  "COL_TOTAL_VAL": "มูลค่ารวม (บาท)",
+  "COL_PROFIT": "กำไร",
+  "COL_TX_DATE": "วัน/เวลา",
+  "COL_TX_TYPE": "รายการ",
+  "COL_TX_AMOUNT": "จำนวนเงิน/มูลค่า",
+  
+  "TX_BUY": "ซื้อ",
+  "TX_SELL": "ขาย"
 }

@@ -1,3 +1,4 @@
+// src/app/app.service.ts
 import { Injectable } from '@angular/core';
 import { Fund, Transaction, PortfolioItem } from './fund';
 import { FUNDS, MyPortfolio } from './mock-funds';
@@ -12,8 +13,6 @@ export class Service {
   getTopChartsData(): Fund[] { return this.funds; }
   getFundById(id: number): Fund | undefined { return this.funds.find(fund => fund.Id === id); }
   
-  // ✅ เวลาเพิ่มกองทุนใหม่ ระบบจะหา ID ถัดไปให้เอง (แต่ Ranking เริ่มที่ 0)
-  // ถ้าคุณอยากให้กองทุนใหม่ขึ้นที่ 1 เลย ตอน Add ในหน้า Manage ให้ใส่จำนวนสัปดาห์เยอะๆ (เช่น 100)
   addFund(newFund: Fund) { 
       const maxId = this.funds.length > 0 ? Math.max(...this.funds.map(f => f.Id)) : 0; 
       newFund.Id = maxId + 1; 
@@ -34,7 +33,6 @@ export class Service {
   updatePortfolio(fundId: number, fundName: string, unitsChange: number, nav: number) {
     const index = this.myPortfolio.findIndex(p => p.FundId === fundId);
     
-    // หาข้อมูลกองทุนเพื่อเอาชื่อบริษัท (Company)
     const fundInfo = this.funds.find(f => f.Id === fundId);
     const companyName = fundInfo ? fundInfo.Company : '-';
 
@@ -42,12 +40,11 @@ export class Service {
       // มีอยู่แล้ว -> อัปเดต
       const item = this.myPortfolio[index];
       item.Units += unitsChange;
-      item.NAV = nav; // อัปเดตราคา NAV ล่าสุด
+      item.NAV = nav; 
       item.TotalValue = item.Units * nav; 
       item.LastUpdate = new Date();       
       
-      // อัปเดตกำไร (Logic สมมติ: ถ้าซื้อเพิ่ม ให้กำไรเป็น 0 ไปก่อน เพื่อความง่าย)
-      if (unitsChange > 0) item.Profit = 0; 
+      // ❌ ลบบรรทัด Profit ออกแล้ว
 
       // ย้ายขึ้นบนสุด
       this.myPortfolio.splice(index, 1);
@@ -59,11 +56,11 @@ export class Service {
         const newItem: PortfolioItem = {
           FundId: fundId,
           FundName: fundName,
-          Company: companyName, // ✅ ใส่ชื่อบริษัท
+          Company: companyName, 
           Units: unitsChange,
-          NAV: nav,             // ✅ ใส่ NAV
+          NAV: nav,             
           TotalValue: unitsChange * nav,
-          Profit: 0,            // ✅ เริ่มต้นกำไร 0
+          // ❌ ลบบรรทัด Profit ออกแล้ว
           LastUpdate: new Date()
         };
         this.myPortfolio.unshift(newItem); 
@@ -77,6 +74,3 @@ export class Service {
       this.transactions.unshift(newTx); 
   }
 }
-
-
-

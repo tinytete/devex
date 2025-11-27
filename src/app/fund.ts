@@ -23,12 +23,11 @@ export interface Transaction {
 }
 
 export interface PortfolioItem {
-    FundId: number;     
+    FundId: number;
     FundName: string;
-    Company: string;   
+    Company: string;
     Units: number;
     NAV: number;
     TotalValue: number;
-    Profit: number;
-    LastUpdate: Date;   
+    LastUpdate: Date;
 }

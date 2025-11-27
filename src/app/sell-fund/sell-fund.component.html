@@ -107,5 +107,5 @@
 </div>
 
 <div class="back-nav">
-    <a routerLink="/" class="pi pi-backward"> {{ 'LINK_BACK' | translate }}</a>
+    <a [routerLink]="['/detail', fundId]" class="pi pi-backward back-link"> {{ 'LINK_BACK_DETAIL' | translate }}</a>
 </div>

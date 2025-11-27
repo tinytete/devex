@@ -38,7 +38,9 @@
   "LABEL_SURE": "Are you sure you want to delete fund ID",
   "LABEL_CATEGORY": "Category:",
   "LABEL_DATE": "Registration Date:",
-  "LINK_BACK": "Back to Home",
+  "LINK_BACK": "Back to port",
+  "LINK_BACK_HOME": "Back to Home",
+  "LINK_BACK_DETAIL": "Turn back",
 
   "DETAIL_KEY_INFO": "Key Information",
   "DETAIL_AUM": "Net Asset Value (AUM):",
@@ -71,5 +73,22 @@
   "SELL_FEE": "Sell Fee (2%):",
   "SELL_NET_RECEIVE": "Net Amount Received:",
   "SELL_SUCCESS_TITLE": "Transaction Successful!",
-  "SELL_SUCCESS_MSG": "The sell order has been received."
+  "SELL_SUCCESS_MSG": "The sell order has been received.",
+
+  "PORT_TITLE": "Portfolio Allocation",
+  "PORT_SUBTITLE": "My Investment Portfolio",
+  "PORT_MY_ASSETS": "My Assets",
+  "PORT_HISTORY": "Transaction History",
+  
+  "COL_LAST_UPDATE": "Last Update",
+  "COL_UNITS": "Units Held",
+  "COL_NAV": "Current NAV",
+  "COL_TOTAL_VAL": "Total Value (THB)",
+  "COL_PROFIT": "Profit",
+  "COL_TX_DATE": "Date/Time",
+  "COL_TX_TYPE": "Type",
+  "COL_TX_AMOUNT": "Amount/Value",
+  
+  "TX_BUY": "Buy",
+  "TX_SELL": "Sell"
 }

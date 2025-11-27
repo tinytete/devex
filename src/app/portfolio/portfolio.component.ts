@@ -1,4 +1,3 @@
-// src/app/portfolio/portfolio.component.ts
 import { Component, OnInit } from '@angular/core'; 
 import { Router } from '@angular/router';
 import { Service } from '../app.service';
@@ -10,22 +9,41 @@ import { Service } from '../app.service';
 })
 export class PortfolioComponent implements OnInit { 
   portfoliotData: any[] = [];
+  allPortfolioData: any[] = [];
+  
+  // ✅ 1. เพิ่มตัวแปรนี้ครับ (หายแดงแน่นอน)
+  transactionData: any[] = []; 
   
   constructor(private service: Service, private router: Router) {}
 
   ngOnInit(): void {
-    this.portfoliotData = this.service.getPortfolio();
+    // โหลดข้อมูลพอร์ต
+    this.allPortfolioData = this.service.getPortfolio();
+    this.portfoliotData = [...this.allPortfolioData];
+
+    // ✅ 2. โหลดข้อมูลประวัติการทำรายการมาใส่ตัวแปร
+    this.transactionData = this.service.getTransactions();
   }
 
-  // ✅ ฟังก์ชันสำหรับ Label: ให้โชว์ชื่อกองทุน (Argument)
+  onSearchPortfolio(e: any) {
+    const searchText = e.value ? e.value.toLowerCase() : '';
+
+    if (searchText) {
+      this.portfoliotData = this.allPortfolioData.filter(item => 
+        item.FundName.toLowerCase().includes(searchText)
+      );
+    } else {
+      this.portfoliotData = [...this.allPortfolioData];
+    }
+  }
+
   customizeLabel(arg: any) {
     return arg.argumentText; 
   }
 
-  // ✅ ฟังก์ชันสำหรับ Tooltip: ให้โชว์ % (Percent)
   customizeTooltip(arg: any) {
     return {
-        text: arg.percentText // DevExtreme คำนวณ % มาให้แล้วในตัวแปรนี้
+        text: arg.percentText 
     };
   }
 

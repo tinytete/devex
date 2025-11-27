@@ -93,5 +93,5 @@
 </div>
 
 <div class="back-nav">
-    <a routerLink="/detail" class="pi pi-backward back-link"> {{ 'ย้อนกลับ' | translate }}</a>
+    <a [routerLink]="['/detail', fundId]" class="pi pi-backward back-link"> {{ 'LINK_BACK_DETAIL' | translate }}</a>
 </div>

@@ -10,13 +10,24 @@ import { Service } from '../app.service';
   providers: [Service],
 })
 export class PortfolioComponent implements OnInit { 
-  portfoliotData: any[] = []; // ชื่อตัวแปรนี้ตรงกับ HTML แล้ว ไม่ต้องแก้
+  portfoliotData: any[] = [];
   
   constructor(private service: Service, private router: Router) {}
 
   ngOnInit(): void {
-    // ✅ แก้ตรงนี้: เรียก getPortfolio() (ลบ t ตัวท้ายออก)
     this.portfoliotData = this.service.getPortfolio();
+  }
+
+  // ✅ ฟังก์ชันสำหรับ Label: ให้โชว์ชื่อกองทุน (Argument)
+  customizeLabel(arg: any) {
+    return arg.argumentText; 
+  }
+
+  // ✅ ฟังก์ชันสำหรับ Tooltip: ให้โชว์ % (Percent)
+  customizeTooltip(arg: any) {
+    return {
+        text: arg.percentText // DevExtreme คำนวณ % มาให้แล้วในตัวแปรนี้
+    };
   }
 
   pointClickHandler(e:any) {
@@ -30,11 +41,7 @@ export class PortfolioComponent implements OnInit {
   }
 
   toggleVisibility(item:any) {
-    if (item.isVisible()) {
-      item.hide();
-    } else {
-      item.show();
-    }
+    item.isVisible() ? item.hide() : item.show();
   }
 
   navigateTotopchart() { this.router.navigate(['topchart']); }

@@ -4,6 +4,23 @@
 .site-title { font-weight: 800; font-size: 1.6em; color: #2c3e50; }
 .header-right { display: flex; gap: 10px; gap: 20px;}
 
+/* ✅ เพิ่ม class นี้: ทำให้ข้อความกดได้และเปลี่ยนสีเมื่อเอาเมาส์ชี้ */
+.clickable-title {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: #2c3e50;
+    transition: color 0.2s;
+
+    &:hover {
+        color: #00AEEF; /* เปลี่ยนสีเป็นฟ้าเวลาชี้ */
+        
+        .site-title {
+            color: #00AEEF;
+        }
+    }
+}
+
 .content-container { 
     width: 100%; 
     padding: 30px; 

@@ -70,4 +70,7 @@ export class DetailfundComponent implements OnInit {
         R_5Y: 14.38, 
     }];
   }
+
+  navigateTotopchart() { this.router.navigate(['topchart']); }
+  
 }

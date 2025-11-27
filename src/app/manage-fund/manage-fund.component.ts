@@ -87,4 +87,6 @@ export class ManageFundComponent implements OnInit {
     this.isNew = false;
   }
 
+  navigateTotopchart() { this.router.navigate(['topchart']); }
+  
 }

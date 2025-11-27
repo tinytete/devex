@@ -16,8 +16,8 @@ export const FUNDS: Fund[] = [
 
 export const MyPortfolio: PortfolioItem[] = [
     {FundId: 7, Company: 'KAsset', FundName: 'K-ICT', NAV: 13.5028, Units: 11, TotalValue: 12, Profit: 5.23, LastUpdate: new Date()},
-    {FundId: 5, Company: 'SCBAM', FundName: 'SCBBANKINGA', NAV: 14.3055, Units: 11, TotalValue: 12, Profit: 5.23, LastUpdate: new Date()},
-    {FundId: 2, Company: 'SCBAM', FundName: 'SCBBANKING', NAV: 9.8621, Units: 11, TotalValue: 12, Profit: 5.23, LastUpdate: new Date()},
-    {FundId: 9, Company: 'KTAM', FundName: 'KT-CLMVT-D', NAV: 14.1064, Units: 11, TotalValue: 12, Profit: 5.23, LastUpdate: new Date()},
+    {FundId: 5, Company: 'SCBAM', FundName: 'SCBBANKINGA', NAV: 14.3055, Units: 11, TotalValue: 42, Profit: 5.23, LastUpdate: new Date()},
+    {FundId: 2, Company: 'SCBAM', FundName: 'SCBBANKING', NAV: 9.8621, Units: 11, TotalValue: 62, Profit: 5.23, LastUpdate: new Date()},
+    {FundId: 9, Company: 'KTAM', FundName: 'KT-CLMVT-D', NAV: 14.1064, Units: 11, TotalValue: 14, Profit: 5.23, LastUpdate: new Date()},
     {FundId: 1, Company: 'SCBAM', FundName: 'SCBBANKINGE', NAV: 14.8152, Units: 11, TotalValue: 12, Profit: 5.23, LastUpdate: new Date()}
 ]

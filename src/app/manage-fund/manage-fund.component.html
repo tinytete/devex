@@ -1,7 +1,11 @@
 <header class="top-header">
     <div class="header-left">
-        <span class="site-title">{{ 'TOP_CHART_TITLE' | translate }}</span>
+        <div class="clickable-title" (click)="navigateTotopchart()" title="{{ 'TOP_CHART_TITLE' | translate }}">
+            <span style="font-size: 1rem; margin-right: 10px;"></span>
+            <span class="site-title">{{ 'TOP_CHART_TITLE' | translate }}</span>
+        </div>
     </div>
+    
     <div class="header-right">
         <app-language-switcher></app-language-switcher>
     </div>

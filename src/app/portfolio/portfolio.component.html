@@ -1,9 +1,9 @@
 <header class="top-header">
     <div class="header-left">
-        <button (click)="navigateTotopchart()" 
-            class="topchart-button" title="{{ 'TOP_CHART_TITLE' | translate }}">
+        <div class="clickable-title" (click)="navigateTotopchart()" title="{{ 'TOP_CHART_TITLE' | translate }}">
+            <span style="font-size: 1rem; margin-right: 10px;"></span>
             <span class="site-title">{{ 'TOP_CHART_TITLE' | translate }}</span>
-        </button>
+        </div>
     </div>
     
     <div class="header-right">
@@ -31,8 +31,11 @@
         [dataSource]="portfoliotData"
         (onPointClick)="pointClickHandler($event)"
         (onLegendClick)="legendClickHandler($event)">
+        
+        <dxo-tooltip [enabled]="true" [customizeTooltip]="customizeTooltip"></dxo-tooltip>
+
         <dxi-series argumentField="FundName" valueField="TotalValue">
-            <dxo-label [visible]="true" format="percent">
+            <dxo-label [visible]="true" [customizeText]="customizeLabel">
                 <dxo-connector [visible]="true"></dxo-connector>
             </dxo-label>
         </dxi-series>
@@ -60,7 +63,7 @@
             <dxi-column dataField="Units" caption="จำนวนหน่วยที่มี" format="#,##0.00" alignment="left"></dxi-column>
             <dxi-column dataField="NAV" caption="NAV" format="#,##0.00" alignment="left"></dxi-column>
             <dxi-column dataField="TotalValue" caption="มูลค่ารวม" format="#,##0.00"alignment="left"></dxi-column>
-            <dxi-column dataField="TotalValue" caption="กำไร" format="#,##0.00" alignment="left"></dxi-column>
+            <dxi-column dataField="Profit" caption="กำไร" format="#,##0.00" alignment="left"></dxi-column>
         </dx-data-grid>
     </div>
 </div>

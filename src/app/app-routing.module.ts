@@ -9,7 +9,7 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 
 const routes: Routes = [
 { path: '', component: PortfolioComponent},
-{ path: '', component: TopchartfundComponent},
+{ path: 'topchart', component: TopchartfundComponent},
 { path: 'detail/:id', component: DetailfundComponent},
 { path: 'buy/:id', component: BuyFundComponent },
 { path: 'sell/:id', component: SellFundComponent },

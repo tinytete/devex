@@ -35,9 +35,9 @@
   "LABEL_WEEKS": "จำนวนสัปดาห์:",
   "LABEL_RETURN": "ผลตอบแทน:",
   "LABEL_LASTRANK": "อันดับสัปดาห์ที่แล้ว:",
-  "LABEL_SURE": "ยืนยันการลบข้อมูล ID",
   "LABEL_CATEGORY": "ประเภทกองทุน:",
   "LABEL_DATE": "วันที่จดทะเบียน:",
+  "LABEL_SURE": "ยืนยันการลบข้อมูล ID",
   "LINK_BACK": "กลับหน้าแรก",
 
   "DETAIL_KEY_INFO": "ข้อมูลสำคัญ",
@@ -72,4 +72,6 @@
   "SELL_NET_RECEIVE": "ยอดเงินสุทธิที่จะได้รับ:",
   "SELL_SUCCESS_TITLE": "ทำรายการสำเร็จ!",
   "SELL_SUCCESS_MSG": "ระบบได้รับคำสั่งขายเรียบร้อยแล้ว"
+
+  
 }

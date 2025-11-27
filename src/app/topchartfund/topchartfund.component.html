@@ -20,11 +20,11 @@
                 <span class="chart-text"> {{ 'TOP_CHART' | translate }}</span>
             </div>
         </div>
-        <div class="filter-right">
-            <label for="search-fund">{{ 'SEARCH_LABEL' | translate }}</label>
-            <dx-text-box id="search-fund" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}" mode="search" width="250"></dx-text-box>
-        </div>
+    <div class="filter-right">
+        <label for="search-fund">{{ 'SEARCH_LABEL' | translate }}</label>
+        <dx-text-box id="search-fund" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}" mode="search" width="250"></dx-text-box>
     </div>
+</div>
     
     <div class="chart-grid-area">
         <dx-chart id="chart" title="{{ 'CHART_TITLE' | translate }}" [dataSource]="chartData" (onPointClick)="onPointClick($event)">

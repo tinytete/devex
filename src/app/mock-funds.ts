@@ -1,4 +1,5 @@
 import { Fund } from './fund';
+import { PortfolioItem } from './fund';
 
 export const FUNDS: Fund[] = [
     { Id: 1, FundName: 'SCBBANKINGE', NAV: 14.8152, Company: 'SCBAM', Ranking: 92, Return3Y: 11.35, Lastrank: 1, Category: 'Equity Large Cap', AUM: '15,582,890', RegisterDate: '28 มิ.ย. 2554', RiskLevel: '7' },
@@ -12,3 +13,11 @@ export const FUNDS: Fund[] = [
     { Id: 9, FundName: 'KT-CLMVT-D', NAV: 14.1064, Company: 'KTAM', Ranking: 6, Return3Y: 7.21, Lastrank: 9, Category: 'ASEAN Equity', AUM: '332,928,199', RegisterDate: '28 ก.พ. 2560', RiskLevel: '6' },
     { Id: 10, FundName: 'ES-FINANCETH', NAV: 17.2441, Company: 'EASTSPRING', Ranking: 1, Return3Y: 4.99, Lastrank: 11, Category: 'Equity General', AUM: '40,039,921', RegisterDate: '17 พ.ย. 2558', RiskLevel: '7' }
 ];
+
+export const MyPortfolio: PortfolioItem[] = [
+    {FundId: 7, Company: 'KAsset', FundName: 'K-ICT', NAV: 13.5028, Units: 11, TotalValue: 12, Profit: 5.23, LastUpdate: new Date()},
+    {FundId: 5, Company: 'SCBAM', FundName: 'SCBBANKINGA', NAV: 14.3055, Units: 11, TotalValue: 12, Profit: 5.23, LastUpdate: new Date()},
+    {FundId: 2, Company: 'SCBAM', FundName: 'SCBBANKING', NAV: 9.8621, Units: 11, TotalValue: 12, Profit: 5.23, LastUpdate: new Date()},
+    {FundId: 9, Company: 'KTAM', FundName: 'KT-CLMVT-D', NAV: 14.1064, Units: 11, TotalValue: 12, Profit: 5.23, LastUpdate: new Date()},
+    {FundId: 1, Company: 'SCBAM', FundName: 'SCBBANKINGE', NAV: 14.8152, Units: 11, TotalValue: 12, Profit: 5.23, LastUpdate: new Date()}
+]

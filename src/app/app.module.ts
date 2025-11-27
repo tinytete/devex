@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { 
   DxBulletModule, DxTemplateModule, DxChartModule, DxDataGridModule, 
   DxTextBoxModule, DxButtonModule, DxAutocompleteModule, 
-  DxNumberBoxModule, DxCheckBoxModule, DxDateBoxModule 
+  DxNumberBoxModule, DxCheckBoxModule, DxDateBoxModule, DxPieChartModule
 } from 'devextreme-angular';
 
 import { TopchartfundComponent } from './topchartfund/topchartfund.component';
@@ -54,6 +54,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     DxCheckBoxModule,
     DxDateBoxModule,
     DxAutocompleteModule,
+    DxPieChartModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

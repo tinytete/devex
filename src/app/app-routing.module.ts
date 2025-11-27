@@ -5,8 +5,10 @@ import { DetailfundComponent } from './detailfund/detailfund.component';
 import { SellFundComponent } from './sell-fund/sell-fund.component';
 import { BuyFundComponent } from './buy-fund/buy-fund.component';
 import { ManageFundComponent } from './manage-fund/manage-fund.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 
 const routes: Routes = [
+{ path: '', component: PortfolioComponent},
 { path: '', component: TopchartfundComponent},
 { path: 'detail/:id', component: DetailfundComponent},
 { path: 'buy/:id', component: BuyFundComponent },

@@ -1,1 +1,67 @@
-<p>portfolio works!</p>
+<header class="top-header">
+    <div class="header-left">
+        <span class="site-title">{{ 'TOP_CHART_TITLE' | translate }}</span>
+    </div>
+    
+    <div class="header-right">
+        <app-language-switcher></app-language-switcher>
+
+        <button (click)="navigateToManage()" class="manage-button" title="{{ 'MANAGE_FUND' | translate }}">
+            <span class="pi pi-sliders-h"></span> {{ 'MANAGE_FUND' | translate }}
+        </button>
+    </div>
+</header>
+
+<div class="content-container">
+    <div class="filter-area">
+        <div class="filter-left">
+            <div class="top-charts-branding">
+                <span class="pi pi-wallet"></span>
+                <span class="chart-text"> My Portfolio พอร์ตลงทุนของฉัน</span>
+            </div>
+        </div>
+    <div class="filter-right">
+        <label for="search-fund">{{ 'SEARCH_LABEL' | translate }}</label>
+        <dx-text-box id="search-fund" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}" mode="search" width="250"></dx-text-box>
+    </div>
+</div>
+
+<div style="padding: 20px;">
+    <dx-pie-chart
+        title="สัดส่วนการลงทุน"
+        [dataSource]="portfoliotData"
+        (onPointClick)="pointClickHandler($event)"
+        (onLegendClick)="legendClickHandler($event)">
+        <dxi-series argumentField="FundName" valueField="TotalValue">
+            <dxo-label [visible]="true" format="percent">
+                <dxo-connector [visible]="true"></dxo-connector>
+            </dxo-label>
+        </dxi-series>
+    </dx-pie-chart>
+
+    <hr>
+
+<h3>ตารางการลงทุน</h3>
+    <div id="port-list-grid">
+        <dx-data-grid
+            [dataSource]="portfoliotData"
+            [showBorders]="true">
+
+            <dxi-column
+                dataField="LastUpdate"
+                caption="อัปเดตล่าสุด"
+                dataType="datetime"
+                format="dd/MM/yyyy HH:mm:ss"
+                [sortIndex]="0"
+                sortOrder="desc"> 
+            </dxi-column>
+
+            <dxi-column dataField="FundName" caption="กองทุน" alignment="left"></dxi-column>
+            <dxi-column dataField="Company" caption="บลจ." alignment="left"></dxi-column>
+            <dxi-column dataField="Units" caption="จำนวนหน่วยที่มี" format="#,##0.00" alignment="left"></dxi-column>
+            <dxi-column dataField="NAV" caption="NAV" format="#,##0.00" alignment="left"></dxi-column>
+            <dxi-column dataField="TotalValue" caption="มูลค่ารวม" format="#,##0.00"alignment="left"></dxi-column>
+            <dxi-column dataField="TotalValue" caption="กำไร" format="#,##0.00" alignment="left"></dxi-column>
+        </dx-data-grid>
+    </div>
+</div>

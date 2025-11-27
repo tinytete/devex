@@ -1,3 +1,4 @@
+// src/app/fund.ts
 
 export interface Fund {
     Id: number;
@@ -11,4 +12,23 @@ export interface Fund {
     AUM: string;
     RegisterDate: string;
     RiskLevel: string;
+}
+
+export interface Transaction {
+    Id: number;
+    FundName: string;
+    Type: 'BUY' | 'SELL';
+    Amount: number;
+    TransactionDate: Date;
+}
+
+export interface PortfolioItem {
+    FundId: number;     
+    FundName: string;
+    Company: string;   
+    Units: number;
+    NAV: number;
+    TotalValue: number;
+    Profit: number;
+    LastUpdate: Date;   
 }

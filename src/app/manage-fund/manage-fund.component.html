@@ -34,9 +34,16 @@
             [columnAutoWidth]="true" 
             [allowColumnResizing]="true">
 
-            <dxi-column dataField="Id" [caption]="'TABLE_RANK' | translate" alignment="center" [width]="60" [allowResizing]="false">
-                <div *dxTemplate="let data of 'cell'"> 
-                    <span class="rank-badge rank-{{data.value}}">{{ data.value }}</span>
+            <dxi-column 
+                [caption]="'TABLE_RANK' | translate" 
+                alignment="center" 
+                [width]="80" 
+                [allowResizing]="false"
+                [allowSorting]="false"
+                cellTemplate="rankCell"> <div *dxTemplate="let data of 'rankCell'"> 
+                    <span class="rank-badge rank-{{data.rowIndex + 1}}">
+                        {{ data.rowIndex + 1 }}
+                    </span>
                 </div>
             </dxi-column>
             
@@ -93,8 +100,8 @@
         
         <div class="form-grid">
             <div class="form-group">
-                <label>{{ 'LABEL_ID' | translate }}</label>
-                <dx-text-box [(value)]="selectedFund.Id"></dx-text-box>
+                <label>{{ 'LABEL_ID' | translate }} (Auto)</label>
+                <dx-text-box [(value)]="selectedFund.Id" [readOnly]="true" [disabled]="true"></dx-text-box>
             </div>
             <div class="form-group">
                 <label>{{ 'LABEL_FUND' | translate }}</label>
@@ -106,15 +113,15 @@
             </div>
             <div class="form-group">
                 <label>{{ 'LABEL_WEEKS' | translate }}</label>
-                <dx-text-box [(value)]="selectedFund.Ranking"></dx-text-box>
+                <dx-number-box [(value)]="selectedFund.Ranking"></dx-number-box>
             </div>
             <div class="form-group">
                 <label>{{ 'TABLE_RETURN' | translate }}</label>
-                <dx-text-box [(value)]="selectedFund.Return3Y"></dx-text-box>
+                <dx-number-box [(value)]="selectedFund.Return3Y"></dx-number-box>
             </div>
             <div class="form-group">
                 <label>{{ 'LABEL_LASTRANK' | translate }}</label>
-                <dx-text-box [(value)]="selectedFund.Lastrank"></dx-text-box>
+                <dx-number-box [(value)]="selectedFund.Lastrank"></dx-number-box>
             </div>
             <div class="form-group">
                 <label>{{ 'LABEL_CATEGORY' | translate }}</label>
@@ -129,7 +136,5 @@
     </div>
 
     <br>
-    <a routerLink="/" class="pi pi-backward back-link"> {{ 'LINK_BACK' | translate }}</a>
+    <a routerLink="/topchart" class="pi pi-backward back-link"> {{ 'LINK_BACK' | translate }}</a>
 </div>
-
-

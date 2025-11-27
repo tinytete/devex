@@ -54,4 +54,7 @@ export class TopchartfundComponent {
     }
     this.navigateToBuy(fundId);
   }
+
+  navigateTotopchart() { this.router.navigate(['topchart']); }
+
 }

@@ -1,14 +1,14 @@
 <header class="top-header">
-    <div class="header-left">
-        <span class="site-title">{{ 'TOP_CHART_TITLE' | translate }}</span>
-    </div>
+    <div class="clickable-title" (click)="navigateTotopchart()" title="{{ 'TOP_CHART_TITLE' | translate }}">
+            <span style="font-size: 1rem; margin-right: 10px;"></span>
+            <span class="site-title">{{ 'TOP_CHART_TITLE' | translate }}</span>
+        </div>
     
     <div class="header-right">
-
         <app-language-switcher></app-language-switcher>
 
         <button (click)="navigateToManage()" class="manage-button" title="{{ 'MANAGE_FUND' | translate }}">
-            <span class="pi pi-sliders-h"></span> {{ 'MANAGE_FUND' | translate }}
+            <span class="pi pi-sliders-h"></span>
         </button>
 
         <button (click)="navigateToPortfolio()" class="portfolio-btn" title="ดูพอร์ตโฟลิโอของฉัน">
@@ -56,9 +56,16 @@
                 [columnAutoWidth]="true" 
                 (onRowClick)="onRowClick($event)"> 
                 
-                <dxi-column dataField="Id" [caption]="'TABLE_RANK' | translate" alignment="center" [width]="70" [allowResizing]="false">
-                    <div *dxTemplate="let data of 'cell'"> 
-                        <span class="rank-badge rank-{{data.value}}">{{ data.value }}</span>
+               <dxi-column 
+                    [caption]="'TABLE_RANK' | translate" 
+                    alignment="center" 
+                    [width]="80" 
+                    [allowResizing]="false"
+                    [allowSorting]="false"
+                    cellTemplate="rankCell"> <div *dxTemplate="let data of 'rankCell'"> 
+                        <span class="rank-badge rank-{{data.rowIndex + 1}}">
+                            {{ data.rowIndex + 1 }}
+                        </span>
                     </div>
                 </dxi-column>
                 
@@ -71,7 +78,7 @@
 
                 <dxi-column dataField="Company" [caption]="'TABLE_COMPANY' | translate" alignment="center" [width]="125"></dxi-column>
                 
-                <dxi-column dataField="Ranking" [caption]="'TABLE_WEEKS' | translate" alignment="center" [width]="210"></dxi-column>
+                <dxi-column dataField="Ranking" [caption]="'TABLE_WEEKS' | translate" alignment="center" [width]="210" sortOrder="desc"></dxi-column>
 
                 <dxi-column dataField="Return3Y" [caption]="'TABLE_RETURN' | translate" alignment="center" [width]="270">
                     <div *dxTemplate="let data of 'cell'">

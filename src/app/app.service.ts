@@ -1,13 +1,9 @@
-// src/app/app.service.ts
 import { Injectable } from '@angular/core';
 import { Fund, Transaction, PortfolioItem } from './fund';
 import { FUNDS, MyPortfolio } from './mock-funds';
 import { Observable, of } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
-
+@Injectable()
 export class Service {
   private funds: Fund[] = FUNDS; 
   private myPortfolio: PortfolioItem[] = MyPortfolio; 
@@ -16,10 +12,17 @@ export class Service {
   getTopChartsData(): Fund[] { return this.funds; }
   getFundById(id: number): Fund | undefined { return this.funds.find(fund => fund.Id === id); }
   
-  // (ฟังก์ชัน addFund, updateFund, deleteFund, searchFunds ของเดิม เก็บไว้เหมือนเดิมนะครับ)
-  addFund(newFund: Fund) { const maxId = this.funds.length > 0 ? Math.max(...this.funds.map(f => f.Id)) : 0; newFund.Id = maxId + 1; this.funds.push(newFund); }
+  // ✅ เวลาเพิ่มกองทุนใหม่ ระบบจะหา ID ถัดไปให้เอง (แต่ Ranking เริ่มที่ 0)
+  // ถ้าคุณอยากให้กองทุนใหม่ขึ้นที่ 1 เลย ตอน Add ในหน้า Manage ให้ใส่จำนวนสัปดาห์เยอะๆ (เช่น 100)
+  addFund(newFund: Fund) { 
+      const maxId = this.funds.length > 0 ? Math.max(...this.funds.map(f => f.Id)) : 0; 
+      newFund.Id = maxId + 1; 
+      this.funds.push(newFund); 
+  }
+
   updateFund(updatedFund: Fund) { const index = this.funds.findIndex(f => f.Id === updatedFund.Id); if (index > -1) { this.funds[index] = { ...this.funds[index], ...updatedFund }; } }
   deleteFund(id: number) { this.funds = this.funds.filter(f => f.Id !== id); }
+  
   searchFunds(term: string): Observable<Fund[]> { if (!term.trim()) { return of([]); } const filteredList = this.funds.filter(fund => fund.FundName.toLowerCase().includes(term.toLowerCase()) ); return of(filteredList); }
 
 
@@ -74,3 +77,6 @@ export class Service {
       this.transactions.unshift(newTx); 
   }
 }
+
+
+

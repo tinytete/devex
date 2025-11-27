@@ -1,3 +1,4 @@
+// src/app/topchartfund/topchartfund.component.ts
 import { Component } from '@angular/core';
 import { Service } from '../app.service';
 import { Router } from '@angular/router';
@@ -23,6 +24,11 @@ export class TopchartfundComponent {
   }
 
   navigateToManage() { this.router.navigate(['/manage']); }
+
+  // ✅ เพิ่มฟังก์ชันนี้: กดแล้วไปหน้า Portfolio (หน้าแรก)
+  navigateToPortfolio() { 
+      this.router.navigate(['/']); 
+  }
 
   onRowClick(e:any) {
     if(e.data && e.data.Id){

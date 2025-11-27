@@ -4,11 +4,17 @@
     </div>
     
     <div class="header-right">
+
         <app-language-switcher></app-language-switcher>
 
         <button (click)="navigateToManage()" class="manage-button" title="{{ 'MANAGE_FUND' | translate }}">
             <span class="pi pi-sliders-h"></span> {{ 'MANAGE_FUND' | translate }}
         </button>
+
+        <button (click)="navigateToPortfolio()" class="portfolio-btn" title="ดูพอร์ตโฟลิโอของฉัน">
+            <span class="pi pi-user"></span>
+        </button>
+
     </div>
 </header>
 

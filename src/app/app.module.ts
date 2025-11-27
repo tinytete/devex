@@ -22,6 +22,7 @@ import { LanguageSwitcherComponent } from './language-switcher/language-switcher
 import { TranslateLoader, TranslateModule, MissingTranslationHandler } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MyMissingTranslationHandler } from "./language.service";
+import { PortfolioComponent } from './portfolio/portfolio.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -36,6 +37,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BuyFundComponent,
     ManageFundComponent,
     LanguageSwitcherComponent,
+    PortfolioComponent,
   ],
   imports: [
     BrowserModule,

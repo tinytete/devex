@@ -39,6 +39,25 @@ export class BuyFundComponent implements OnInit {
   }
 
   confirmPurchase() {
+    // 1. คำนวณจำนวนหน่วยที่ได้ (เงินที่ซื้อ / ราคา NAV)
+    const unitsReceived = this.purchaseAmount / this.fundData.NAV;
+
+    // 2. บันทึกประวัติการซื้อ (Transaction)
+    this.service.addTransaction(
+        this.fundData.FundName, 
+        'BUY', 
+        this.purchaseAmount
+    );
+
+    // 3. อัปเดตพอร์ตโฟลิโอ (เพิ่มหน่วยลงทุน)
+    this.service.updatePortfolio(
+        this.fundId, 
+        this.fundData.FundName, 
+        unitsReceived, // ส่งค่าเป็นบวก (เพิ่ม)
+        this.fundData.NAV
+    );
+
+    // 4. แสดง Popup สำเร็จ
     this.purchaseSuccess = true;
   }
 

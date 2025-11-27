@@ -7,7 +7,6 @@ import { Service } from '../app.service';
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.scss',
-  providers: [Service],
 })
 export class PortfolioComponent implements OnInit { 
   portfoliotData: any[] = [];

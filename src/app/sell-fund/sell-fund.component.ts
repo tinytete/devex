@@ -6,8 +6,8 @@ import { Service } from '../app.service';
   selector: 'app-sell-fund',
   templateUrl: './sell-fund.component.html',
   styleUrls: ['./sell-fund.component.scss'],
-  providers: [Service]
 })
+
 export class SellFundComponent implements OnInit {
   fundId!: number;
   fundData: any;

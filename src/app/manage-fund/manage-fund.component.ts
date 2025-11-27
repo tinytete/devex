@@ -8,7 +8,6 @@ import { TranslateService } from '@ngx-translate/core';
   selector: 'app-manage-fund',
   templateUrl: './manage-fund.component.html',
   styleUrls: ['./manage-fund.component.scss'],
-  providers: [Service]
 })
 export class ManageFundComponent implements OnInit {
   fundsData: Fund[] = [];

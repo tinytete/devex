@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
   selector: 'top-chart-fund',
   templateUrl: 'topchartfund.component.html',
   styleUrl: 'topchartfund.component.scss',
-  providers: [Service],
 })
 export class TopchartfundComponent {
   title = 'topchartsfund';

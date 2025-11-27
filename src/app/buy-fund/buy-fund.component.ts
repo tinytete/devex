@@ -6,7 +6,7 @@ import { Service } from '../app.service';
   selector: 'app-buy-fund',
   templateUrl: './buy-fund.component.html',
   styleUrls: ['./buy-fund.component.scss'],
-  providers: [Service]
+
 })
 export class BuyFundComponent implements OnInit {
   fundId!: number;

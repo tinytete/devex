@@ -4,7 +4,10 @@ import { Fund, Transaction, PortfolioItem } from './fund';
 import { FUNDS, MyPortfolio } from './mock-funds';
 import { Observable, of } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
+
 export class Service {
   private funds: Fund[] = FUNDS; 
   private myPortfolio: PortfolioItem[] = MyPortfolio; 

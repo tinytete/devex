@@ -6,7 +6,6 @@ import { Service } from '../app.service';
   selector: 'app-detailfund',
   templateUrl: './detailfund.component.html',
   styleUrl: './detailfund.component.scss',
-  providers: [Service]
 })
 export class DetailfundComponent implements OnInit {
   fundId: number | undefined;

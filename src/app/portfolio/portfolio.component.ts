@@ -36,12 +36,13 @@ export class PortfolioComponent implements OnInit {
   }
 
   customizeLabel(arg: any) {
-    return arg.argumentText; 
+    return arg.percentText; 
   }
 
+  // ส่วน Tooltip ให้โชว์ชื่อกองทุน + มูลค่า (จะได้รู้ว่า % นี้คือของใคร)
   customizeTooltip(arg: any) {
     return {
-        text: arg.percentText 
+        text: `${arg.argumentText}: ${arg.valueText} บาท`
     };
   }
 

@@ -61,5 +61,7 @@ export class PortfolioComponent implements OnInit {
   }
 
   navigateTotopchart() { this.router.navigate(['topchart']); }
+
+  navigateToManage() { this.router.navigate(['/manage']); }
   
 }

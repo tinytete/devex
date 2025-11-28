@@ -1,4 +1,3 @@
-// src/app/app.service.ts
 import { Injectable } from '@angular/core';
 import { Fund, Transaction, PortfolioItem } from './fund';
 import { FUNDS, MyPortfolio } from './mock-funds';
@@ -25,7 +24,6 @@ export class Service {
   searchFunds(term: string): Observable<Fund[]> { if (!term.trim()) { return of([]); } const filteredList = this.funds.filter(fund => fund.FundName.toLowerCase().includes(term.toLowerCase()) ); return of(filteredList); }
 
 
-  // --- ส่วน Portfolio ---
   getPortfolio(): PortfolioItem[] {
     return this.myPortfolio;
   }
@@ -37,21 +35,15 @@ export class Service {
     const companyName = fundInfo ? fundInfo.Company : '-';
 
     if (index > -1) {
-      // มีอยู่แล้ว -> อัปเดต
       const item = this.myPortfolio[index];
       item.Units += unitsChange;
       item.NAV = nav; 
       item.TotalValue = item.Units * nav; 
       item.LastUpdate = new Date();       
-      
-      // ❌ ลบบรรทัด Profit ออกแล้ว
-
-      // ย้ายขึ้นบนสุด
       this.myPortfolio.splice(index, 1);
       this.myPortfolio.unshift(item);
 
     } else {
-      // สร้างใหม่
       if (unitsChange > 0) {
         const newItem: PortfolioItem = {
           FundId: fundId,
@@ -60,7 +52,6 @@ export class Service {
           Units: unitsChange,
           NAV: nav,             
           TotalValue: unitsChange * nav,
-          // ❌ ลบบรรทัด Profit ออกแล้ว
           LastUpdate: new Date()
         };
         this.myPortfolio.unshift(newItem); 

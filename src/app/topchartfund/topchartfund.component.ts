@@ -22,19 +22,16 @@ export class TopchartfundComponent {
     this.topChartData = service.getTopChartsData();
     this.topChartData.sort((a,b)=>b.Ranking-a.Ranking);
     this.chartData = this.topChartData;
-    this.allFunds = service.getTopChartsData(); // เก็บข้อมูลทั้งหมดไว้ก่อน
+    this.allFunds = service.getTopChartsData();
     
-    // เรียงลำดับตาม Ranking
     this.allFunds.sort((a,b)=>b.Ranking-a.Ranking);
     
-    // เริ่มต้นให้แสดงข้อมูลทั้งหมด
     this.topChartData = [...this.allFunds]; 
     this.chartData = this.topChartData;
   }
 
   navigateToManage() { this.router.navigate(['/manage']); }
 
-  // ✅ เพิ่มฟังก์ชันนี้: กดแล้วไปหน้า Portfolio (หน้าแรก)
   navigateToPortfolio() { 
       this.router.navigate(['/']); 
   }
@@ -71,12 +68,10 @@ export class TopchartfundComponent {
     const searchText = e.value ? e.value.toLowerCase() : '';
     
     if (searchText) {
-      // ถ้ามีข้อความ -> กรองเฉพาะที่ชื่อกองทุนมีคำนั้น
       this.topChartData = this.allFunds.filter(fund => 
         fund.FundName.toLowerCase().includes(searchText)
       );
     } else {
-      // ถ้าลบข้อความออก -> เอาข้อมูลทั้งหมดกลับมาโชว์
       this.topChartData = [...this.allFunds];
     }
   }

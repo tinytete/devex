@@ -1,7 +1,7 @@
 {
   "TOP_CHART_TITLE": "Top Charts Fund",
   "TOP_CHART": "Top 10 Mutual Funds with the Highest Returns",
-  "MANAGE_FUND": "Manage Funds",
+  "MANAGE_FUND": "Data Funds",
   "SEARCH_LABEL": "Search Fund:",
   "SEARCH_PLACEHOLDER": "Fund Name...",
   "CHART_TITLE": "Most Popular Funds (Weeks)",
@@ -87,7 +87,7 @@
   "COL_PROFIT": "Profit",
   "COL_TX_DATE": "Date/Time",
   "COL_TX_TYPE": "Type",
-  "COL_TX_AMOUNT": "Amount/Value",
+  "COL_TX_AMOUNT": "Amount",
   
   "TX_BUY": "Buy",
   "TX_SELL": "Sell"

@@ -14,14 +14,6 @@ export interface Fund {
     RiskLevel: string;
 }
 
-export interface Transaction {
-    Id: number;
-    FundName: string;
-    Type: 'BUY' | 'SELL';
-    Amount: number;
-    TransactionDate: Date;
-}
-
 export interface PortfolioItem {
     FundId: number;
     FundName: string;
@@ -31,3 +23,12 @@ export interface PortfolioItem {
     TotalValue: number;
     LastUpdate: Date;
 }
+
+export interface Transaction {
+    Id: number;
+    FundName: string;
+    Type: 'BUY' | 'SELL';
+    Amount: number;
+    TransactionDate: Date;
+}
+

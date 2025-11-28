@@ -10,18 +10,16 @@ import { Service } from '../app.service';
 export class PortfolioComponent implements OnInit { 
   portfoliotData: any[] = [];
   allPortfolioData: any[] = [];
-  
-  // ✅ 1. เพิ่มตัวแปรนี้ครับ (หายแดงแน่นอน)
   transactionData: any[] = []; 
   
   constructor(private service: Service, private router: Router) {}
 
   ngOnInit(): void {
-    // โหลดข้อมูลพอร์ต
+    
     this.allPortfolioData = this.service.getPortfolio();
     this.portfoliotData = [...this.allPortfolioData];
 
-    // ✅ 2. โหลดข้อมูลประวัติการทำรายการมาใส่ตัวแปร
+    
     this.transactionData = this.service.getTransactions();
   }
 

@@ -14,18 +14,9 @@ export const FUNDS: Fund[] = [
 ];
 
 export const MyPortfolio: PortfolioItem[] = [
-    // ลงทุนประมาณ 1,000 บาท
     { FundId: 7, Company: 'KAsset', FundName: 'K-ICT', NAV: 13.5028, Units: 74.0587, TotalValue: 1000.00, LastUpdate: new Date() },
-    
-    // ลงทุนขั้นต่ำ 500 บาท
     { FundId: 5, Company: 'SCBAM', FundName: 'SCBBANKINGA', NAV: 14.3055, Units: 34.9515, TotalValue: 500.00, LastUpdate: new Date() },
-    
-    // ลงทุนประมาณ 2,500 บาท
     { FundId: 2, Company: 'SCBAM', FundName: 'SCBBANKING', NAV: 9.8621, Units: 253.4957, TotalValue: 2500.00, LastUpdate: new Date() },
-    
-    // ลงทุนประมาณ 1,500 บาท
     { FundId: 9, Company: 'KTAM', FundName: 'KT-CLMVT-D', NAV: 14.1064, Units: 106.3347, TotalValue: 1500.00, LastUpdate: new Date() },
-    
-    // ลงทุนประมาณ 5,000 บาท
     { FundId: 1, Company: 'SCBAM', FundName: 'SCBBANKINGE', NAV: 14.8152, Units: 337.4912, TotalValue: 5000.00, LastUpdate: new Date() }
 ];

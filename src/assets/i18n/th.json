@@ -1,7 +1,7 @@
 {
   "TOP_CHART_TITLE": "กองทุนรวมยอดฮิต",
   "TOP_CHART": "10 อันดับกองทุนรวมที่ติด Top Returns มากที่สุด",
-  "MANAGE_FUND": "จัดการกองทุน",
+  "MANAGE_FUND": "ข้อมูลกองทุน",
   "SEARCH_LABEL": "ค้นหาชื่อกองทุนรวม:",
   "SEARCH_PLACEHOLDER": "พิมพ์ชื่อกองทุน...",
   "CHART_TITLE": "จำนวนสัปดาห์ที่ติดอันดับสูงสุด",
@@ -87,7 +87,7 @@
   "COL_PROFIT": "กำไร",
   "COL_TX_DATE": "วัน/เวลา",
   "COL_TX_TYPE": "รายการ",
-  "COL_TX_AMOUNT": "จำนวนเงิน/มูลค่า",
+  "COL_TX_AMOUNT": "จำนวนเงิน",
   
   "TX_BUY": "ซื้อ",
   "TX_SELL": "ขาย"

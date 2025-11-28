@@ -36,6 +36,7 @@
     box-sizing: border-box; 
 }
 
+.top-charts-branding{font-size: 17px; }
 .filter-area { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; background: white; padding: 15px; border-radius: 8px; width: 100%; }
 .chart-grid-area { display: flex; flex-direction: column; gap: 30px; width: 100%; }
 #chart { background: white; padding: 20px; border-radius: 8px; height: 400px; width: 100%; }

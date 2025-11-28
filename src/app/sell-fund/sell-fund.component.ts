@@ -78,4 +78,6 @@ export class SellFundComponent implements OnInit {
   closeSuccess() {
     this.router.navigate(['/']); 
   }
+
+  navigateTotopchart() {}
 }

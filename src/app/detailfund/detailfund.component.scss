@@ -1,14 +1,42 @@
 @import "primeicons/primeicons.css";
 
-.top-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background-color: #ffffff; border-bottom: 1px solid #e0e0e0; }
+/* --- Top Header (แถบเมนูด้านบน) --- */
+.top-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 15px 30px; 
+    background-color: #ffffff; 
+    border-bottom: 1px solid #e0e0e0; 
+}
 .site-title { font-weight: 800; font-size: 1.6em; color: #2c3e50; }
-.fund-detail-container { padding: 20px; }
+.header-right { display: flex; gap: 10px;}
 
+/* ✅ แก้ไข: เพิ่ม Style ให้กล่องหลัก (Main Container) */
+.fund-detail-container { 
+    width: 100%; 
+    padding: 30px;          /* ดันเนื้อหาออกจากขอบ 30px */
+    background-color: #f4f6f9; /* สีพื้นหลังเทาอ่อน เหมือนหน้าอื่น */
+    min-height: 100vh;      /* ให้สูงเต็มจอ */
+    box-sizing: border-box; 
+}
+
+/* --- ส่วนหัวข้อชื่อกองทุน --- */
 .detail-header {
-    border-bottom: 2px solid #00AEEF;
-    padding-bottom: 15px;
+    background-color: white; /* ใส่พื้นขาวให้หัวข้อ */
+    padding: 20px;
+    border-radius: 8px;
+    border-bottom: 4px solid #00AEEF;
     margin-bottom: 20px;
-    h1 { display: flex; justify-content: space-between; align-items: baseline; font-size: 1.8em; }
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+
+    h1 { 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: baseline; 
+        font-size: 1.8em; 
+        margin: 0;
+    }
 }
 
 .nav-info {
@@ -26,30 +54,30 @@
 .key-metrics-box {
     flex: 2; 
     border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    padding: 20px; /* เพิ่ม padding ภายในกล่อง */
+    border-radius: 8px;
+    background-color: #ffffff; /* เปลี่ยนเป็นพื้นขาวให้ดูเด่นขึ้น */
     position: relative;
     min-height: 180px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
-
-.follow-button { position: absolute; top: 10px; right: 10px; }
 
 .chart-area, .performance-table {
     margin-bottom: 30px;
-    padding: 15px;
+    padding: 20px;
     border: 1px solid #eee;
-    border-radius: 5px;
+    border-radius: 8px;
     background-color: white; 
     width: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 
     h2 {
         font-size: 1.5em;
         display: flex;
         align-items: baseline;
         gap: 15px;
+        margin-top: 0;
     }
-    .data-date { font-size: 0.8em; color: #777; font-weight: normal; }
 }
 
 /* --- Performance Table Styles --- */
@@ -68,37 +96,11 @@
         font-weight: 500;
         color: #444;
     }
-    .fund-color-box {
-        width: 20px; height: 12px; background-color: #007bff; border-radius: 3px;
-    }
     .positive-return { color: #28a745; font-weight: 600; }
     .negative-return { color: #dc3545; font-weight: 600; }
 }
 
 /* --- Buttons --- */
-.action-buttons-compact {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    margin-top: 20px;
-    padding-top: 15px;
-    border-top: 1px dashed #ddd;
-}
-
-.action-buy-sm, .action-sell-sm {
-    width: 100%;
-    font-size: 1em;
-    font-weight: bold;
-    border-radius: 5px;
-}
-.action-sell-sm .dx-button-content {
-    background-color: #f0f0f0 !important; 
-    color: #333 !important;
-    border: 1px solid #ddd !important;
-}
-
-.back-link { text-decoration: none; color: #666; display: inline-block; margin-top: 10px; &:hover { color: #000; } }
-
 ::ng-deep .btn-custom-buy {
     background-color: #00ff55 !important;
     color: #333 !important;
@@ -106,7 +108,7 @@
     border-radius: 4px;
     font-weight: 600;
     
-    .dx-button-content { padding: 0; display: flex; justify-content: center; align-items: center; width: 100px; height: 32px; } 
+    .dx-button-content { padding: 0; display: flex; justify-content: center; align-items: center; width: 120px; height: 40px; } 
     
     &:hover { background-color: hsl(120, 60%, 81%) !important; }
 }
@@ -118,7 +120,7 @@
     border-radius: 4px;
     font-weight: 600;
 
-    .dx-button-content { padding: 0; display: flex; justify-content: center; align-items: center; width: 100px; height: 32px; }
+    .dx-button-content { padding: 0; display: flex; justify-content: center; align-items: center; width: 120px; height: 40px; }
     &:hover { background-color: #e77f89 !important; }
 }
 
@@ -130,10 +132,16 @@
     transition: color 0.2s;
 
     &:hover {
-        color: #00AEEF; /* เปลี่ยนสีเป็นฟ้าเวลาชี้ */
-        
-        .site-title {
-            color: #00AEEF;
-        }
+        color: #00AEEF;
+        .site-title { color: #00AEEF; }
     }
+}
+
+.back-link { 
+    text-decoration: none; 
+    color: #666; 
+    display: inline-block; 
+    margin-top: 10px; 
+    font-size: 1.1em;
+    &:hover { color: #000; } 
 }

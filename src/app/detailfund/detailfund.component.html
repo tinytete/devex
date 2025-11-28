@@ -7,10 +7,17 @@
     </div>
     
     <div class="header-right">
+        <dx-button
+            hint ="{{ 'TOP_CHART_TITLE' | translate }}" 
+            icon="chart"
+            type="default"
+            stylingMode="contained"
+            (onClick)="navigateTotopchart()">
+        </dx-button>
+
         <app-language-switcher></app-language-switcher>
     </div>
 </header>
-
 <div *ngIf="fundData" class="fund-detail-container">
     
     <header class="detail-header">

@@ -39,7 +39,6 @@ export class PortfolioComponent implements OnInit {
     return arg.percentText; 
   }
 
-  // ส่วน Tooltip ให้โชว์ชื่อกองทุน + มูลค่า (จะได้รู้ว่า % นี้คือของใคร)
   customizeTooltip(arg: any) {
     return {
         text: `${arg.argumentText}: ${arg.valueText} บาท`
@@ -63,5 +62,6 @@ export class PortfolioComponent implements OnInit {
   navigateTotopchart() { this.router.navigate(['topchart']); }
 
   navigateToManage() { this.router.navigate(['/manage']); }
+  
   
 }

@@ -8,6 +8,15 @@
     
     <div class="header-right">
         <app-language-switcher></app-language-switcher>
+        
+        <dx-button
+            hint ="{{ 'TOP_CHART_TITLE' | translate }}" 
+            icon="chart"
+            type="default"
+            stylingMode="contained"
+            (onClick)="navigateTotopchart()">
+        </dx-button>
+
     </div>
 </header>
 

@@ -75,5 +75,6 @@ export class DetailfundComponent implements OnInit {
   navigateToPortfolio() { 
       this.router.navigate(['/']); 
   }
+  navigateToManage() { this.router.navigate(['/manage']); }
   
 }

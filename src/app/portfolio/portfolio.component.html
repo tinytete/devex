@@ -1,7 +1,11 @@
 <header class="top-header">
-    <div class="header-right" (click)="navigateTotopchart()" title="{{ 'TOP_CHART_TITLE' | translate }}">
+    <div class="header-left">
+        <div class="clickable-title" (click)="navigateTotopchart()" title="{{ 'TOP_CHART_TITLE' | translate }}">
             <span style="font-size: 1rem; margin-right: 10px;"></span>
             <span class="site-title">{{ 'TOP_CHART_TITLE' | translate }}</span>
+        </div>
+    </div>
+    <div class="header-right">
             <button (click)="navigateToManage()" class="manage-button" title="{{ 'MANAGE_FUND' | translate }}">
                 <span class="pi pi-file-edit"></span>
             </button>

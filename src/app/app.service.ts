@@ -10,7 +10,10 @@ export class Service {
   private transactions: Transaction[] = [];
 
   getTopChartsData(): Fund[] { return this.funds; }
-  getFundById(id: number): Fund | undefined { return this.funds.find(fund => fund.Id === id); }
+  
+  getFundById(id: number): Fund | undefined { 
+    return this.funds.find(fund => fund.Id === id); 
+  }
   
   addFund(newFund: Fund) { 
       const maxId = this.funds.length > 0 ? Math.max(...this.funds.map(f => f.Id)) : 0; 
@@ -18,11 +21,19 @@ export class Service {
       this.funds.push(newFund); 
   }
 
-  updateFund(updatedFund: Fund) { const index = this.funds.findIndex(f => f.Id === updatedFund.Id); if (index > -1) { this.funds[index] = { ...this.funds[index], ...updatedFund }; } }
-  deleteFund(id: number) { this.funds = this.funds.filter(f => f.Id !== id); }
+  updateFund(updatedFund: Fund) { 
+    const index = this.funds.findIndex(f => f.Id === updatedFund.Id); 
+    if (index > -1) { this.funds[index] = { ...this.funds[index], ...updatedFund }; } 
+  }
   
-  searchFunds(term: string): Observable<Fund[]> { if (!term.trim()) { return of([]); } const filteredList = this.funds.filter(fund => fund.FundName.toLowerCase().includes(term.toLowerCase()) ); return of(filteredList); }
-
+  deleteFund(id: number) { 
+    this.funds = this.funds.filter(f => f.Id !== id); 
+  }
+  
+  searchFunds(term: string): Observable<Fund[]> { 
+    if (!term.trim()) { return of([]); } 
+    return of(this.funds.filter(fund => fund.FundName.toLowerCase().includes(term.toLowerCase()))); 
+  }
 
   getPortfolio(): PortfolioItem[] {
     return this.myPortfolio;
@@ -35,15 +46,18 @@ export class Service {
     const companyName = fundInfo ? fundInfo.Company : '-';
 
     if (index > -1) {
+
       const item = this.myPortfolio[index];
       item.Units += unitsChange;
       item.NAV = nav; 
       item.TotalValue = item.Units * nav; 
       item.LastUpdate = new Date();       
+      
+
       this.myPortfolio.splice(index, 1);
       this.myPortfolio.unshift(item);
-
     } else {
+
       if (unitsChange > 0) {
         const newItem: PortfolioItem = {
           FundId: fundId,
@@ -60,8 +74,16 @@ export class Service {
   }
 
   getTransactions(): Transaction[] { return this.transactions; }
+  
   addTransaction(fundName: string, type: 'BUY' | 'SELL', amount: number) {
-      const newTx: Transaction = { Id: this.transactions.length + 1, FundName: fundName, Type: type, Amount: amount, TransactionDate: new Date() };
+      const newTx: Transaction = { 
+        Id: this.transactions.length + 1, 
+        FundName: fundName, 
+        Type: type, 
+        Amount: amount, 
+        TransactionDate: new Date() 
+      };
+      
       this.transactions.unshift(newTx); 
   }
 }

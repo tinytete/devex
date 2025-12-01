@@ -63,11 +63,11 @@
                     <div class="return-val">{{ data.value | number:'1.2-2' }}%</div>
                 </div>
             </dxi-column>
-            <dxi-column dataField="Lastrank" [caption]="'TABLE_LASTRANK' | translate" alignment="center" [width]="160"></dxi-column>
+            <dxi-column dataField="Lastrank" [caption]="'TABLE_LASTRANK' | translate" alignment="center" [width]="150"></dxi-column>
 
             <dxi-column dataField="Category" [caption]="'TABLE_CATEGORY' | translate" alignment="center" [width]="150"></dxi-column>
 
-            <dxi-column [caption]="'MANAGE_FUND' | translate" cellTemplate="actionCell" alignment="center" [width]="200" fixedPosition="right"></dxi-column>
+            <dxi-column [caption]="'MANAGE_FUND' | translate" cellTemplate="actionCell" alignment="center" [width]="190" fixedPosition="right"></dxi-column>
             
             <div *dxTemplate="let data of 'actionCell'">
             <div class="action-buttons-container">

@@ -66,5 +66,8 @@ export class BuyFundComponent implements OnInit {
   }
 
   navigateTotopchart() { this.router.navigate(['topchart']); }
-  
+
+  navigateToPortfolio() { 
+      this.router.navigate(['/']); 
+  }
 }

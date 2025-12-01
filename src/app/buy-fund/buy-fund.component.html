@@ -7,6 +7,8 @@
     </div>
     
     <div class="header-right">
+        <app-language-switcher></app-language-switcher>
+
         <dx-button
             hint ="{{ 'TOP_CHART_TITLE' | translate }}" 
             icon="chart"
@@ -15,7 +17,9 @@
             (onClick)="navigateTotopchart()">
         </dx-button>
 
-        <app-language-switcher></app-language-switcher>
+        <button (click)="navigateToPortfolio()" class="portfolio-btn" title="ดูพอร์ตโฟลิโอของฉัน">
+            <span class="pi pi-chart-pie"></span>
+        </button>
     </div>
 </header>
 

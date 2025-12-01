@@ -80,4 +80,8 @@ export class SellFundComponent implements OnInit {
   }
 
   navigateTotopchart() {}
+
+  navigateToPortfolio() { 
+      this.router.navigate(['/']); 
+  }
 }

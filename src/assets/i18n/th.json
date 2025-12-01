@@ -1,4 +1,8 @@
 {
+  "MENU_PORT": "พอร์ตกองทุน",
+  "MENU_BUY_SELL": "ซื้อกองทุน",
+  "MENU_MANAGE": "ข้อมูลกองทุน",
+  
   "TOP_CHART_TITLE": "กองทุนรวมยอดฮิต",
   "TOP_CHART": "10 อันดับกองทุนรวมที่ติด Top Returns มากที่สุด",
   "MANAGE_FUND": "ข้อมูลกองทุน",

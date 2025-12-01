@@ -1,32 +1,53 @@
 @import "primeicons/primeicons.css";
 
-.top-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background-color: #ffffff; border-bottom: 1px solid #e0e0e0; }
-.site-title { font-weight: 800; font-size: 1.6em; color: #2c3e50; }
-.header-right { display: flex; gap: 10px; gap: 20px;}
-
-.manage-button { background-color: #f8f9fa; border: 1px solid #ddd; padding: 8px 15px; border-radius: 20px; cursor: pointer; display: flex; align-items: center; gap: 8px; }
-
-.portfolio-btn {
-    background-color: #00AEEF;
-    color: white;
-    border: none;
-    padding: 8px 18px;
-    border-radius: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: bold;
-    font-size: 0.95em;
-    transition: background-color 0.2s;
-
-    &:hover {
-        background-color: #008ec2;
-    }
-
-    .pi { font-size: 1.1em; }
+/* จัด Header ให้เป็นกล่อง Flex */
+.top-header { 
+    display: flex; 
+    justify-content: space-between; /* ดันซ้ายสุด กับ ขวาสุด */
+    align-items: center; 
+    padding: 15px 30px; 
+    background-color: #ffffff; 
+    border-bottom: 1px solid #e0e0e0; 
+    position: relative; /* สำคัญ! เพื่อให้ตัวกลางอ้างอิงตำแหน่งได้ */
 }
 
+/* ส่วนซ้าย */
+.header-left {
+    cursor: pointer;
+    z-index: 2;
+}
+.site-title { font-weight: 800; font-size: 1.6em; color: #2c3e50; }
+
+/* ส่วนกลาง (เมนู) */
+.header-center {
+    position: absolute;      /* ลอยขึ้นมา */
+    left: 50%;               /* เริ่มที่กึ่งกลาง */
+    transform: translateX(-50%); /* ขยับกลับมาครึ่งนึงเพื่อให้กลางเป๊ะ */
+    display: flex;
+    gap: 40px;               /* ระยะห่างระหว่างเมนู */
+}
+
+.nav-link {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #666;             /* สีเทาปกติ */
+    cursor: pointer;
+    transition: color 0.2s;
+    user-select: none;
+    
+    &:hover {
+        color: #00AEEF;      /* ชี้แล้วเป็นสีฟ้า */
+    }
+}
+
+/* ส่วนขวา */
+.header-right { 
+    display: flex; 
+    gap: 20px;
+    z-index: 2;
+}
+
+/* --- Style เดิมด้านล่าง ไม่ต้องแก้ --- */
 .content-container { 
     width: 100%; 
     padding: 30px; 
@@ -40,7 +61,6 @@
 .chart-grid-area { display: flex; flex-direction: column; gap: 30px; width: 100%; }
 #chart { background: white; padding: 20px; border-radius: 8px; height: 400px; width: 100%; }
 #fund-list-grid { background: white; padding: 0; width: 100%; border-radius: 8px; overflow: hidden; }
-
 
 ::ng-deep #fund-list-grid {
     .dx-datagrid-headers .dx-header-row {
@@ -65,7 +85,6 @@
         cursor: pointer;
     }
 }
-
 
 .rank-badge { font-weight: 900; font-size: 1.2em; }
 .rank-1 { color: #d4af37; } .rank-2 { color: #2ecc71; } .rank-3 { color: #e74c3c; }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'; 
-import { Router } from '@angular/router';
+import { Router } from '@angular/router'; // อย่าลืม import Router
 import { Service } from '../app.service';
 
 @Component({
@@ -15,11 +15,8 @@ export class PortfolioComponent implements OnInit {
   constructor(private service: Service, private router: Router) {}
 
   ngOnInit(): void {
-    
     this.allPortfolioData = this.service.getPortfolio();
     this.portfoliotData = [...this.allPortfolioData];
-
-    
     this.transactionData = this.service.getTransactions();
   }
 
@@ -59,9 +56,9 @@ export class PortfolioComponent implements OnInit {
     item.isVisible() ? item.hide() : item.show();
   }
 
+  navigateToManage() { this.router.navigate(['/manage']); }
+
   navigateTotopchart() { this.router.navigate(['topchart']); }
 
-  navigateToManage() { this.router.navigate(['/manage']); }
-  
-  
+  navigateToPortfolio() { this.router.navigate(['/']); }
 }

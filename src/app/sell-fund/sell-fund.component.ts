@@ -74,9 +74,9 @@ export class SellFundComponent implements OnInit {
     this.router.navigate(['/']); 
   }
 
-  navigateTotopchart() {}
+  navigateToManage() { this.router.navigate(['/manage']); }
 
-  navigateToPortfolio() { 
-      this.router.navigate(['/']); 
-  }
+  navigateTotopchart() { this.router.navigate(['topchart']); }
+
+  navigateToPortfolio() { this.router.navigate(['/']); }
 }

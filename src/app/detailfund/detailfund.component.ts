@@ -70,11 +70,9 @@ export class DetailfundComponent implements OnInit {
     }];
   }
 
+ navigateToManage() { this.router.navigate(['/manage']); }
+
   navigateTotopchart() { this.router.navigate(['topchart']); }
 
-  navigateToPortfolio() { 
-      this.router.navigate(['/']); 
-  }
-  navigateToManage() { this.router.navigate(['/manage']); }
-  
+  navigateToPortfolio() { this.router.navigate(['/']); }
 }

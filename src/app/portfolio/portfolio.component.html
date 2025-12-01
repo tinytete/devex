@@ -1,14 +1,22 @@
 <header class="top-header">
-    <div class="header-right" (click)="navigateTotopchart()" title="{{ 'TOP_CHART_TITLE' | translate }}">
-            <span style="font-size: 1rem; margin-right: 10px;"></span>
-            <span class="site-title">{{ 'TOP_CHART_TITLE' | translate }}</span>
-            <button (click)="navigateToManage()" class="manage-button" title="{{ 'MANAGE_FUND' | translate }}">
-                <span class="pi pi-file-edit"></span>
-            </button>
+    <div class="header-left" (click)="navigateTotopchart()">
+        <span class="site-title">{{ 'TOP_CHART_TITLE' | translate }}</span>
     </div>
+
+    <div class="header-center">
+        <span class="nav-link" (click)="navigateToPortfolio()">
+            {{ 'MENU_PORT' | translate }}
+        </span>
+        <span class="nav-link" (click)="navigateTotopchart()">
+            {{ 'MENU_BUY_SELL' | translate }}
+        </span>
+        <span class="nav-link" (click)="navigateToManage()">
+            {{ 'MENU_MANAGE' | translate }}
+        </span>
+    </div>
+    
     <div class="header-right">
         <app-language-switcher></app-language-switcher>
-
     </div>
 </header>
 

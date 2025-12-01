@@ -90,10 +90,9 @@ export class ManageFundComponent implements OnInit {
     this.isNew = false;
   }
 
+  navigateToManage() { this.router.navigate(['/manage']); }
+
   navigateTotopchart() { this.router.navigate(['topchart']); }
 
-  navigateToPortfolio() { 
-      this.router.navigate(['/']); 
-  }
-  
+  navigateToPortfolio() { this.router.navigate(['/']); }
 }

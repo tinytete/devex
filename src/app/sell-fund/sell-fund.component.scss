@@ -1,9 +1,51 @@
 @import "primeicons/primeicons.css";
 
-.top-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background-color: #ffffff; border-bottom: 1px solid #e0e0e0; }
-.site-title { font-weight: 800; font-size: 1.6em; color: #2c3e50; }
-.header-right { display: flex; gap: 10px; gap: 20px;}
+/* --- Header Style (เหมือน Top Chart) --- */
+.top-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 15px 30px; 
+    background-color: #ffffff; 
+    border-bottom: 1px solid #e0e0e0; 
+    position: relative; 
+}
 
+.header-left {
+    cursor: pointer;
+    z-index: 2;
+}
+
+.site-title { font-weight: 800; font-size: 1.6em; color: #2c3e50; }
+
+.header-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 40px;
+}
+
+.nav-link {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.2s;
+    user-select: none;
+    
+    &:hover {
+        color: #00AEEF;
+    }
+}
+
+.header-right { 
+    display: flex; 
+    gap: 20px;
+    z-index: 2;
+}
+
+/* --- ส่วนเนื้อหา (Sell Fund Style) --- */
 .buy-sell-container {
     max-width: 700px;
     margin: 40px auto;
@@ -152,10 +194,6 @@
     font-weight: bold;
     font-size: 0.95em;
     transition: background-color 0.2s;
-
-    &:hover {
-        background-color: #008ec2;
-    }
-
+    &:hover { background-color: #008ec2; }
     .pi { font-size: 1.1em; }
 }

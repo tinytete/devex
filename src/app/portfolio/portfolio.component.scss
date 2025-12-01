@@ -6,7 +6,6 @@
 .manage-button { background-color: #f8f9fa; border: 1px solid #ddd; padding: 8px 15px; border-radius: 20px; cursor: pointer; display: flex; align-items: center; gap: 8px; }
 
 
-/* ✅ เพิ่ม class นี้: ทำให้ข้อความกดได้และเปลี่ยนสีเมื่อเอาเมาส์ชี้ */
 .clickable-title {
     cursor: pointer;
     display: flex;
@@ -15,7 +14,7 @@
     transition: color 0.2s;
 
     &:hover {
-        color: #00AEEF; /* เปลี่ยนสีเป็นฟ้าเวลาชี้ */
+        color: #00AEEF; 
         
         .site-title {
             color: #00AEEF;
@@ -38,6 +37,29 @@
 #fund-list-grid { background: white; padding: 0; width: 100%; border-radius: 8px; overflow: hidden; }
 
 ::ng-deep #port-list-grid {
+    .dx-datagrid-headers .dx-header-row {
+        background-color: #909090; 
+        color: white;
+        td { 
+            border-right: 1px solid #bbb !important; 
+            font-weight: bold !important; 
+            text-align: center !important; 
+            box-align: center;
+        }
+    }
+    .dx-row-alt > td { background-color: #eaf6f9 !important; }
+    .dx-datagrid-borders > .dx-datagrid-headers,
+    .dx-datagrid-borders > .dx-datagrid-rowsview,
+    .dx-datagrid-rowsview .dx-row > td {
+        border-color: #ddd !important;
+    }
+    .dx-datagrid-rowsview .dx-row > td {
+        vertical-align: middle;
+        padding: 10px;
+        cursor: pointer;
+    }
+}
+::ng-deep #history-grid {
     .dx-datagrid-headers .dx-header-row {
         background-color: #909090; 
         color: white;

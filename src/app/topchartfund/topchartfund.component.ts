@@ -1,4 +1,3 @@
-// src/app/topchartfund/topchartfund.component.ts
 import { Component } from '@angular/core';
 import { Service } from '../app.service';
 import { Router } from '@angular/router';

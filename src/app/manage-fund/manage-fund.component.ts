@@ -25,20 +25,18 @@ export class ManageFundComponent implements OnInit {
   }
 
   loadFunds() {
-    // ดึงข้อมูลมา
     const data = this.service.getTopChartsData();
-    // ✅ สั่งเรียงตาม Ranking (จำนวนสัปดาห์) จากมากไปน้อย ทันที!
-    // เพื่อให้คนที่สัปดาห์เยอะสุด อยู่บนสุด เป็นที่ 1
+ 
     this.fundsData = [...data].sort((a, b) => b.Ranking - a.Ranking);
   }
 
   startAdd() {
     this.isNew = true;
     this.selectedFund = {
-      Id: 0, // ID เดี๋ยว Service จัดการให้
+      Id: 0, 
       FundName: '',
       Company: '',
-      Ranking: 0, // เริ่มต้น 0 สัปดาห์
+      Ranking: 0, 
       Return3Y: 0,
       Lastrank: 0,
       Category: '',
@@ -71,7 +69,7 @@ export class ManageFundComponent implements OnInit {
       
       this.selectedFund = null;
       this.isNew = false;
-      this.loadFunds(); // โหลดข้อมูลใหม่ (ซึ่งจะเรียงลำดับใหม่ให้อัตโนมัติ)
+      this.loadFunds(); 
     }
   }
 

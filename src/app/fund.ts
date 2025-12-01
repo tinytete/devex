@@ -1,5 +1,3 @@
-// src/app/fund.ts
-
 export interface Fund {
     Id: number;
     FundName: string;

@@ -14,14 +14,14 @@
             {{ 'MENU_MANAGE' | translate }}
         </span>
     </div>
-    
+
     <div class="header-right">
         <app-language-switcher></app-language-switcher>
     </div>
 </header>
 
 <div *ngIf="fundData" class="fund-detail-container">
-    
+
     <header class="detail-header">
         <h1>{{ fundData.FundName }} ({{ fundData.Company }})
             <div class="nav-info">
@@ -37,10 +37,11 @@
             <p><strong>{{ 'LABEL_CATEGORY' | translate }}</strong> {{ fundData.Category }}</p>
             <p><strong>{{ 'DETAIL_AUM' | translate }}</strong> {{ fundData.AUM}}</p>
             <p><strong>{{ 'LABEL_DATE' | translate }}</strong> {{ fundData.RegisterDate }}</p>
-            <p><strong>{{ 'DETAIL_RISK' | translate }}</strong> <span class="risk-level-{{ fundData.RiskLevel }}"> {{ fundData.RiskLevel }}</span></p>
+            <p><strong>{{ 'DETAIL_RISK' | translate }}</strong> <span class="risk-level-{{ fundData.RiskLevel }}"> {{
+                    fundData.RiskLevel }}</span></p>
         </div>
     </div>
-    
+
     <div class="chart-area">
         <h2>{{ 'DETAIL_GRAPH' | translate }}</h2>
         <dx-chart id="nav-chart" [dataSource]="navHistoryData">
@@ -52,35 +53,34 @@
 
     <div class="performance-table" style="margin-bottom: 30px;">
         <h2>{{ 'DETAIL_PERFORMANCE' | translate }}</h2>
-        
-        <dx-data-grid 
-            [dataSource]="performanceData" 
-            [width]="'100%'" 
-            [showBorders]="true" 
-            [showColumnHeaders]="true"
-            [showRowLines]="true"
-            [columnAutoWidth]="false" 
-            [rowAlternationEnabled]="false"> 
-            
+
+        <dx-data-grid [dataSource]="performanceData" [width]="'100%'" [showBorders]="true" [showColumnHeaders]="true"
+            [showRowLines]="true" [columnAutoWidth]="false" [rowAlternationEnabled]="false">
+
             <dxi-column dataField="Fundname" [caption]="'TABLE_FUND' | translate" alignment="center" [width]="200">
                 <div *dxTemplate="let data of 'cell'">
                     <div class="fund-performance-cell" style="display: flex; align-items: center;">
-                        <span style="width:10px; height:10px; background:#007bff; margin-right:5px; display:inline-block;"></span>
+                        <span
+                            style="width:10px; height:10px; background:#007bff; margin-right:5px; display:inline-block;"></span>
                         <span style="font-weight: bold;">{{ data.data.Fundname }}</span>
                     </div>
                 </div>
             </dxi-column>
 
-            <dxi-column dataField="R_1D" [caption]="'PERF_1D' | translate" alignment="center" [width]="210" cellTemplate="returnCell"></dxi-column>
-            <dxi-column dataField="R_1M" [caption]="'PERF_1M' | translate" alignment="center" [width]="210" cellTemplate="returnCell"></dxi-column>
-            <dxi-column dataField="R_1Y" [caption]="'PERF_1Y' | translate" alignment="center" [width]="210" cellTemplate="returnCell"></dxi-column>
-            <dxi-column dataField="R_3Y" [caption]="'PERF_3Y' | translate" alignment="center" [width]="210" cellTemplate="returnCell"></dxi-column>
-            <dxi-column dataField="R_5Y" [caption]="'PERF_5Y' | translate" alignment="center" [width]="210" cellTemplate="returnCell"></dxi-column>
-            
+            <dxi-column dataField="R_1D" [caption]="'PERF_1D' | translate" alignment="center" [width]="210"
+                cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_1M" [caption]="'PERF_1M' | translate" alignment="center" [width]="210"
+                cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_1Y" [caption]="'PERF_1Y' | translate" alignment="center" [width]="210"
+                cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_3Y" [caption]="'PERF_3Y' | translate" alignment="center" [width]="210"
+                cellTemplate="returnCell"></dxi-column>
+            <dxi-column dataField="R_5Y" [caption]="'PERF_5Y' | translate" alignment="center" [width]="210"
+                cellTemplate="returnCell"></dxi-column>
+
             <div *dxTemplate="let data of 'returnCell'">
-                <span [ngClass]="{'negative-return': data.value < 0, 'positive-return': data.value >= 0}" 
-                      style="font-weight: bold;" 
-                      [style.color]="data.value < 0 ? 'red' : 'green'">
+                <span [ngClass]="{'negative-return': data.value < 0, 'positive-return': data.value >= 0}"
+                    style="font-weight: bold;" [style.color]="data.value < 0 ? 'red' : 'green'">
                     {{ data.value}}%
                 </span>
             </div>
@@ -88,20 +88,15 @@
             <dxo-pager [visible]="false"></dxo-pager>
         </dx-data-grid>
     </div>
-        
-    <div class="action-buttons-container" style="display: flex; justify-content: center; gap: 110px; margin-bottom: 30px;">
-        <dx-button 
-            [text]="'BUTTON_BUY' | translate" 
-            class="btn-custom-buy"
-            [elementAttr]="{ style: 'font-size: 18px; font-weight: bold;' }"
-            (onClick)="navigateToBuy()">
+
+    <div class="action-buttons-container"
+        style="display: flex; justify-content: center; gap: 110px; margin-bottom: 30px;">
+        <dx-button [text]="'BUTTON_BUY' | translate" class="btn-custom-buy"
+            [elementAttr]="{ style: 'font-size: 18px; font-weight: bold;' }" (onClick)="navigateToBuy()">
         </dx-button>
 
-        <dx-button 
-            [text]="'BUTTON_SELL' | translate"
-            class="btn-custom-sell"
-            [elementAttr]="{ style: 'font-size: 18px; font-weight: bold;' }"
-            (onClick)="navigateToSell()">
+        <dx-button [text]="'BUTTON_SELL' | translate" class="btn-custom-sell"
+            [elementAttr]="{ style: 'font-size: 18px; font-weight: bold;' }" (onClick)="navigateToSell()">
         </dx-button>
     </div>
     <br>

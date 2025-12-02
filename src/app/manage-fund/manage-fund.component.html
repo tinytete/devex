@@ -14,48 +14,34 @@
             {{ 'MENU_MANAGE' | translate }}
         </span>
     </div>
-    
+
     <div class="header-right">
         <app-language-switcher></app-language-switcher>
     </div>
 </header>
 
 <div class="manage-container">
-    
+
     <div class="top-actions">
-        <dx-button 
-            [text]="('BUTTON_ADD_NEW' | translate)" 
-            type="success" 
-            stylingMode="contained"
-            icon="plus"
+        <dx-button [text]="('BUTTON_ADD_NEW' | translate)" type="success" stylingMode="contained" icon="plus"
             (onClick)="startAdd()">
         </dx-button>
     </div>
 
     <div class="grid-wrapper">
-        <dx-data-grid 
-            id="gridContainer"
-            [dataSource]="fundsData"
-            [showBorders]="true"
-            [showRowLines]="true"
-            [showColumnLines]="true"
-            [rowAlternationEnabled]="true"
-            [columnAutoWidth]="true" 
+        <dx-data-grid id="gridContainer" [dataSource]="fundsData" [showBorders]="true" [showRowLines]="true"
+            [showColumnLines]="true" [rowAlternationEnabled]="true" [columnAutoWidth]="true"
             [allowColumnResizing]="true">
 
-            <dxi-column 
-                [caption]="'TABLE_RANK' | translate" 
-                alignment="center" 
-                [width]="80" 
-                [allowResizing]="false"
-                [allowSorting]="false"
-                cellTemplate="rankCell"> <div *dxTemplate="let data of 'rankCell'"> 
+            <dxi-column [caption]="'TABLE_RANK' | translate" alignment="center" [width]="80" [allowResizing]="false"
+                [allowSorting]="false" cellTemplate="rankCell">
+                <div *dxTemplate="let data of 'rankCell'">
                     <span class="rank-badge rank-{{data.rowIndex + 1}}">
                         {{ data.rowIndex + 1 }}
                     </span>
                 </div>
             </dxi-column>
-            
+
             <dxi-column dataField="FundName" [caption]="'TABLE_FUND' | translate" alignment="left" [minWidth]="130">
                 <div *dxTemplate="let data of 'cell'">
                     <div class="fund-name">{{ data.value }}</div>
@@ -63,50 +49,47 @@
                 </div>
             </dxi-column>
 
-            <dxi-column dataField="Company" [caption]="'TABLE_COMPANY' | translate" alignment="center" [width]="100"></dxi-column>
-            
-            <dxi-column dataField="Ranking" [caption]="'TABLE_WEEKS' | translate" alignment="center" [width]="170"></dxi-column>
+            <dxi-column dataField="Company" [caption]="'TABLE_COMPANY' | translate" alignment="center"
+                [width]="100"></dxi-column>
+
+            <dxi-column dataField="Ranking" [caption]="'TABLE_WEEKS' | translate" alignment="center"
+                [width]="170"></dxi-column>
 
             <dxi-column dataField="Return3Y" [caption]="'TABLE_RETURN' | translate" alignment="center" [width]="170">
                 <div *dxTemplate="let data of 'cell'">
                     <div class="return-val">{{ data.value | number:'1.2-2' }}%</div>
                 </div>
             </dxi-column>
-            <dxi-column dataField="Lastrank" [caption]="'TABLE_LASTRANK' | translate" alignment="center" [width]="150"></dxi-column>
+            <dxi-column dataField="Lastrank" [caption]="'TABLE_LASTRANK' | translate" alignment="center"
+                [width]="150"></dxi-column>
 
-            <dxi-column dataField="Category" [caption]="'TABLE_CATEGORY' | translate" alignment="center" [width]="150"></dxi-column>
+            <dxi-column dataField="Category" [caption]="'TABLE_CATEGORY' | translate" alignment="center"
+                [width]="150"></dxi-column>
 
-            <dxi-column [caption]="'MANAGE_FUND' | translate" cellTemplate="actionCell" alignment="center" [width]="190" fixedPosition="right"></dxi-column>
-            
+            <dxi-column [caption]="'MANAGE_FUND' | translate" cellTemplate="actionCell" alignment="center" [width]="190"
+                fixedPosition="right"></dxi-column>
+
             <div *dxTemplate="let data of 'actionCell'">
-            <div class="action-buttons-container">
-                <dx-button 
-                    icon="edit"
-                    [text]="'BUTTON_EDIT' | translate" 
-                    class="btn-custom-edit"
-                    [elementAttr]="{ style: 'z-index: 999;' }" 
-                    (onClick)="startEdit(data.data)">
-                </dx-button>
-        
-                <dx-button 
-                    icon="trash"
-                    [text]="'BUTTON_DELETE' | translate"
-                    class="btn-custom-delete"
-                    [elementAttr]="{ style: 'z-index: 999;' }"
-                    (onClick)="delete(data.data.Id)">
-                </dx-button>
+                <div class="action-buttons-container">
+                    <dx-button icon="edit" [text]="'BUTTON_EDIT' | translate" class="btn-custom-edit"
+                        [elementAttr]="{ style: 'z-index: 999;' }" (onClick)="startEdit(data.data)">
+                    </dx-button>
+
+                    <dx-button icon="trash" [text]="'BUTTON_DELETE' | translate" class="btn-custom-delete"
+                        [elementAttr]="{ style: 'z-index: 999;' }" (onClick)="delete(data.data.Id)">
+                    </dx-button>
+                </div>
             </div>
-            </div>
-                        
+
             <dxo-paging [pageSize]="10"></dxo-paging>
         </dx-data-grid>
     </div>
 
     <hr style="margin: 30px 0; border: 0; border-top: 1px dashed #ccc;">
-    
+
     <div *ngIf="selectedFund" id="edit-form" class="edit-form-card">
-         <h3>{{ isNew ? ('TITLE_ADD' | translate) : ('TITLE_EDIT' | translate) }}</h3>
-        
+        <h3>{{ isNew ? ('TITLE_ADD' | translate) : ('TITLE_EDIT' | translate) }}</h3>
+
         <div class="form-grid">
             <div class="form-group">
                 <label>{{ 'LABEL_ID' | translate }} (Auto)</label>
@@ -139,8 +122,10 @@
         </div>
 
         <div class="form-actions">
-            <dx-button icon="save" [text]="'BUTTON_SAVE' | translate" type="default" class="btn-custom-save" [elementAttr]="{ style: 'z-index: 999;' }"  (onClick)="save()"></dx-button>
-            <dx-button icon="close" [text]="'BUTTON_CANCEL' | translate" type="normal" class="btn-custom-cancel" [elementAttr]="{ style: 'z-index: 999;' }" (onClick)="cancel()"></dx-button>
+            <dx-button icon="save" [text]="'BUTTON_SAVE' | translate" type="default" class="btn-custom-save"
+                [elementAttr]="{ style: 'z-index: 999;' }" (onClick)="save()"></dx-button>
+            <dx-button icon="close" [text]="'BUTTON_CANCEL' | translate" type="normal" class="btn-custom-cancel"
+                [elementAttr]="{ style: 'z-index: 999;' }" (onClick)="cancel()"></dx-button>
         </div>
     </div>
     <br>

@@ -11,16 +11,16 @@ import { Service } from '../app.service';
 export class BuyFundComponent implements OnInit {
   fundId!: number;
   fundData: any;
-  purchaseAmount: number = 500; 
+  purchaseAmount: number = 500;
   isAgreed: boolean = false;
   today: Date = new Date();
   purchaseSuccess: boolean = false;
 
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private service: Service,
     private router: Router
-) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -42,23 +42,23 @@ export class BuyFundComponent implements OnInit {
     const unitsReceived = this.purchaseAmount / this.fundData.NAV;
 
     this.service.addTransaction(
-        this.fundData.FundName, 
-        'BUY', 
-        this.totalPayment
+      this.fundData.FundName,
+      'BUY',
+      this.totalPayment
     );
 
     this.service.updatePortfolio(
-        this.fundId, 
-        this.fundData.FundName, 
-        unitsReceived, 
-        this.fundData.NAV
+      this.fundId,
+      this.fundData.FundName,
+      unitsReceived,
+      this.fundData.NAV
     );
-    
+
     this.purchaseSuccess = true;
   }
 
   closeSuccess() {
-    this.router.navigate(['/']); 
+    this.router.navigate(['/']);
   }
 
   navigateToManage() { this.router.navigate(['/manage']); }

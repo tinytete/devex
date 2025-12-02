@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'; 
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; // อย่าลืม import Router
 import { Service } from '../app.service';
 
@@ -7,12 +7,12 @@ import { Service } from '../app.service';
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.scss',
 })
-export class PortfolioComponent implements OnInit { 
+export class PortfolioComponent implements OnInit {
   portfoliotData: any[] = [];
   allPortfolioData: any[] = [];
-  transactionData: any[] = []; 
-  
-  constructor(private service: Service, private router: Router) {}
+  transactionData: any[] = [];
+
+  constructor(private service: Service, private router: Router) { }
 
   ngOnInit(): void {
     this.allPortfolioData = this.service.getPortfolio();
@@ -24,7 +24,7 @@ export class PortfolioComponent implements OnInit {
     const searchText = e.value ? e.value.toLowerCase() : '';
 
     if (searchText) {
-      this.portfoliotData = this.allPortfolioData.filter(item => 
+      this.portfoliotData = this.allPortfolioData.filter(item =>
         item.FundName.toLowerCase().includes(searchText)
       );
     } else {
@@ -33,26 +33,26 @@ export class PortfolioComponent implements OnInit {
   }
 
   customizeLabel(arg: any) {
-    return arg.percentText; 
+    return arg.percentText;
   }
 
   customizeTooltip(arg: any) {
     return {
-        text: `${arg.argumentText}: ${arg.valueText} บาท`
+      text: `${arg.argumentText}: ${arg.valueText} บาท`
     };
   }
 
-  pointClickHandler(e:any) {
+  pointClickHandler(e: any) {
     this.toggleVisibility(e.target);
   }
 
-  legendClickHandler(e:any) {
+  legendClickHandler(e: any) {
     const arg = e.target;
     const item = e.component.getAllSeries()[0].getPointsByArg(arg)[0];
     this.toggleVisibility(item);
   }
 
-  toggleVisibility(item:any) {
+  toggleVisibility(item: any) {
     item.isVisible() ? item.hide() : item.show();
   }
 

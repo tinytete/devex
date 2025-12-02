@@ -11,17 +11,17 @@ import { Service } from '../app.service';
 export class SellFundComponent implements OnInit {
   fundId!: number;
   fundData: any;
-  sellAmount: number = 0; 
-  heldUnits: number = 0;  
+  sellAmount: number = 0;
+  heldUnits: number = 0;
   sellAllUnits: boolean = false;
   today: Date = new Date();
   sellSuccess: boolean = false;
 
   constructor(
-      private route: ActivatedRoute, 
-      private service: Service,
-      private router: Router
-) {}
+    private route: ActivatedRoute,
+    private service: Service,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -47,7 +47,7 @@ export class SellFundComponent implements OnInit {
 
   onAmountChange() {
     if (this.sellAllUnits && this.sellAmount !== this.heldUnits) {
-       this.sellAllUnits = false;
+      this.sellAllUnits = false;
     }
   }
 
@@ -57,23 +57,23 @@ export class SellFundComponent implements OnInit {
     const netReceived = sellValueInBaht - fee;
 
     this.service.addTransaction(
-        this.fundData.FundName,
-        'SELL',
-        netReceived
+      this.fundData.FundName,
+      'SELL',
+      netReceived
     );
 
     this.service.updatePortfolio(
-        this.fundId,
-        this.fundData.FundName,
-        -this.sellAmount, 
-        this.fundData.NAV
+      this.fundId,
+      this.fundData.FundName,
+      -this.sellAmount,
+      this.fundData.NAV
     );
 
     this.sellSuccess = true;
   }
 
   closeSuccess() {
-    this.router.navigate(['/']); 
+    this.router.navigate(['/']);
   }
 
   navigateToManage() { this.router.navigate(['/manage']); }

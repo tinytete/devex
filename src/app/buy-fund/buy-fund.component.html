@@ -14,7 +14,7 @@
             {{ 'MENU_MANAGE' | translate }}
         </span>
     </div>
-    
+
     <div class="header-right">
         <app-language-switcher></app-language-switcher>
     </div>
@@ -25,17 +25,14 @@
         <h2>{{ 'BUY_TITLE' | translate }}</h2>
         <div class="fund-id-tag">ID: {{ fundId }}</div>
     </div>
-    
+
     <h3 style="margin-top: 0; color: #333;">{{ fundData?.FundName }}</h3>
     <div class="form-area dx-fieldset">
-        
+
         <div class="dx-field">
             <div class="dx-field-label">{{ 'BUY_AMOUNT_LABEL' | translate }}</div>
             <div class="dx-field-value">
-                <dx-number-box 
-                    [(value)]="purchaseAmount" 
-                    [min]="500"
-                    format="#,##0.00">
+                <dx-number-box [(value)]="purchaseAmount" [min]="500" format="#,##0.00">
                 </dx-number-box>
                 <div style="font-size: 0.8rem; color: #888; margin-top: 5px;">{{ 'BUY_MIN_NOTE' | translate }}</div>
             </div>
@@ -75,13 +72,8 @@
         </div>
 
         <div class="action-buttons">
-            <dx-button 
-                [text]="'BUTTON_CONFIRM_BUY' | translate" 
-                type="success" 
-                [width]="'100%'" 
-                [height]="50"
-                [disabled]="!isAgreed || purchaseAmount < 500"
-                (onClick)="confirmPurchase()">
+            <dx-button [text]="'BUTTON_CONFIRM_BUY' | translate" type="success" [width]="'100%'" [height]="50"
+                [disabled]="!isAgreed || purchaseAmount < 500" (onClick)="confirmPurchase()">
             </dx-button>
         </div>
     </div>
@@ -92,12 +84,8 @@
         <i class="pi pi-check-circle" style="font-size: 3rem; color: #28a745; margin-bottom: 10px;"></i>
         <h3>{{ 'BUY_SUCCESS_TITLE' | translate }}</h3>
         <p>{{ 'BUY_SUCCESS_MSG' | translate }}</p>
-        
-        <dx-button 
-            [text]="'LINK_BACK' | translate"  
-            type="default" 
-            [width]="120"
-            (onClick)="closeSuccess()">
+
+        <dx-button [text]="'LINK_BACK' | translate" type="default" [width]="120" (onClick)="closeSuccess()">
         </dx-button>
     </div>
 </div>

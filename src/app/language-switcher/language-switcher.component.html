@@ -1,15 +1,12 @@
 <div class="language-switcher">
-  
+
   <button class="current-language">
     <img [src]="getFlag(currentLanguage)" alt="flag" width="30" height="20">
   </button>
 
   <ul class="language-menu">
-    <li
-      *ngFor="let language of languages"
-      [class.active]="language.code === currentLanguage"
-      (click)="switchLanguage(language.code)"
-    >
+    <li *ngFor="let language of languages" [class.active]="language.code === currentLanguage"
+      (click)="switchLanguage(language.code)">
       <img [src]="language.flag" alt="{{ language.name }}" width="25" height="18" style="margin-right: 8px;">
       {{ language.name }}
     </li>

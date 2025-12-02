@@ -15,10 +15,10 @@ export class ManageFundComponent implements OnInit {
   isNew: boolean = false;
 
   constructor(
-    private service: Service, 
+    private service: Service,
     private router: Router,
     private translate: TranslateService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadFunds();
@@ -26,17 +26,17 @@ export class ManageFundComponent implements OnInit {
 
   loadFunds() {
     const data = this.service.getTopChartsData();
- 
+
     this.fundsData = [...data].sort((a, b) => b.Ranking - a.Ranking);
   }
 
   startAdd() {
     this.isNew = true;
     this.selectedFund = {
-      Id: 0, 
+      Id: 0,
       FundName: '',
       Company: '',
-      Ranking: 0, 
+      Ranking: 0,
       Return3Y: 0,
       Lastrank: 0,
       Category: '',
@@ -47,11 +47,11 @@ export class ManageFundComponent implements OnInit {
   }
 
   scrollToForm() {
-      setTimeout(() => {
-          const element = document.getElementById('edit-form');
-          if (element) element.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    }
+    setTimeout(() => {
+      const element = document.getElementById('edit-form');
+      if (element) element.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  }
 
   startEdit(fund: Fund) {
     this.isNew = false;
@@ -66,17 +66,17 @@ export class ManageFundComponent implements OnInit {
       } else {
         this.service.updateFund(this.selectedFund);
       }
-      
+
       this.selectedFund = null;
       this.isNew = false;
-      this.loadFunds(); 
+      this.loadFunds();
     }
   }
 
   delete(id: number) {
-    const confirmMessage = this.translate.instant('LABEL_SURE')+ id + '?';
+    const confirmMessage = this.translate.instant('LABEL_SURE') + id + '?';
 
-    if(confirm(confirmMessage)) {
+    if (confirm(confirmMessage)) {
       this.service.deleteFund(id);
       this.loadFunds();
       if (this.selectedFund && this.selectedFund.Id === id) {

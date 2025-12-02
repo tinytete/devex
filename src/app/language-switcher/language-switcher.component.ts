@@ -16,10 +16,10 @@ export class LanguageSwitcherComponent {
 
   constructor(private translate: TranslateService) {
     const savedLanguage = localStorage.getItem('language');
-    
+
     if (savedLanguage) {
       this.currentLanguage = savedLanguage;
-      this.translate.use(savedLanguage); 
+      this.translate.use(savedLanguage);
     } else {
       this.translate.use('th');
     }

@@ -12,46 +12,46 @@ export class TopchartfundComponent {
   topChartData: any[] = [];
   chartData: any[] = [];
 
-  public customizeLabel = (e:any)=> { return e.value; }
+  public customizeLabel = (e: any) => { return e.value; }
   public customizeSeriesLabel = (e: any) => { return e.point.data.Company; }
 
-  allFunds: any[] = []; 
+  allFunds: any[] = [];
 
   constructor(service: Service, private router: Router) {
     this.topChartData = service.getTopChartsData();
-    this.topChartData.sort((a,b)=>b.Ranking-a.Ranking);
+    this.topChartData.sort((a, b) => b.Ranking - a.Ranking);
     this.chartData = this.topChartData;
     this.allFunds = service.getTopChartsData();
-    
-    this.allFunds.sort((a,b)=>b.Ranking-a.Ranking);
-    
-    this.topChartData = [...this.allFunds]; 
+
+    this.allFunds.sort((a, b) => b.Ranking - a.Ranking);
+
+    this.topChartData = [...this.allFunds];
     this.chartData = this.topChartData;
   }
 
   navigateToManage() { this.router.navigate(['/manage']); }
 
-  navigateToPortfolio() { 
-      this.router.navigate(['/']); 
+  navigateToPortfolio() {
+    this.router.navigate(['/']);
   }
 
-  onRowClick(e:any) {
-    if(e.data && e.data.Id){
+  onRowClick(e: any) {
+    if (e.data && e.data.Id) {
       this.router.navigate(['/detail', e.data.Id]);
     }
   }
 
-  onPointClick(e:any) {
+  onPointClick(e: any) {
     const pointData = e.target.data;
-    if(pointData && pointData.Id) {
-      this.router.navigate(['/detail',pointData.Id]);
+    if (pointData && pointData.Id) {
+      this.router.navigate(['/detail', pointData.Id]);
     }
   }
 
   navigateToBuy(fundId: number | null) {
-      if (fundId) {
-          this.router.navigate(['/buy', fundId]);
-      }
+    if (fundId) {
+      this.router.navigate(['/buy', fundId]);
+    }
   }
 
   onBuyClick(e: any, fundId: number) {
@@ -65,9 +65,9 @@ export class TopchartfundComponent {
 
   onSearch(e: any) {
     const searchText = e.value ? e.value.toLowerCase() : '';
-    
+
     if (searchText) {
-      this.topChartData = this.allFunds.filter(fund => 
+      this.topChartData = this.allFunds.filter(fund =>
         fund.FundName.toLowerCase().includes(searchText)
       );
     } else {

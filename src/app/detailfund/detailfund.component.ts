@@ -16,17 +16,17 @@ export class DetailfundComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private service: Service,
     private router: Router,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const idString = params.get('id');
-      this.fundId = idString? + idString : undefined;
-      
-      if(this.fundId){
+      this.fundId = idString ? + idString : undefined;
+
+      if (this.fundId) {
         this.fundData = this.service.getFundById(this.fundId);
 
-        if(this.fundData) {
+        if (this.fundData) {
           this.loadMockData(this.fundId);
         }
       }
@@ -44,33 +44,33 @@ export class DetailfundComponent implements OnInit {
       this.router.navigate(['/sell', this.fundId]);
     }
   }
-  
+
   navigateToFav() {
     if (this.fundId) {
-      return ;
+      return;
     }
   }
 
   loadMockData(id: number) {
     this.navHistoryData = [
-        { Date: new Date(2024, 0, 1), NAV: 14.0000 },
-        { Date: new Date(2024, 3, 1), NAV: 14.2500 },
-        { Date: new Date(2024, 6, 1), NAV: 14.7927 },
-        { Date: new Date(2024, 9, 1), NAV: 14.9000 },
-        { Date: new Date(2024, 11, 1), NAV: 15.1000 },
+      { Date: new Date(2024, 0, 1), NAV: 14.0000 },
+      { Date: new Date(2024, 3, 1), NAV: 14.2500 },
+      { Date: new Date(2024, 6, 1), NAV: 14.7927 },
+      { Date: new Date(2024, 9, 1), NAV: 14.9000 },
+      { Date: new Date(2024, 11, 1), NAV: 15.1000 },
     ];
 
     this.performanceData = [{
-        Fundname: this.fundData.FundName,
-        R_1D: -0.10,
-        R_1M: 2.28,
-        R_1Y: 23.25,
-        R_3Y: 12.35, 
-        R_5Y: 14.38, 
+      Fundname: this.fundData.FundName,
+      R_1D: -0.10,
+      R_1M: 2.28,
+      R_1Y: 23.25,
+      R_3Y: 12.35,
+      R_5Y: 14.38,
     }];
   }
 
- navigateToManage() { this.router.navigate(['/manage']); }
+  navigateToManage() { this.router.navigate(['/manage']); }
 
   navigateTotopchart() { this.router.navigate(['topchart']); }
 

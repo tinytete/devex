@@ -1,6 +1,5 @@
 @import "primeicons/primeicons.css";
 
-/* --- Header Style (เหมือน Top Chart) --- */
 .top-header { 
     display: flex; 
     justify-content: space-between; 
@@ -8,7 +7,7 @@
     padding: 15px 30px; 
     background-color: #ffffff; 
     border-bottom: 1px solid #e0e0e0; 
-    position: relative; /* สำคัญ */
+    position: relative;
 }
 
 .header-left {
@@ -45,7 +44,6 @@
     z-index: 2;
 }
 
-/* --- ส่วนเนื้อหา (Manage Fund Style) --- */
 .manage-container {
     max-width: 1250px;
     margin: 30px auto;

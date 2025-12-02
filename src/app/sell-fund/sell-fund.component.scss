@@ -1,6 +1,5 @@
 @import "primeicons/primeicons.css";
 
-/* --- Header Style (เหมือน Top Chart) --- */
 .top-header { 
     display: flex; 
     justify-content: space-between; 
@@ -45,7 +44,6 @@
     z-index: 2;
 }
 
-/* --- ส่วนเนื้อหา (Sell Fund Style) --- */
 .buy-sell-container {
     max-width: 700px;
     margin: 40px auto;
@@ -181,19 +179,3 @@
     }
 }
 
-.portfolio-btn {
-    background-color: #00AEEF; 
-    color: white;
-    border: none;
-    padding: 8px 18px;
-    border-radius: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: bold;
-    font-size: 0.95em;
-    transition: background-color 0.2s;
-    &:hover { background-color: #008ec2; }
-    .pi { font-size: 1.1em; }
-}

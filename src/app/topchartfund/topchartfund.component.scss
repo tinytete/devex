@@ -1,53 +1,48 @@
 @import "primeicons/primeicons.css";
 
-/* จัด Header ให้เป็นกล่อง Flex */
 .top-header { 
     display: flex; 
-    justify-content: space-between; /* ดันซ้ายสุด กับ ขวาสุด */
+    justify-content: space-between;
     align-items: center; 
     padding: 15px 30px; 
     background-color: #ffffff; 
     border-bottom: 1px solid #e0e0e0; 
-    position: relative; /* สำคัญ! เพื่อให้ตัวกลางอ้างอิงตำแหน่งได้ */
+    position: relative;
 }
 
-/* ส่วนซ้าย */
 .header-left {
     cursor: pointer;
     z-index: 2;
 }
 .site-title { font-weight: 800; font-size: 1.6em; color: #2c3e50; }
 
-/* ส่วนกลาง (เมนู) */
 .header-center {
-    position: absolute;      /* ลอยขึ้นมา */
-    left: 50%;               /* เริ่มที่กึ่งกลาง */
-    transform: translateX(-50%); /* ขยับกลับมาครึ่งนึงเพื่อให้กลางเป๊ะ */
+    position: absolute;      
+    left: 50%;               
+    transform: translateX(-50%); 
     display: flex;
-    gap: 40px;               /* ระยะห่างระหว่างเมนู */
+    gap: 40px;              
 }
 
 .nav-link {
     font-size: 1rem;
     font-weight: 600;
-    color: #666;             /* สีเทาปกติ */
+    color: #666;             
     cursor: pointer;
     transition: color 0.2s;
     user-select: none;
     
     &:hover {
-        color: #00AEEF;      /* ชี้แล้วเป็นสีฟ้า */
+        color: #00AEEF;      
     }
 }
 
-/* ส่วนขวา */
 .header-right { 
     display: flex; 
     gap: 20px;
     z-index: 2;
 }
 
-/* --- Style เดิมด้านล่าง ไม่ต้องแก้ --- */
 .content-container { 
     width: 100%; 
     padding: 30px; 

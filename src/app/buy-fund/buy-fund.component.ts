@@ -44,7 +44,7 @@ export class BuyFundComponent implements OnInit {
     this.service.addTransaction(
         this.fundData.FundName, 
         'BUY', 
-        this.purchaseAmount
+        this.totalPayment
     );
 
     this.service.updatePortfolio(

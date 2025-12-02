@@ -53,11 +53,13 @@ export class SellFundComponent implements OnInit {
 
   confirmSell() {
     const sellValueInBaht = this.sellAmount * this.fundData.NAV;
+    const fee = this.calculateFee(sellValueInBaht, 0.02);
+    const netReceived = sellValueInBaht - fee;
 
     this.service.addTransaction(
         this.fundData.FundName,
         'SELL',
-        sellValueInBaht
+        netReceived
     );
 
     this.service.updatePortfolio(

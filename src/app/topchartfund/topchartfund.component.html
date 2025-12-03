@@ -28,24 +28,32 @@
                 <span class="chart-text"> {{ 'TOP_CHART' | translate }}</span>
             </div>
         </div>
-        <div class="filter-right">
-            <label for="search-fund">{{ 'SEARCH_LABEL' | translate }}</label>
+    <div class="filter-right">
+        <label for="search-fund">{{ 'SEARCH_LABEL' | translate }}</label>
 
-            <dx-text-box id="search-fund" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}" mode="search" width="250"
-                [valueChangeEvent]="'keyup'" (onValueChanged)="onSearch($event)">
-            </dx-text-box>
-        </div>
+        <dx-text-box id="search-fund" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}" mode="search" width="250"
+            [valueChangeEvent]="'keyup'" (onValueChanged)="onSearch($event)">
+        </dx-text-box>
     </div>
+</div>
 
-    <div class="chart-grid-area">
-        <dx-chart id="chart" title="{{ 'CHART_TITLE' | translate }}" [dataSource]="chartData"
-            (onPointClick)="onPointClick($event)">
-            <dxo-common-series-settings type="bar" argumentField="FundName">
-                <dxo-label [visible]="true" [customizeText]="customizeSeriesLabel"></dxo-label>
-            </dxo-common-series-settings>
-            <dxi-series name="จำนวนสัปดาห์ที่ติดอันดับ" valueField="Ranking" color="#7D3C98"></dxi-series>
-            <dxo-argument-axis><dxo-label [visible]="true" [customizeText]="customizeLabel"><dxo-font
-                        [size]="10"></dxo-font></dxo-label></dxo-argument-axis>
+<div class="chart-grid-area">
+    <dx-chart id="chart" 
+        title="{{ 'CHART_TITLE' | translate }}" 
+        [dataSource]="chartData"
+        (onPointClick)="onPointClick($event)">
+        <!-- //[customizePoint]="customizePoint" -->
+
+        <dxo-common-series-settings type="bar" argumentField="FundName">
+            <dxo-label [visible]="true" [customizeText]="customizeSeriesLabel"></dxo-label>
+        </dxo-common-series-settings>
+            
+        <dxi-series name="จำนวนสัปดาห์ที่ติดอันดับ" valueField="Ranking" ></dxi-series>
+            <dxo-argument-axis><dxo-label 
+                [visible]="true" 
+                [customizeText]="customizeLabel">
+                <dxo-font [size]="10"></dxo-font>
+            </dxo-label></dxo-argument-axis>
             <dxo-value-axis><dxo-title text="จำนวนสัปดาห์"></dxo-title></dxo-value-axis>
             <dxo-legend [visible]="false"></dxo-legend>
             <dxo-tooltip [enabled]="true"></dxo-tooltip>
@@ -63,6 +71,7 @@
                             {{ data.rowIndex + 1 }}
                         </span>
                     </div>
+                    
                 </dxi-column>
 
                 <dxi-column dataField="FundName" [caption]="'TABLE_FUND' | translate" alignment="left" [minWidth]="160">

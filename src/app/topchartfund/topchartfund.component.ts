@@ -11,11 +11,10 @@ export class TopchartfundComponent {
   title = 'topchartsfund';
   topChartData: any[] = [];
   chartData: any[] = [];
+  allFunds: any[] = [];
 
   public customizeLabel = (e: any) => { return e.value; }
   public customizeSeriesLabel = (e: any) => { return e.point.data.Company; }
-
-  allFunds: any[] = [];
 
   constructor(service: Service, private router: Router) {
     this.topChartData = service.getTopChartsData();
@@ -28,6 +27,15 @@ export class TopchartfundComponent {
     this.topChartData = [...this.allFunds];
     this.chartData = this.topChartData;
   }
+
+  // customizePoint = (arg: any) => {
+  //   const company = arg.data.Company;
+  //   switch (company) {
+  //     case 'SCBAM': return {color:'#4444'};
+  //     case 'KTAM': return {color:'#f115'};
+  //     case 'KAsset': return {color:'#cd1a'};
+  //   }
+  // }
 
   navigateToManage() { this.router.navigate(['/manage']); }
 

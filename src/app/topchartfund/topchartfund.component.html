@@ -21,34 +21,19 @@
 </header>
 
 <div class="content-container">
-    <div class="filter-area">
-        <div class="filter-left">
-            <div class="top-charts-branding">
-                <span class="pi pi-chart-bar"></span>
-                <span class="chart-text"> {{ 'TOP_CHART' | translate }}</span>
-            </div>
-        </div>
-    <div class="filter-right">
-        <label for="search-fund">{{ 'SEARCH_LABEL' | translate }}</label>
+    <div class="chart-grid-area">
+        <dx-chart id="chart" 
+            title="{{ 'CHART_TITLE' | translate }}" 
+            [dataSource]="chartData"
+            (onPointClick)="onPointClick($event)"
+            [customizePoint]="customizePoint"> 
 
-        <dx-text-box id="search-fund" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}" mode="search" width="250"
-            [valueChangeEvent]="'keyup'" (onValueChanged)="onSearch($event)">
-        </dx-text-box>
-    </div>
-</div>
-
-<div class="chart-grid-area">
-    <dx-chart id="chart" 
-        title="{{ 'CHART_TITLE' | translate }}" 
-        [dataSource]="chartData"
-        (onPointClick)="onPointClick($event)">
-        <!-- //[customizePoint]="customizePoint" -->
-
-        <dxo-common-series-settings type="bar" argumentField="FundName">
-            <dxo-label [visible]="true" [customizeText]="customizeSeriesLabel"></dxo-label>
-        </dxo-common-series-settings>
+            <dxo-common-series-settings type="bar" argumentField="FundName">
+                <dxo-label [visible]="true" [customizeText]="customizeSeriesLabel"></dxo-label>
+            </dxo-common-series-settings>
             
-        <dxi-series name="จำนวนสัปดาห์ที่ติดอันดับ" valueField="Ranking" ></dxi-series>
+            <dxi-series name="จำนวนสัปดาห์ที่ติดอันดับ" valueField="Ranking" ></dxi-series>
+            
             <dxo-argument-axis><dxo-label 
                 [visible]="true" 
                 [customizeText]="customizeLabel">

@@ -28,14 +28,17 @@ export class TopchartfundComponent {
     this.chartData = this.topChartData;
   }
 
-  // customizePoint = (arg: any) => {
-  //   const company = arg.data.Company;
-  //   switch (company) {
-  //     case 'SCBAM': return {color:'#4444'};
-  //     case 'KTAM': return {color:'#f115'};
-  //     case 'KAsset': return {color:'#cd1a'};
-  //   }
-  // }
+  customizePoint = (arg: { data: any }) => {
+    const company = arg.data.Company;
+    switch (company) {
+      case 'SCBAM': return { color: '#7D3C98' };      
+      case 'KAsset': return { color: '#00A950' };     
+      case 'KTAM': return { color: '#18A0FB' };       
+      case 'TISCOAM': return { color: '#1A3B70' };    
+      case 'EASTSPRING': return { color: '#E35205' }; 
+      default: return { color: '#ffa600ff' };           
+    }
+  }
 
   navigateToManage() { this.router.navigate(['/manage']); }
 

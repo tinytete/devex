@@ -16,29 +16,22 @@ export class TopchartfundComponent implements OnInit { // อย่าลืม 
   public customizeLabel = (e: any) => { return e.value; }
   public customizeSeriesLabel = (e: any) => { return e.point.data.Company; }
 
-  constructor(private service: Service, private router: Router) {
-    // ใน constructor เอาไว้แค่ประกาศตัวแปร ไม่ควรดึงข้อมูลหนักๆ
-  }
+  constructor(private service: Service, private router: Router) {}
 
-  // --- นี่ไงครับ ngOnInit (เปิดร้านปุ๊บ ทำปั๊บ) ---
   ngOnInit(): void {
     
-    // 1. เรียก Service
-    this.service.getTopChartsData().subscribe((data) => { // 2. .subscribe คือ "รอรับของ"
+    this.service.getTopChartsData().subscribe((data) => {
         
-        console.log("เย้! ข้อมูลจาก Spring Boot มาแล้ว:", data); // เช็คใน Console
+        console.log("เย้! ข้อมูลจาก Spring Boot มาแล้ว:", data); 
         
-        // 3. พอของมาถึง ก็เอาเข้าตัวแปร
         this.allFunds = data;
         
-        // 4. จัดเรียงข้อมูล (Logic เดิมของคุณ)
         this.topChartData = [...this.allFunds];
         this.topChartData.sort((a, b) => b.Ranking - a.Ranking);
         this.chartData = this.topChartData;
       });
   }
 
-  // --- ส่วนข้างล่างนี้เหมือนเดิมเป๊ะ ---
   customizePoint = (arg: { data: any }) => {
     const company = arg.data.Company;
     switch (company) {

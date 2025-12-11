@@ -63,12 +63,11 @@ export class ManageFundComponent implements OnInit {
   save() {
     if (this.selectedFund) {
       if (this.isNew) {
-        // --- กรณีเพิ่มใหม่ (Add) ---
-        // ต้อง .subscribe() ไม่งั้นข้อมูลไม่วิ่งไปหลังบ้าน
+       
         this.service.addFund(this.selectedFund).subscribe({
           next: (res) => {
             console.log('เพิ่มสำเร็จ!', res);
-            this.finishSave(); // บันทึกเสร็จแล้วเคลียร์ค่า
+            this.finishSave(); 
           },
           error: (err) => {
             console.error('อุ๊ย! เพิ่มไม่สำเร็จ:', err);
@@ -77,11 +76,10 @@ export class ManageFundComponent implements OnInit {
         });
 
       } else {
-        // --- กรณีแก้ไข (Edit) ---
-        // (อันนี้คุณอาจจะยังไม่ได้แก้ Service ให้เป็น Observable แต่เขียนเผื่อไว้ก่อน)
+       
         this.service.addFund(this.selectedFund).subscribe({
           next: (res) => {
-            this.finishSave(); // บันทึกเสร็จแล้วเคลียร์ค่า
+            this.finishSave(); 
           }
         });
       }

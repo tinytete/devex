@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core'; // เพิ่ม OnInit
 import { Service } from '../app.service';
 import { Router } from '@angular/router';
 
@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
   templateUrl: 'topchartfund.component.html',
   styleUrl: 'topchartfund.component.scss',
 })
-export class TopchartfundComponent {
-  title = 'topchartsfund';
+export class TopchartfundComponent implements OnInit { // อย่าลืม implements OnInit
+  
   topChartData: any[] = [];
   chartData: any[] = [];
   allFunds: any[] = [];
@@ -16,18 +16,29 @@ export class TopchartfundComponent {
   public customizeLabel = (e: any) => { return e.value; }
   public customizeSeriesLabel = (e: any) => { return e.point.data.Company; }
 
-  constructor(service: Service, private router: Router) {
-    this.topChartData = service.getTopChartsData();
-    this.topChartData.sort((a, b) => b.Ranking - a.Ranking);
-    this.chartData = this.topChartData;
-    this.allFunds = service.getTopChartsData();
-
-    this.allFunds.sort((a, b) => b.Ranking - a.Ranking);
-
-    this.topChartData = [...this.allFunds];
-    this.chartData = this.topChartData;
+  constructor(private service: Service, private router: Router) {
+    // ใน constructor เอาไว้แค่ประกาศตัวแปร ไม่ควรดึงข้อมูลหนักๆ
   }
 
+  // --- นี่ไงครับ ngOnInit (เปิดร้านปุ๊บ ทำปั๊บ) ---
+  ngOnInit(): void {
+    
+    // 1. เรียก Service
+    this.service.getTopChartsData().subscribe((data) => { // 2. .subscribe คือ "รอรับของ"
+        
+        console.log("เย้! ข้อมูลจาก Spring Boot มาแล้ว:", data); // เช็คใน Console
+        
+        // 3. พอของมาถึง ก็เอาเข้าตัวแปร
+        this.allFunds = data;
+        
+        // 4. จัดเรียงข้อมูล (Logic เดิมของคุณ)
+        this.topChartData = [...this.allFunds];
+        this.topChartData.sort((a, b) => b.Ranking - a.Ranking);
+        this.chartData = this.topChartData;
+      });
+  }
+
+  // --- ส่วนข้างล่างนี้เหมือนเดิมเป๊ะ ---
   customizePoint = (arg: { data: any }) => {
     const company = arg.data.Company;
     switch (company) {
@@ -41,34 +52,23 @@ export class TopchartfundComponent {
   }
 
   navigateToManage() { this.router.navigate(['/manage']); }
-
-  navigateToPortfolio() {
-    this.router.navigate(['/']);
-  }
-
+  navigateToPortfolio() { this.router.navigate(['/']); }
+  
   onRowClick(e: any) {
-    if (e.data && e.data.Id) {
-      this.router.navigate(['/detail', e.data.Id]);
-    }
+    if (e.data && e.data.Id) { this.router.navigate(['/detail', e.data.Id]); }
   }
 
   onPointClick(e: any) {
     const pointData = e.target.data;
-    if (pointData && pointData.Id) {
-      this.router.navigate(['/detail', pointData.Id]);
-    }
+    if (pointData && pointData.Id) { this.router.navigate(['/detail', pointData.Id]); }
   }
 
   navigateToBuy(fundId: number | null) {
-    if (fundId) {
-      this.router.navigate(['/buy', fundId]);
-    }
+    if (fundId) { this.router.navigate(['/buy', fundId]); }
   }
 
   onBuyClick(e: any, fundId: number) {
-    if (e && e.event) {
-      e.event.stopPropagation();
-    }
+    if (e && e.event) { e.event.stopPropagation(); }
     this.navigateToBuy(fundId);
   }
 
@@ -76,7 +76,6 @@ export class TopchartfundComponent {
 
   onSearch(e: any) {
     const searchText = e.value ? e.value.toLowerCase() : '';
-
     if (searchText) {
       this.topChartData = this.allFunds.filter(fund =>
         fund.FundName.toLowerCase().includes(searchText)

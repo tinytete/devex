@@ -25,15 +25,14 @@ export class ManageFundComponent implements OnInit {
   }
 
   loadFunds() {
-    const data = this.service.getTopChartsData();
-
-    this.fundsData = [...data].sort((a, b) => b.Ranking - a.Ranking);
+    this.service.getTopChartsData().subscribe((data) => {
+      this.fundsData = [...data].sort((a, b) => b.Ranking - a.Ranking);
+    });
   }
 
   startAdd() {
     this.isNew = true;
     this.selectedFund = {
-      Id: 0,
       FundName: '',
       Company: '',
       Ranking: 0,
@@ -41,7 +40,9 @@ export class ManageFundComponent implements OnInit {
       Lastrank: 0,
       Category: '',
       RiskLevel: '',
-      RegisterDate: new Date()
+      NAV: 0,
+      AUM: '',
+      RegisterDate: '',
     };
     this.scrollToForm();
   }
@@ -62,27 +63,48 @@ export class ManageFundComponent implements OnInit {
   save() {
     if (this.selectedFund) {
       if (this.isNew) {
-        this.service.addFund(this.selectedFund);
-      } else {
-        this.service.updateFund(this.selectedFund);
-      }
+        // --- กรณีเพิ่มใหม่ (Add) ---
+        // ต้อง .subscribe() ไม่งั้นข้อมูลไม่วิ่งไปหลังบ้าน
+        this.service.addFund(this.selectedFund).subscribe({
+          next: (res) => {
+            console.log('เพิ่มสำเร็จ!', res);
+            this.finishSave(); // บันทึกเสร็จแล้วเคลียร์ค่า
+          },
+          error: (err) => {
+            console.error('อุ๊ย! เพิ่มไม่สำเร็จ:', err);
+            alert('เกิดข้อผิดพลาดในการบันทึก');
+          }
+        });
 
-      this.selectedFund = null;
-      this.isNew = false;
-      this.loadFunds();
+      } else {
+        // --- กรณีแก้ไข (Edit) ---
+        // (อันนี้คุณอาจจะยังไม่ได้แก้ Service ให้เป็น Observable แต่เขียนเผื่อไว้ก่อน)
+        this.service.addFund(this.selectedFund).subscribe({
+          next: (res) => {
+            this.finishSave(); // บันทึกเสร็จแล้วเคลียร์ค่า
+          }
+        });
+      }
     }
   }
 
   delete(id: number) {
-    const confirmMessage = this.translate.instant('LABEL_SURE') + id + '?';
+    const confirmMessage = this.translate.instant('LABEL_SURE') +''+ id + '?';
 
     if (confirm(confirmMessage)) {
-      this.service.deleteFund(id);
-      this.loadFunds();
-      if (this.selectedFund && this.selectedFund.Id === id) {
-        this.selectedFund = null;
-      }
+      this.service.deleteFund(id).subscribe(() => {
+        this.loadFunds();
+        if (this.selectedFund && this.selectedFund.Id === id) {
+          this.selectedFund = null;
+        }
+      });
     }
+  }
+
+  finishSave() {
+    this.selectedFund = null;
+    this.isNew = false;
+    this.loadFunds();
   }
 
   cancel() {
@@ -95,4 +117,5 @@ export class ManageFundComponent implements OnInit {
   navigateTotopchart() { this.router.navigate(['topchart']); }
 
   navigateToPortfolio() { this.router.navigate(['/']); }
+
 }

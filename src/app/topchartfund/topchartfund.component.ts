@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'; // เพิ่ม OnInit
+import { Component, OnInit } from '@angular/core';
 import { Service } from '../app.service';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: 'topchartfund.component.html',
   styleUrl: 'topchartfund.component.scss',
 })
-export class TopchartfundComponent implements OnInit { // อย่าลืม implements OnInit
+export class TopchartfundComponent implements OnInit {
   
   topChartData: any[] = [];
   chartData: any[] = [];
@@ -21,8 +21,6 @@ export class TopchartfundComponent implements OnInit { // อย่าลืม 
   ngOnInit(): void {
     
     this.service.getTopChartsData().subscribe((data) => {
-        
-        console.log("เย้! ข้อมูลจาก Spring Boot มาแล้ว:", data); 
         
         this.allFunds = data;
         
@@ -68,13 +66,10 @@ export class TopchartfundComponent implements OnInit { // อย่าลืม 
   navigateTotopchart() { this.router.navigate(['topchart']); }
 
   onSearch(e: any) {
-    const searchText = e.value ? e.value.toLowerCase() : '';
-    if (searchText) {
-      this.topChartData = this.allFunds.filter(fund =>
-        fund.FundName.toLowerCase().includes(searchText)
-      );
-    } else {
-      this.topChartData = [...this.allFunds];
-    }
+    const searchText = e.value ;
+    this.service.searchFunds(searchText).subscribe((data) => {
+      this.topChartData = data;
+      this.topChartData.sort((a, b) => b.Ranking - a.Ranking);
+    });
   }
 }

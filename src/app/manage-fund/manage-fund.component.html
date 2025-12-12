@@ -92,7 +92,7 @@
 
         <div class="form-grid">
             <div class="form-group">
-                <label>{{ 'LABEL_ID' | translate }} (Auto)</label>
+                <label>{{ 'LABEL_ID' | translate }}</label>
                 <dx-text-box [(value)]="selectedFund.Id" [readOnly]="true" [disabled]="true"></dx-text-box>
             </div>
             <div class="form-group">
@@ -101,20 +101,20 @@
             </div>
 
             <div class="form-group">
-                <label>{{ 'TABLE_COMPANY' | translate }} (Company)</label>
+                <label>{{ 'TABLE_COMPANY' | translate }}</label>
                 <dx-text-box [(value)]="selectedFund.Company"></dx-text-box>
             </div>
             <div class="form-group">
-                <label>ราคา NAV (สำคัญมาก!)</label>
+                <label>NAV</label>
                 <dx-number-box [(value)]="selectedFund.NAV" format="#,##0.0000"></dx-number-box>
             </div>
 
             <div class="form-group">
-                <label>{{ 'LABEL_WEEKS' | translate }} (Ranking)</label>
+                <label>{{ 'LABEL_WEEKS' | translate }}</label>
                 <dx-number-box [(value)]="selectedFund.Ranking"></dx-number-box>
             </div>
             <div class="form-group">
-                <label>{{ 'TABLE_RETURN' | translate }} (3Y %)</label>
+                <label>{{ 'TABLE_RETURN' | translate }}</label>
                 <dx-number-box [(value)]="selectedFund.Return3Y"></dx-number-box>
             </div>
 
@@ -128,15 +128,15 @@
             </div>
 
             <div class="form-group">
-                <label>{{ 'DETAIL_AUM' | translate }} (มูลค่าทรัพย์สิน)</label>
+                <label>{{ 'DETAIL_AUM' | translate }}</label>
                 <dx-text-box [(value)]="selectedFund.AUM"></dx-text-box>
             </div>
             <div class="form-group">
-                <label>{{ 'LABEL_DATE' | translate }} (วันที่จดทะเบียน)</label>
+                <label>{{ 'LABEL_DATE' | translate }}</label>
                 <dx-text-box [(value)]="selectedFund.RegisterDate"></dx-text-box>
             </div>
             <div class="form-group">
-                <label>{{ 'DETAIL_RISK' | translate }} (ระดับความเสี่ยง)</label>
+                <label>{{ 'DETAIL_RISK' | translate }}</label>
                 <dx-text-box [(value)]="selectedFund.RiskLevel"></dx-text-box>
             </div>
         </div>

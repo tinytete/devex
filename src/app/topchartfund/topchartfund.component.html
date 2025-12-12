@@ -43,7 +43,13 @@
             <dxo-legend [visible]="false"></dxo-legend>
             <dxo-tooltip [enabled]="true"></dxo-tooltip>
         </dx-chart>
+        <div class="filter-right">
+            <label for="search-fund">{{ 'SEARCH_LABEL' | translate }}</label>
 
+            <dx-text-box id="search-fund" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}" mode="search" width="250"
+                [valueChangeEvent]="'keyup'" (onValueChanged)="onSearch($event)">
+            </dx-text-box>
+        </div>
         <div id="fund-list-grid">
             <dx-data-grid id="gridContainer" [dataSource]="topChartData" [showBorders]="true" [showRowLines]="true"
                 [showColumnLines]="true" [allowColumnReordering]="false" [rowAlternationEnabled]="true"

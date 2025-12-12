@@ -24,11 +24,18 @@ export class DetailfundComponent implements OnInit {
       this.fundId = idString ? + idString : undefined;
 
       if (this.fundId) {
-        this.fundData = this.service.getFundById(this.fundId);
+        this.service.getFundById(this.fundId).subscribe({
+          next: (data) => {
+            this.fundData = data;
 
-        if (this.fundData) {
-          this.loadMockData(this.fundId);
-        }
+            if (this.fundData) {
+              this.loadMockData(this.fundId!);
+            }
+          },
+          error: (err) => {
+            console.error('Error fetching fund data:', err);
+          }
+        });
       }
     });
   }

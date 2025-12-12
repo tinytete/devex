@@ -19,7 +19,9 @@
         <app-language-switcher></app-language-switcher>
     </div>
 </header>
-
+<br>
+    <a routerLink="/topchart" class="pi pi-backward back-link"> {{ 'LINK_BACK_HOME' | translate }}</a>
+    
 <div *ngIf="fundData" class="fund-detail-container">
 
     <header class="detail-header">
@@ -99,6 +101,4 @@
             [elementAttr]="{ style: 'font-size: 18px; font-weight: bold;' }" (onClick)="navigateToSell()">
         </dx-button>
     </div>
-    <br>
-    <a routerLink="/topchart" class="pi pi-backward back-link"> {{ 'LINK_BACK_HOME' | translate }}</a>
 </div>

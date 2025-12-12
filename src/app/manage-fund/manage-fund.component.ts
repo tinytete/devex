@@ -66,12 +66,9 @@ export class ManageFundComponent implements OnInit {
        
         this.service.addFund(this.selectedFund).subscribe({
           next: (res) => {
-            console.log('เพิ่มสำเร็จ!', res);
             this.finishSave(); 
           },
           error: (err) => {
-            console.error('อุ๊ย! เพิ่มไม่สำเร็จ:', err);
-            alert('เกิดข้อผิดพลาดในการบันทึก');
           }
         });
 

@@ -9,7 +9,7 @@ import { FUNDS, MyPortfolio } from './mock-funds';
 })
 export class Service {
 
-  private apiUrl = 'http://localhost:8080/funds';
+  private apiUrl = 'http://localhost:8080/api/funds';
 
   private funds: Fund[] = FUNDS; 
   private myPortfolio: PortfolioItem[] = MyPortfolio; 
@@ -29,13 +29,14 @@ export class Service {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
-  getFundById(id: number): Fund | undefined { 
-    return this.funds.find(fund => fund.Id === id); 
+  getFundById(id: number): Observable<Fund>  { 
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<Fund>(url); 
   }
 
   searchFunds(term: string): Observable<Fund[]> { 
     if (!term.trim()) { return of([]); } 
-    return of(this.funds.filter(fund => fund.FundName.toLowerCase().includes(term.toLowerCase()))); 
+    return this.http.get<Fund[]>(`${this.apiUrl}/search?name=${term}`); 
   }
 
   getPortfolio(): PortfolioItem[] {
@@ -44,7 +45,7 @@ export class Service {
 
   updatePortfolio(fundId: number, fundName: string, unitsChange: number, nav: number) {
     const index = this.myPortfolio.findIndex(p => p.FundId === fundId);
-    const fundInfo = this.funds.find(f => f.Id === fundId); // ใช้ mock หาชื่อบริษัท
+    const fundInfo = this.funds.find(f => f.Id === fundId);
     const companyName = fundInfo ? fundInfo.Company : '-';
 
     if (index > -1) {
@@ -85,7 +86,6 @@ export class Service {
   }
   
   updateFund(updatedFund: Fund) { 
-    const index = this.funds.findIndex(f => f.Id === updatedFund.Id); 
-    if (index > -1) { this.funds[index] = { ...this.funds[index], ...updatedFund }; } 
+    const url = `${this.apiUrl}/${updatedFund.Id}`; 
+    return this.http.put<Fund>(url, updatedFund);} 
   }
-}

@@ -31,7 +31,7 @@
     <div class="grid-wrapper">
         <dx-data-grid id="gridContainer" [dataSource]="fundsData" [showBorders]="true" [showRowLines]="true"
             [showColumnLines]="true" [rowAlternationEnabled]="true" [columnAutoWidth]="true"
-            [allowColumnResizing]="true">
+            [allowColumnResizing]="true" (onRowClick)="onRowClick($event)">
 
             <dxi-column [caption]="'TABLE_RANK' | translate" alignment="center" [width]="80" [allowResizing]="false"
                 [allowSorting]="false" cellTemplate="rankCell">

@@ -112,5 +112,8 @@ export class ManageFundComponent implements OnInit {
   navigateTotopchart() { this.router.navigate(['topchart']); }
 
   navigateToPortfolio() { this.router.navigate(['/']); }
-
+ 
+  onRowClick(e: any) {
+    if (e.data && e.data.Id) { this.router.navigate(['/detail', e.data.Id]); }
+  }
 }
